@@ -1,0 +1,740 @@
+---
+title: "Character Review"
+author: "Chengmin Xu"
+date: "2024-04-22"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+
+
+
+
+
+Part 1: Find popularity of each character and show the relationship between polularity (proportion of negative words in review) and average revenue for characters.
+
+```{r, include=TRUE}
+library(readr)
+data<- read_csv("Review_Combined.csv")
+
+```
+
+Statistics for sentiment based on all characters (positive number v.s. negative number)
+
+```{r, include=TRUE}
+
+
+library('tidytext');
+library(tidyr); library(dplyr); library(ggplot2); library(ggthemes)
+sentiment_fullcharacter<-data %>%
+  unnest_tokens(word, text) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(character, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(total = positive + negative,
+         prop_positive = positive / total,
+         prop_negative = negative / total) %>%
+  arrange(desc(prop_positive)) 
+
+
+topfull<-sentiment_fullcharacter%>%slice(1:5)
+
+topfull
+
+#negative_sentiment_data <- sentiment_fullcharacter %>%
+#  select(character, prop_negative)
+
+# Create a horizontal bar chart for negative sentiment only
+#ggplot(negative_sentiment_data, aes(x = character, y = prop_negative, fill = "prop_negative")) +
+#  geom_bar(stat = "identity") +
+ # coord_flip() +  # Makes the bar chart horizontal
+#  labs(x = "Character", y = "Proportion of Negative Sentiment", fill = "Sentiment Type",
+   #    title = "Proportion of Negative Sentiment by Character") +
+ # theme_minimal() +
+  #scale_fill_manual(values = c("prop_negative" = "red"))  # Display negative sentiment in red
+#
+
+```
+
+
+
+
+```{r, include=TRUE}
+ggplot(topfull, aes(x = reorder(character, -prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +  # Makes the bar chart horizontal
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired")
+```
+
+```{r, include=TRUE}
+
+library('tidytext')
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+# Assuming sentiment_fullcharacter and topfull have been computed as per your code
+
+# Define custom colors for each character
+custom_colors <- c('mediumpurple','red4','turquoise', "khaki", "olivedrab3")
+
+# Create the ggplot with your data
+ggplot(topfull, aes(x = reorder(character, prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion - All") +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors)  # Set custom colors using scale_fill_manual
+
+
+# Explanation of scale_fill_manual:
+# - values = c(rep("steelblue", 4), "green"):
+#   - This sets the color for each bar. We repeat "steelblue" (a blue color) 4 times for the first 4 bars.
+#   - The last bar (fifth bar, or the last in the order specified) is set to "green".
+
+```
+
+1.2 merge all 5-star character list (no revenue consideration)
+```{r, include=TRUE}
+all_fivestardata <- Genshin_Impact_5_Star_Characters
+all_fivestardata1 <-# Filter 'data' to only include rows where the character name is in 'all_fivestardata'
+ sentiment_fullcharacter[sentiment_fullcharacter$character%in% all_fivestardata$`5-Star Characters`, ]
+
+all_fivestardata1
+
+```
+
+
+```{r, include=TRUE}
+topfullfive<-all_fivestardata1%>%slice(1:5)
+
+library('tidytext')
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+# Assuming sentiment_fullcharacter and topfull have been computed as per your code
+
+# Define custom colors for each character
+custom_colors <- c('seagreen','royalblue','slateblue', 'limegreen', 'orangered3')
+
+# Create the ggplot with your data
+ggplot(topfullfive, aes(x = reorder(character, prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion - 5 Star") +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors)  # Set custom colors using scale_fill_manual
+
+```
+
+
+
+```{r, include=TRUE}
+# Assuming 'character' is the column in 'topfullfive' DataFrame containing the character names
+# First, ensure the characters are in the correct order by manually specifying it
+# (replace 'character1', 'character2', etc., with the actual character names in the order you prefer)
+
+custom_colors <- setNames(c('orangered3','seagreen','royalblue','slateblue','limegreen'),
+                          c('Nilou', 'Nahida', 'Albedo', 'Lisa', 'Tighnari'))
+
+# Now use this named vector in your ggplot
+ggplot(topfullfive, aes(x = reorder(character, prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion - 5 Star") +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors)  # Set custom colors using scale_fill_manual
+
+```
+
+
+
+
+
+```{r, include=TRUE}
+
+revenue_data_fivestar <- read_csv("modified_Genshin_charac_rev_by_charac.csv")
+```
+
+Statistics for sentiment based on 5-star characters (positive number v.s. negative number) 
+1. for the same character, sum up revenue and banner days.
+
+```{r, include=TRUE}
+#revenue_data_fivestar%>%
+ #distinct(five_star_characters) %>%
+#nrow()  # 24 rows (24 unique characters)in 5 star characters
+
+selected_fivestardata <- select(revenue_data_fivestar, five_star_characters, revenue, banner_days)
+
+aggregated_data_fivestar <- selected_fivestardata %>%
+  group_by(five_star_characters) %>%
+  summarise(
+    total_revenue = sum(revenue, na.rm = TRUE),
+    total_banner_days = sum(banner_days, na.rm = TRUE)
+  )
+
+aggregated_data_fivestar
+```
+
+
+2.2 merge this 5-star character list (along with revenue) with sentiment_fullcharacter. We find only 16 characters have both revenue data and review data. We order it based on descending order of negative word proportion
+
+```{r, include=TRUE}
+five_star_combine <- aggregated_data_fivestar %>%
+  rename(character = five_star_characters) %>%
+  inner_join(sentiment_fullcharacter, by = "character")
+
+five_star_combine %>%
+arrange(desc(prop_positive))
+
+
+```
+
+```{r, include=TRUE}
+
+
+
+
+
+
+
+
+```
+
+
+```{r, include=TRUE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+
+ggplot(five_star_combine, aes(x = total_revenue/total_banner_days, y = prop_positive)) +
+  geom_point(alpha = 0.5) +
+geom_smooth(method = "lm", color = "blue", se = TRUE) +
+  labs(
+    title = "Relationship Between Avergae Revenue and Negative Word Proportion",
+    x = "Average Revenue",
+    y = "Negative Proportion"
+  ) +
+  theme_minimal()  
+```
+
+
+Adjust the the graph by adding the corresponding character names 
+
+```{r, include=TRUE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+
+ggplot(five_star_combine, aes(x = total_revenue / total_banner_days, y = prop_negative, label = character)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", color = "blue", se = TRUE) + 
+  geom_label(aes(label = character), hjust = 1.2, vjust = 1.2, check_overlap = TRUE, color = "red", size = 3) +  
+  labs(
+    title = "Relationship Between Average Revenue and Negative Word Proportion",
+    x = "Average Revenue",
+    y = "Negative Word Proportion"
+  ) +
+  theme_minimal()  
+```
+
+
+
+```{r, include=TRUE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+ggplot(five_star_combine, aes(x = total_revenue / total_banner_days, y = prop_positive, label = character)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "loess", color = "blue", se = TRUE) +
+    geom_smooth(method = "lm", color = "purple", se = TRUE) + 
+  # Changed from lm to loess
+  geom_label(aes(label = character), hjust = 1.2, vjust = 1.2, check_overlap = TRUE, color = "red", size = 3) +  
+  labs(
+    title = "Average Revenue v.s. Positive Word Proportion",
+    x = "Average Revenue",
+    y = "Positive Word Proportion"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+
+
+Part2: Make prodiction based on review for total revenue
+
+```{r, include=TRUE}
+library(dplyr)
+library(readr)
+
+
+filtered_data_satisfy <- data %>%
+  filter(character %in% five_star_combine$character)
+
+filtered_data_satisfy
+
+
+```
+
+
+combine 'text' together for the same 'character' for the 16 characters
+
+```{r, include=TRUE}
+library(dplyr)
+library(readr)
+
+
+combined_text_data <- filtered_data_satisfy %>%
+  group_by(character) %>%
+  summarise(combined_text = paste(text, collapse = " "))
+combined_text_data
+
+```
+
+
+
+
+##############
+
+
+
+
+
+
+
+
+Combine review part with revenue together
+```{r, include=TRUE}
+morecombine<-combined_text_data %>%
+  inner_join(five_star_combine, by = "character") %>%
+  select(character, total_revenue, combined_text)
+
+
+#morecombine$combined_text <- gsub("X+", "", morecombine$combined_text)# The "+" in the regular expression pattern means one or more occurrences of 'X'
+
+
+```
+
+
+
+```{r, include=TRUE}
+library(tidytext)
+
+library(dplyr)
+library(tidyr)
+library(glmnet)
+library(tm)
+corpus = Corpus(VectorSource(morecombine$combined_text))
+corpus = tm_map(corpus,FUN = content_transformer(tolower))
+
+corpus = tm_map(corpus,
+                FUN = content_transformer(FUN = function(x)gsub(pattern = 'http[[:alnum:][:punct:]]*',
+                                                                replacement = ' ',x = x)))
+
+corpus = tm_map(corpus,FUN = removePunctuation)
+
+corpus = tm_map(corpus,FUN = removeWords,c(stopwords('english')))
+corpus = tm_map(corpus,FUN = stripWhitespace)
+dict = findFreqTerms(DocumentTermMatrix(Corpus(VectorSource(morecombine$combined_text))),
+                     lowfreq = 0)
+
+# Remove all non-ASCII characters (non-English text)
+corpus <- tm_map(corpus, content_transformer(function(x) iconv(x, "latin1", "ASCII", sub="")))
+
+
+dict_corpus = Corpus(VectorSource(dict))
+
+corpus = tm_map(corpus,FUN = stemDocument)
+dtm = DocumentTermMatrix(corpus)
+dtm
+
+```
+
+
+
+
+
+```{r, include=TRUE}
+xdtm = removeSparseTerms(dtm,sparse = 0.95)
+
+
+
+xdtm = as.data.frame(as.matrix(xdtm))
+
+colnames(xdtm) = stemCompletion(x = colnames(xdtm),
+                                dictionary = dict_corpus,
+                                type='prevalent')
+colnames(xdtm) = make.names(colnames(xdtm))
+sort(colSums(xdtm),decreasing = T)
+```
+
+
+
+```{r, include=TRUE}
+
+library(ggplot2)
+library(dplyr)
+library(tm) 
+
+
+word_counts <- colSums(xdtm)  # Replace 'xdtm' with 'xdtm_tfidf' if using TF-IDF matrix
+
+word_data <- data.frame(
+  word = names(word_counts),
+  freq = word_counts
+)
+
+
+top_words <- word_data %>%
+  arrange(desc(freq)) %>%
+  top_n(20, freq)
+
+
+ggplot(top_words, aes(x = reorder(word, freq), y = freq)) +
+  geom_bar(stat = "identity", fill = "grey") +
+  coord_flip() +  # This makes the bar chart horizontal
+  labs(x = "Words", y = "Frequency", title = "Top 20 Most Frequent Words by tf") +
+  theme_minimal()
+
+
+
+```
+
+
+
+
+```{r, include=TRUE}
+#xdtm[, !grepl("X", colnames(xdtm))]
+#sort(colSums(xdtm),decreasing = T)
+
+```
+
+
+
+
+
+Document Term Matrix - tfidf (Term Frequency - Inverse Document Frequency Weighting)
+Most frequent words in the dataset 
+
+```{r, include=TRUE}
+dtm_tfidf = DocumentTermMatrix(x=corpus,
+                               control = list(weighting=function(x) weightTfIdf(x,normalize=F)))
+xdtm_tfidf = removeSparseTerms(dtm_tfidf,sparse = 0.95)
+xdtm_tfidf = as.data.frame(as.matrix(xdtm_tfidf))
+colnames(xdtm_tfidf) = stemCompletion(x = colnames(xdtm_tfidf),
+                                      dictionary = dict_corpus,
+                                      type='prevalent')
+colnames(xdtm_tfidf) = make.names(colnames(xdtm_tfidf))
+sort(colSums(xdtm_tfidf),decreasing = T)
+```
+
+
+```{r, include=TRUE}
+
+library(ggplot2)
+library(dplyr)
+library(tm) 
+
+
+word_counts <- colSums(xdtm_tfidf)  # Replace 'xdtm' with 'xdtm_tfidf' if using TF-IDF matrix
+
+word_data <- data.frame(
+  word = names(word_counts),
+  freq = word_counts
+)
+
+
+top_words <- word_data %>%
+  arrange(desc(freq)) %>%
+  top_n(20, freq)
+
+
+ggplot(top_words, aes(x = reorder(word, freq), y = freq)) +
+  geom_bar(stat = "identity", fill = "pink") +
+  coord_flip() +  # This makes the bar chart horizontal
+  labs(x = "Words", y = "Frequency", title = "Top 20 Most Frequent Words by tfidf") +
+  theme_minimal()
+
+
+
+```
+
+
+
+
+Try to make prediction
+
+```{r, include=TRUE}
+
+colnames(xdtm_tfidf) <- make.unique(gsub("\\.", "", colnames(xdtm_tfidf)))
+colnames(xdtm) <- make.unique(gsub("\\.", "", colnames(xdtm)))
+
+# Bind with revenue data ensuring unique names
+complete_data <- cbind(total_revenue = morecombine$total_revenue, xdtm)
+complete_data_tfidf <- cbind(total_revenue = morecombine$total_revenue, xdtm_tfidf)
+
+# Ensure that column names are unique
+names(complete_data) <- make.unique(names(complete_data))
+names(complete_data_tfidf) <- make.unique(names(complete_data_tfidf))
+
+
+```
+
+
+
+########## Draft ###########
+```{r, include=TRUE}
+set.seed(617)
+split1 = sample(1:nrow(complete_data ),size = 0.7*nrow(complete_data ))
+train1 = complete_data[split1,]
+test1 = complete_data[-split1,]
+
+```
+
+
+```{r, include=TRUE}
+
+names(train1) <- make.unique(names(train1))
+names(test1) <- make.unique(names(test1))
+
+library(rpart)
+set.seed(617)
+tree_model <- rpart(total_revenue ~ ., data = train1)
+rpart.plot(tree_model)
+
+
+predicted_revenue <- predict(tree_model, newdata = test1)
+
+# Evaluate the model (if feasible)
+# rmse = sqrt(mean((predicted_revenue - complete_data$total_revenue)^2))
+# print(rmse)
+
+```
+
+
+```{r, include=TRUE}
+set.seed(617)
+reg = lm(total_revenue~.,complete_data)
+summary(reg)
+```
+
+
+####### Try ##########
+
+# Apply PCA to reduce dimensionality
+```{r, include=TRUE}
+library(glmnet)
+
+
+pca_results <- prcomp(complete_data[, -1], scale. = TRUE)
+summary(pca_results)
+
+pca_data <- data.frame(total_revenue = complete_data$total_revenue, pca_results$x[, 1:10])
+fit_pca <- lm(total_revenue ~ ., data = pca_data)
+summary(fit_pca)
+
+fit_pca
+```
+
+
+
+
+
+```{r, include=TRUE}
+# For example, checking VIF:
+library(car)
+vif_model <- vif(lm(total_revenue ~ ., data = complete_data))
+print(vif_model)  # High VIF values indicate multicollinearity
+
+
+library(glmnet)
+# Assuming xdtm_tfidf has been prepared as a matrix of predictors and total_revenue as a vector of responses
+x_matrix <- as.matrix(complete_data[-1])  # Exclude the response variable
+y_vector <- complete_data$total_revenue
+
+# Apply Ridge Regression
+set.seed(617)
+cv_ridge <- cv.glmnet(x_matrix, y_vector, alpha = 0, lambda = 10^seq(4, -2, length = 100))
+plot(cv_ridge)
+best_lambda <- cv_ridge$lambda.min
+
+# Fit model using the best lambda found
+ridge_model <- glmnet(x_matrix, y_vector, alpha = 0, lambda = best_lambda)
+coef(ridge_model)  # View coefficients
+
+
+
+
+```
+
+
+
+
+
+
+######### Draft ############
+
+
+
+
+```{r, include=TRUE}
+
+morecombine_data = cbind(total_revenue = morecombine$total_revenue,xdtm)
+morecombine_data_tfidf = cbind(total_revenue = morecombine$total_revenue,xdtm_tfidf)
+
+```
+
+
+```{r, include=TRUE}
+names(morecombine_data) <- gsub("\\.", "", names(morecombine_data))
+
+set.seed(617)
+split = sample(1:nrow(morecombine_data),size = 0.7*nrow(morecombine_data))
+train = morecombine_data[split,]
+test = morecombine_data[-split,]
+
+```
+
+```{r, include=TRUE}
+# Assuming 'data_frame' is your existing data frame
+#names(data_frame) <- gsub("\\.", "", names(data_frame))
+```
+
+
+
+
+```{r, include=TRUE}
+library(rpart); library(rpart.plot)
+tree = rpart(total_revenue~.,train)
+rpart.plot(tree)
+
+```
+
+
+
+
+
+```{r, include=TRUE}
+reg = lm(total_revenue~.,train)
+summary(reg)
+```
+
+
+
+```{r, include=TRUE}
+# Check for duplicated column names
+duplicated_cols <- names(morecombine_data_tfidf)[duplicated(names(morecombine_data_tfidf))]
+print(duplicated_cols)
+
+# Make unique names for duplicated columns if any
+if(length(duplicated_cols) > 0) {
+  names(morecombine_data_tfidf) <- make.unique(names(morecombine_data_tfidf))
+}
+
+
+```
+
+
+
+```{r, include=TRUE}
+# Assuming 'xdtm_tfidf' is your final data frame after text processing
+colnames(xdtm_tfidf) <- make.unique(names(xdtm_tfidf))
+# Example: Adding prefixes based on transformation or source to help with traceability
+colnames(xdtm_tfidf) <- paste("term", seq_along(colnames(xdtm_tfidf)), sep="_")
+
+
+```
+
+
+```{r, include=TRUE}
+morecombine_data = cbind(review_rating = morecombinedata$total_revenue,xdtm)
+
+morecombine_data_tfidf <- cbind(total_revenue = morecombine$total_revenue, xdtm_tfidf)
+names(morecombine_data_tfidf) <- make.unique(names(morecombine_data_tfidf))
+
+```
+
+
+
+
+
+
+
+
+```{r, include=TRUE}
+library(rpart); library(rpart.plot)
+tree = rpart(total_revenue~.,morecombine_data)
+rpart.plot(tree)
+
+```
+
+
+```{r, include=TRUE}
+# Bind with revenue data ensuring unique names
+morecombine_data_tfidf <- cbind(total_revenue = morecombine$total_revenue, xdtm_tfidf)
+names(morecombine_data_tfidf) <- make.unique(names(morecombine_data_tfidf))
+
+# Model building
+library(rpart)
+tree <- rpart(total_revenue ~ ., data = morecombine_data_tfidf)
+
+```
+
+
+
+
+ Do not sample, e.g.train and test, because of small sample size
+```{r, include=TRUE}
+library(rpart); library(rpart.plot)
+#tree = rpart(total_revenue~.,morecombine_data)
+rpart.plot(tree)
+
+```
+
+
+
+```{r, include=TRUE}
+pred_tree = predict(tree,newdata=morecombine_data_tfidf)
+rmse_tree = sqrt(mean((pred_tree - morecombine_data_tfidf$total_revenue)^2)); rmse_tree
+```
+
+
+
+
+
+
+
+

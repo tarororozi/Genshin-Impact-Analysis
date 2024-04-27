@@ -1,0 +1,415 @@
+Image,Name,Total,Percentage,Event
+/images/characters/chiori.png,Chiori,"23,608",57.09,Of Silken Clouds Woven & Oni's Royale
+/images/characters/arataki_itto.png,Arataki Itto,"4,103",9.92,Of Silken Clouds Woven & Oni's Royale
+/images/characters/tighnari.png,Tighnari,"2,019",4.88,Of Silken Clouds Woven & Oni's Royale
+/images/characters/jean.png,Jean,"1,968",4.76,Of Silken Clouds Woven & Oni's Royale
+/images/characters/diluc.png,Diluc,"1,961",4.74,Of Silken Clouds Woven & Oni's Royale
+/images/characters/mona.png,Mona,"1,957",4.73,Of Silken Clouds Woven & Oni's Royale
+/images/characters/qiqi.png,Qiqi,"1,929",4.66,Of Silken Clouds Woven & Oni's Royale
+/images/characters/keqing.png,Keqing,"1,922",4.65,Of Silken Clouds Woven & Oni's Royale
+/images/characters/dehya.png,Dehya,"1,887",4.56,Of Silken Clouds Woven & Oni's Royale
+/images/characters/yae_miko.png,Yae Miko,"16,973",33.77,Invitation to Mundane Life & Everbloom Violet
+/images/characters/xiao.png,Xiao,"16,203",32.24,Invitation to Mundane Life & Everbloom Violet
+/images/characters/tighnari.png,Tighnari,"2,493",4.96,Invitation to Mundane Life & Everbloom Violet
+/images/characters/mona.png,Mona,"2,484",4.94,Invitation to Mundane Life & Everbloom Violet
+/images/characters/jean.png,Jean,"2,479",4.93,Invitation to Mundane Life & Everbloom Violet
+/images/characters/diluc.png,Diluc,"2,460",4.89,Invitation to Mundane Life & Everbloom Violet
+/images/characters/keqing.png,Keqing,"2,430",4.83,Invitation to Mundane Life & Everbloom Violet
+/images/characters/qiqi.png,Qiqi,"2,386",4.75,Invitation to Mundane Life & Everbloom Violet
+/images/characters/dehya.png,Dehya,"2,352",4.68,Invitation to Mundane Life & Everbloom Violet
+/images/characters/xianyun.png,Xianyun,"86,259",40.72,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/nahida.png,Nahida,"55,348",26.13,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/jean.png,Jean,"10,184",4.81,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/tighnari.png,Tighnari,"10,166",4.8,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/keqing.png,Keqing,"10,100",4.77,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/qiqi.png,Qiqi,"10,067",4.75,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/dehya.png,Dehya,"9,935",4.69,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/diluc.png,Diluc,"9,926",4.69,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/mona.png,Mona,"9,864",4.66,The Crane Soars Skyward & The Moongrass' Enlightenment
+/images/characters/raiden_shogun.png,Raiden Shogun,"97,036",58.09,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/yoimiya.png,Yoimiya,"14,334",8.58,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/tighnari.png,Tighnari,"8,167",4.89,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/mona.png,Mona,"8,086",4.84,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/jean.png,Jean,"7,925",4.74,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/diluc.png,Diluc,"7,892",4.72,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/qiqi.png,Qiqi,"7,875",4.71,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/dehya.png,Dehya,"7,873",4.71,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/keqing.png,Keqing,"7,868",4.71,Reign of Serenity & Tapestry of Golden Flames
+/images/characters/navia.png,Navia,"111,494",56.13,In the Name of the Rosula & The Heron's Court
+/images/characters/kamisato_ayaka.png,Kamisato Ayaka,"22,418",11.29,In the Name of the Rosula & The Heron's Court
+/images/characters/tighnari.png,Tighnari,"9,345",4.7,In the Name of the Rosula & The Heron's Court
+/images/characters/mona.png,Mona,"9,316",4.69,In the Name of the Rosula & The Heron's Court
+/images/characters/qiqi.png,Qiqi,"9,278",4.67,In the Name of the Rosula & The Heron's Court
+/images/characters/dehya.png,Dehya,"9,265",4.66,In the Name of the Rosula & The Heron's Court
+/images/characters/keqing.png,Keqing,"9,235",4.65,In the Name of the Rosula & The Heron's Court
+/images/characters/diluc.png,Diluc,"9,163",4.61,In the Name of the Rosula & The Heron's Court
+/images/characters/jean.png,Jean,"9,120",4.59,In the Name of the Rosula & The Heron's Court
+/images/characters/kamisato_ayato.png,Kamisato Ayato,"36,578",45.11,Twilight Arbiter & Azure Excursion
+/images/characters/cyno.png,Cyno,"15,135",18.66,Twilight Arbiter & Azure Excursion
+/images/characters/jean.png,Jean,"4,310",5.32,Twilight Arbiter & Azure Excursion
+/images/characters/dehya.png,Dehya,"4,241",5.23,Twilight Arbiter & Azure Excursion
+/images/characters/tighnari.png,Tighnari,"4,231",5.22,Twilight Arbiter & Azure Excursion
+/images/characters/keqing.png,Keqing,"4,214",5.2,Twilight Arbiter & Azure Excursion
+/images/characters/qiqi.png,Qiqi,"4,157",5.13,Twilight Arbiter & Azure Excursion
+/images/characters/diluc.png,Diluc,"4,143",5.11,Twilight Arbiter & Azure Excursion
+/images/characters/mona.png,Mona,"4,082",5.03,Twilight Arbiter & Azure Excursion
+/images/characters/furina.png,Furina,"370,588",63.79,Chanson of Many Waters & Immaculate Pulse
+/images/characters/tighnari.png,Tighnari,"26,778",4.61,Chanson of Many Waters & Immaculate Pulse
+/images/characters/mona.png,Mona,"26,744",4.6,Chanson of Many Waters & Immaculate Pulse
+/images/characters/qiqi.png,Qiqi,"26,558",4.57,Chanson of Many Waters & Immaculate Pulse
+/images/characters/dehya.png,Dehya,"26,453",4.55,Chanson of Many Waters & Immaculate Pulse
+/images/characters/jean.png,Jean,"26,443",4.55,Chanson of Many Waters & Immaculate Pulse
+/images/characters/keqing.png,Keqing,"26,438",4.55,Chanson of Many Waters & Immaculate Pulse
+/images/characters/diluc.png,Diluc,"26,393",4.54,Chanson of Many Waters & Immaculate Pulse
+/images/characters/baizhu.png,Baizhu,"24,571",4.23,Chanson of Many Waters & Immaculate Pulse
+/images/characters/wriothesley.png,Wriothesley,"98,096",54.1,Tempestuous Destiny & Ballad in Goblets
+/images/characters/venti.png,Venti,"22,439",12.37,Tempestuous Destiny & Ballad in Goblets
+/images/characters/qiqi.png,Qiqi,"8,758",4.83,Tempestuous Destiny & Ballad in Goblets
+/images/characters/tighnari.png,Tighnari,"8,758",4.83,Tempestuous Destiny & Ballad in Goblets
+/images/characters/mona.png,Mona,"8,743",4.82,Tempestuous Destiny & Ballad in Goblets
+/images/characters/jean.png,Jean,"8,656",4.77,Tempestuous Destiny & Ballad in Goblets
+/images/characters/dehya.png,Dehya,"8,645",4.77,Tempestuous Destiny & Ballad in Goblets
+/images/characters/diluc.png,Diluc,"8,619",4.75,Tempestuous Destiny & Ballad in Goblets
+/images/characters/keqing.png,Keqing,"8,616",4.75,Tempestuous Destiny & Ballad in Goblets
+/images/characters/neuvillette.png,Neuvillette,"221,030",51.31,Decree of the Deeps & Moment of Bloom
+/images/characters/hu_tao.png,Hu Tao,"70,589",16.39,Decree of the Deeps & Moment of Bloom
+/images/characters/dehya.png,Dehya,"20,156",4.68,Decree of the Deeps & Moment of Bloom
+/images/characters/tighnari.png,Tighnari,"19,991",4.64,Decree of the Deeps & Moment of Bloom
+/images/characters/diluc.png,Diluc,"19,956",4.63,Decree of the Deeps & Moment of Bloom
+/images/characters/keqing.png,Keqing,"19,911",4.62,Decree of the Deeps & Moment of Bloom
+/images/characters/jean.png,Jean,"19,858",4.61,Decree of the Deeps & Moment of Bloom
+/images/characters/qiqi.png,Qiqi,"19,642",4.56,Decree of the Deeps & Moment of Bloom
+/images/characters/mona.png,Mona,"19,632",4.56,Decree of the Deeps & Moment of Bloom
+/images/characters/zhongli.png,Zhongli,"88,160",50.68,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/tartaglia.png,Tartaglia,"28,235",16.23,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/diluc.png,Diluc,"8,371",4.81,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/mona.png,Mona,"8,255",4.75,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/tighnari.png,Tighnari,"8,219",4.72,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/jean.png,Jean,"8,200",4.71,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/keqing.png,Keqing,"8,197",4.71,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/qiqi.png,Qiqi,"8,195",4.71,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/dehya.png,Dehya,"8,118",4.67,Gentry of Hermitage & Farewell of Snezhnaya
+/images/characters/yelan.png,Yelan,"98,836",37.5,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/lyney.png,Lyney,"77,500",29.41,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/qiqi.png,Qiqi,"12,665",4.81,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/keqing.png,Keqing,"12,588",4.78,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/tighnari.png,Tighnari,"12,562",4.77,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/dehya.png,Dehya,"12,553",4.76,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/diluc.png,Diluc,"12,320",4.67,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/jean.png,Jean,"12,268",4.65,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/mona.png,Mona,"12,255",4.65,Conjuring Chiaroscuro & Discerner of Enigmas
+/images/characters/wanderer.png,Wanderer,"74,537",33.57,Drifting Luminescence & From Ashes Reborn
+/images/characters/sangonomiya_kokomi.png,Sangonomiya Kokomi,"72,964",32.86,Drifting Luminescence & From Ashes Reborn
+/images/characters/tighnari.png,Tighnari,"10,853",4.89,Drifting Luminescence & From Ashes Reborn
+/images/characters/jean.png,Jean,"10,753",4.84,Drifting Luminescence & From Ashes Reborn
+/images/characters/dehya.png,Dehya,"10,653",4.8,Drifting Luminescence & From Ashes Reborn
+/images/characters/qiqi.png,Qiqi,"10,632",4.79,Drifting Luminescence & From Ashes Reborn
+/images/characters/mona.png,Mona,"10,630",4.79,Drifting Luminescence & From Ashes Reborn
+/images/characters/keqing.png,Keqing,"10,527",4.74,Drifting Luminescence & From Ashes Reborn
+/images/characters/diluc.png,Diluc,"10,509",4.73,Drifting Luminescence & From Ashes Reborn
+/images/characters/eula.png,Eula,"55,772",47.05,Born of Ocean Swell & Sparkling Steps
+/images/characters/klee.png,Klee,"22,677",19.13,Born of Ocean Swell & Sparkling Steps
+/images/characters/qiqi.png,Qiqi,"5,809",4.9,Born of Ocean Swell & Sparkling Steps
+/images/characters/diluc.png,Diluc,"5,804",4.9,Born of Ocean Swell & Sparkling Steps
+/images/characters/dehya.png,Dehya,"5,765",4.86,Born of Ocean Swell & Sparkling Steps
+/images/characters/keqing.png,Keqing,"5,720",4.83,Born of Ocean Swell & Sparkling Steps
+/images/characters/tighnari.png,Tighnari,"5,717",4.82,Born of Ocean Swell & Sparkling Steps
+/images/characters/jean.png,Jean,"5,682",4.79,Born of Ocean Swell & Sparkling Steps
+/images/characters/mona.png,Mona,"5,601",4.72,Born of Ocean Swell & Sparkling Steps
+/images/characters/kaedehara_kazuha.png,Kaedehara Kazuha,"121,962",49.41,Caution in Confidence & Leaves in the Wind
+/images/characters/alhaitham.png,Alhaitham,"46,290",18.75,Caution in Confidence & Leaves in the Wind
+/images/characters/tighnari.png,Tighnari,"11,410",4.62,Caution in Confidence & Leaves in the Wind
+/images/characters/keqing.png,Keqing,"11,343",4.6,Caution in Confidence & Leaves in the Wind
+/images/characters/diluc.png,Diluc,"11,211",4.54,Caution in Confidence & Leaves in the Wind
+/images/characters/dehya.png,Dehya,"11,183",4.53,Caution in Confidence & Leaves in the Wind
+/images/characters/jean.png,Jean,"11,182",4.53,Caution in Confidence & Leaves in the Wind
+/images/characters/mona.png,Mona,"11,174",4.53,Caution in Confidence & Leaves in the Wind
+/images/characters/qiqi.png,Qiqi,"11,067",4.48,Caution in Confidence & Leaves in the Wind
+/images/characters/yae_miko.png,Yae Miko,"60,342",39.78,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/yoimiya.png,Yoimiya,"38,396",25.31,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/keqing.png,Keqing,"7,726",5.09,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/tighnari.png,Tighnari,"7,636",5.03,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/jean.png,Jean,"7,634",5.03,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/qiqi.png,Qiqi,"7,619",5.02,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/dehya.png,Dehya,"7,502",4.95,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/diluc.png,Diluc,"7,421",4.89,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/mona.png,Mona,"7,420",4.89,Tapestry of Golden Flames & Everbloom Violet
+/images/characters/baizhu.png,Baizhu,"83,065",43.81,Immaculate Pulse & Adrift in the Harbor
+/images/characters/ganyu.png,Ganyu,"42,301",22.31,Immaculate Pulse & Adrift in the Harbor
+/images/characters/tighnari.png,Tighnari,"9,314",4.91,Immaculate Pulse & Adrift in the Harbor
+/images/characters/dehya.png,Dehya,"9,247",4.88,Immaculate Pulse & Adrift in the Harbor
+/images/characters/diluc.png,Diluc,"9,233",4.87,Immaculate Pulse & Adrift in the Harbor
+/images/characters/jean.png,Jean,"9,174",4.84,Immaculate Pulse & Adrift in the Harbor
+/images/characters/mona.png,Mona,"9,092",4.8,Immaculate Pulse & Adrift in the Harbor
+/images/characters/keqing.png,Keqing,"9,091",4.79,Immaculate Pulse & Adrift in the Harbor
+/images/characters/qiqi.png,Qiqi,"9,090",4.79,Immaculate Pulse & Adrift in the Harbor
+/images/characters/nahida.png,Nahida,"131,540",48.28,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/nilou.png,Nilou,"51,949",19.07,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/tighnari.png,Tighnari,"12,872",4.72,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/mona.png,Mona,"12,761",4.68,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/diluc.png,Diluc,"12,725",4.67,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/jean.png,Jean,"12,697",4.66,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/keqing.png,Keqing,"12,693",4.66,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/qiqi.png,Qiqi,"12,597",4.62,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/dehya.png,Dehya,"12,594",4.62,The Moongrass' Enlightenment & Twirling Lotus
+/images/characters/shenhe.png,Shenhe,"108,264",36.26,The Transcendent One Returns & The Herons Court
+/images/characters/kamisato_ayaka.png,Kamisato Ayaka,"91,884",30.77,The Transcendent One Returns & The Herons Court
+/images/characters/qiqi.png,Qiqi,"16,526",5.54,The Transcendent One Returns & The Herons Court
+/images/characters/mona.png,Mona,"16,464",5.51,The Transcendent One Returns & The Herons Court
+/images/characters/diluc.png,Diluc,"16,445",5.51,The Transcendent One Returns & The Herons Court
+/images/characters/keqing.png,Keqing,"16,399",5.49,The Transcendent One Returns & The Herons Court
+/images/characters/tighnari.png,Tighnari,"16,292",5.46,The Transcendent One Returns & The Herons Court
+/images/characters/jean.png,Jean,"16,247",5.44,The Transcendent One Returns & The Herons Court
+/images/characters/dehya.png,Dehya,49,0.02,The Transcendent One Returns & The Herons Court
+/images/characters/dehya.png,Dehya,"57,974",40.72,Auric Blaze & Twilight Arbiter
+/images/characters/cyno.png,Cyno,"34,225",24.04,Auric Blaze & Twilight Arbiter
+/images/characters/keqing.png,Keqing,"8,454",5.94,Auric Blaze & Twilight Arbiter
+/images/characters/diluc.png,Diluc,"8,377",5.88,Auric Blaze & Twilight Arbiter
+/images/characters/tighnari.png,Tighnari,"8,376",5.88,Auric Blaze & Twilight Arbiter
+/images/characters/jean.png,Jean,"8,350",5.87,Auric Blaze & Twilight Arbiter
+/images/characters/mona.png,Mona,"8,333",5.85,Auric Blaze & Twilight Arbiter
+/images/characters/qiqi.png,Qiqi,"8,266",5.81,Auric Blaze & Twilight Arbiter
+/images/characters/yelan.png,Yelan,"188,779",40.4,Moment of Bloom & Discerner of Enigmas
+/images/characters/hu_tao.png,Hu Tao,"128,417",27.48,Moment of Bloom & Discerner of Enigmas
+/images/characters/mona.png,Mona,"25,233",5.4,Moment of Bloom & Discerner of Enigmas
+/images/characters/tighnari.png,Tighnari,"25,106",5.37,Moment of Bloom & Discerner of Enigmas
+/images/characters/jean.png,Jean,"25,061",5.36,Moment of Bloom & Discerner of Enigmas
+/images/characters/keqing.png,Keqing,"24,992",5.35,Moment of Bloom & Discerner of Enigmas
+/images/characters/diluc.png,Diluc,"24,782",5.3,Moment of Bloom & Discerner of Enigmas
+/images/characters/qiqi.png,Qiqi,"24,647",5.27,Moment of Bloom & Discerner of Enigmas
+/images/characters/dehya.png,Dehya,228,0.05,Moment of Bloom & Discerner of Enigmas
+/images/characters/alhaitham.png,Alhaitham,"148,853",51.05,Caution in Confidence & Invitation to Mundane Life
+/images/characters/xiao.png,Xiao,"45,463",15.59,Caution in Confidence & Invitation to Mundane Life
+/images/characters/mona.png,Mona,"16,309",5.59,Caution in Confidence & Invitation to Mundane Life
+/images/characters/diluc.png,Diluc,"16,244",5.57,Caution in Confidence & Invitation to Mundane Life
+/images/characters/jean.png,Jean,"16,209",5.56,Caution in Confidence & Invitation to Mundane Life
+/images/characters/keqing.png,Keqing,"16,197",5.56,Caution in Confidence & Invitation to Mundane Life
+/images/characters/qiqi.png,Qiqi,"16,182",5.55,Caution in Confidence & Invitation to Mundane Life
+/images/characters/tighnari.png,Tighnari,"16,087",5.52,Caution in Confidence & Invitation to Mundane Life
+/images/characters/dehya.png,Dehya,30,0.01,Caution in Confidence & Invitation to Mundane Life
+/images/characters/raiden_shogun.png,Raiden Shogun,"201,770",53.95,Reign of Serenity & Azure Excursion
+/images/characters/kamisato_ayato.png,Kamisato Ayato,"50,048",13.38,Reign of Serenity & Azure Excursion
+/images/characters/tighnari.png,Tighnari,"20,752",5.55,Reign of Serenity & Azure Excursion
+/images/characters/mona.png,Mona,"20,420",5.46,Reign of Serenity & Azure Excursion
+/images/characters/jean.png,Jean,"20,373",5.45,Reign of Serenity & Azure Excursion
+/images/characters/keqing.png,Keqing,"20,250",5.41,Reign of Serenity & Azure Excursion
+/images/characters/diluc.png,Diluc,"20,246",5.41,Reign of Serenity & Azure Excursion
+/images/characters/qiqi.png,Qiqi,"20,148",5.39,Reign of Serenity & Azure Excursion
+/images/characters/dehya.png,Dehya,11,0,Reign of Serenity & Azure Excursion
+/images/characters/wanderer.png,Wanderer,"250,029",59.59,From Ashes Reborn & Oni's Royale
+/images/characters/arataki_itto.png,Arataki Itto,"28,681",6.84,From Ashes Reborn & Oni's Royale
+/images/characters/mona.png,Mona,"23,635",5.63,From Ashes Reborn & Oni's Royale
+/images/characters/keqing.png,Keqing,"23,605",5.63,From Ashes Reborn & Oni's Royale
+/images/characters/jean.png,Jean,"23,552",5.61,From Ashes Reborn & Oni's Royale
+/images/characters/qiqi.png,Qiqi,"23,496",5.6,From Ashes Reborn & Oni's Royale
+/images/characters/tighnari.png,Tighnari,"23,361",5.57,From Ashes Reborn & Oni's Royale
+/images/characters/diluc.png,Diluc,"23,189",5.53,From Ashes Reborn & Oni's Royale
+/images/characters/dehya.png,Dehya,4,0,From Ashes Reborn & Oni's Royale
+/images/characters/yae_miko.png,Yae Miko,"90,363",39.91,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/tartaglia.png,Tartaglia,"55,527",24.52,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/tighnari.png,Tighnari,"13,519",5.97,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/qiqi.png,Qiqi,"13,491",5.96,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/keqing.png,Keqing,"13,490",5.96,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/mona.png,Mona,"13,428",5.93,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/jean.png,Jean,"13,342",5.89,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/diluc.png,Diluc,"13,266",5.86,Everbloom Violet & Farewell of Snezhnaya
+/images/characters/nahida.png,Nahida,"343,854",63.47,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/tighnari.png,Tighnari,"28,708",5.3,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/jean.png,Jean,"28,457",5.25,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/keqing.png,Keqing,"28,375",5.24,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/qiqi.png,Qiqi,"28,333",5.23,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/diluc.png,Diluc,"28,272",5.22,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/mona.png,Mona,"27,963",5.16,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/yoimiya.png,Yoimiya,"27,829",5.14,The Moongrass' Enlightenment & Tapestry of Golden Flames
+/images/characters/nilou.png,Nilou,"135,120",50.42,Twirling Lotus & Secretum Secretorum
+/images/characters/albedo.png,Albedo,"44,938",16.77,Twirling Lotus & Secretum Secretorum
+/images/characters/tighnari.png,Tighnari,"14,770",5.51,Twirling Lotus & Secretum Secretorum
+/images/characters/keqing.png,Keqing,"14,733",5.5,Twirling Lotus & Secretum Secretorum
+/images/characters/qiqi.png,Qiqi,"14,720",5.49,Twirling Lotus & Secretum Secretorum
+/images/characters/mona.png,Mona,"14,688",5.48,Twirling Lotus & Secretum Secretorum
+/images/characters/jean.png,Jean,"14,564",5.43,Twirling Lotus & Secretum Secretorum
+/images/characters/diluc.png,Diluc,"14,440",5.39,Twirling Lotus & Secretum Secretorum
+/images/characters/cyno.png,Cyno,"149,178",47.71,Twilight Arbiter & Ballad in Goblets
+/images/characters/venti.png,Venti,"58,993",18.87,Twilight Arbiter & Ballad in Goblets
+/images/characters/keqing.png,Keqing,"17,583",5.62,Twilight Arbiter & Ballad in Goblets
+/images/characters/tighnari.png,Tighnari,"17,561",5.62,Twilight Arbiter & Ballad in Goblets
+/images/characters/jean.png,Jean,"17,404",5.57,Twilight Arbiter & Ballad in Goblets
+/images/characters/qiqi.png,Qiqi,"17,385",5.56,Twilight Arbiter & Ballad in Goblets
+/images/characters/mona.png,Mona,"17,316",5.54,Twilight Arbiter & Ballad in Goblets
+/images/characters/diluc.png,Diluc,"17,254",5.52,Twilight Arbiter & Ballad in Goblets
+/images/characters/ganyu.png,Ganyu,"84,602",36.33,Adrift in the Harbor & Drifting Luminescence
+/images/characters/sangonomiya_kokomi.png,Sangonomiya Kokomi,"68,789",29.54,Adrift in the Harbor & Drifting Luminescence
+/images/characters/keqing.png,Keqing,"16,018",6.88,Adrift in the Harbor & Drifting Luminescence
+/images/characters/jean.png,Jean,"15,945",6.85,Adrift in the Harbor & Drifting Luminescence
+/images/characters/qiqi.png,Qiqi,"15,865",6.81,Adrift in the Harbor & Drifting Luminescence
+/images/characters/mona.png,Mona,"15,847",6.8,Adrift in the Harbor & Drifting Luminescence
+/images/characters/diluc.png,Diluc,"15,739",6.76,Adrift in the Harbor & Drifting Luminescence
+/images/characters/tighnari.png,Tighnari,72,0.03,Adrift in the Harbor & Drifting Luminescence
+/images/characters/zhongli.png,Zhongli,"117,554",39.5,Viridescent Vigil & Gentry of Hermitage
+/images/characters/tighnari.png,Tighnari,"80,564",27.07,Viridescent Vigil & Gentry of Hermitage
+/images/characters/keqing.png,Keqing,"20,037",6.73,Viridescent Vigil & Gentry of Hermitage
+/images/characters/diluc.png,Diluc,"19,986",6.72,Viridescent Vigil & Gentry of Hermitage
+/images/characters/mona.png,Mona,"19,985",6.72,Viridescent Vigil & Gentry of Hermitage
+/images/characters/jean.png,Jean,"19,820",6.66,Viridescent Vigil & Gentry of Hermitage
+/images/characters/qiqi.png,Qiqi,"19,665",6.61,Viridescent Vigil & Gentry of Hermitage
+/images/characters/yoimiya.png,Yoimiya,"121,794",64.73,Tapestry of Golden Flames & yoimiya
+/images/characters/jean.png,Jean,"13,298",7.07,Tapestry of Golden Flames & yoimiya
+/images/characters/keqing.png,Keqing,"13,275",7.06,Tapestry of Golden Flames & yoimiya
+/images/characters/mona.png,Mona,"13,186",7.01,Tapestry of Golden Flames & yoimiya
+/images/characters/diluc.png,Diluc,"13,182",7.01,Tapestry of Golden Flames & yoimiya
+/images/characters/qiqi.png,Qiqi,"13,135",6.98,Tapestry of Golden Flames & yoimiya
+/images/characters/tighnari.png,Tighnari,276,0.15,Tapestry of Golden Flames & yoimiya
+/images/characters/kaedehara_kazuha.png,Kaedehara Kazuha,"390,626",59.14,Leaves in the Wind & Sparkling Steps
+/images/characters/klee.png,Klee,"57,858",8.76,Leaves in the Wind & Sparkling Steps
+/images/characters/keqing.png,Keqing,"42,544",6.44,Leaves in the Wind & Sparkling Steps
+/images/characters/diluc.png,Diluc,"42,512",6.44,Leaves in the Wind & Sparkling Steps
+/images/characters/mona.png,Mona,"42,380",6.42,Leaves in the Wind & Sparkling Steps
+/images/characters/jean.png,Jean,"42,276",6.4,Leaves in the Wind & Sparkling Steps
+/images/characters/qiqi.png,Qiqi,"42,155",6.38,Leaves in the Wind & Sparkling Steps
+/images/characters/tighnari.png,Tighnari,143,0.02,Leaves in the Wind & Sparkling Steps
+/images/characters/arataki_itto.png,Arataki Itto,"94,737",62.74,Oni's Royale & arataki_itto
+/images/characters/jean.png,Jean,"11,366",7.53,Oni's Royale & arataki_itto
+/images/characters/keqing.png,Keqing,"11,315",7.49,Oni's Royale & arataki_itto
+/images/characters/mona.png,Mona,"11,267",7.46,Oni's Royale & arataki_itto
+/images/characters/qiqi.png,Qiqi,"11,210",7.42,Oni's Royale & arataki_itto
+/images/characters/diluc.png,Diluc,"11,084",7.34,Oni's Royale & arataki_itto
+/images/characters/tighnari.png,Tighnari,17,0.01,Oni's Royale & arataki_itto
+/images/characters/yelan.png,Yelan,"254,472",48.76,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/xiao.png,Xiao,"96,916",18.57,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/diluc.png,Diluc,"34,389",6.59,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/keqing.png,Keqing,"34,281",6.57,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/mona.png,Mona,"34,129",6.54,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/qiqi.png,Qiqi,"33,932",6.5,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/jean.png,Jean,"33,789",6.47,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/tighnari.png,Tighnari,5,0,Discerner of Enigmas & Invitation to Mundane Life
+/images/characters/kamisato_ayaka.png,Kamisato Ayaka,"300,645",66.23,The Herons Court & kamisato_ayaka
+/images/characters/mona.png,Mona,"30,904",6.81,The Herons Court & kamisato_ayaka
+/images/characters/diluc.png,Diluc,"30,903",6.81,The Herons Court & kamisato_ayaka
+/images/characters/jean.png,Jean,"30,665",6.75,The Herons Court & kamisato_ayaka
+/images/characters/keqing.png,Keqing,"30,453",6.71,The Herons Court & kamisato_ayaka
+/images/characters/qiqi.png,Qiqi,"30,392",6.69,The Herons Court & kamisato_ayaka
+/images/characters/kamisato_ayato.png,Kamisato Ayato,"270,324",42.75,Azure Excursion & Ballad in Goblets
+/images/characters/venti.png,Venti,"154,664",24.46,Azure Excursion & Ballad in Goblets
+/images/characters/mona.png,Mona,"41,756",6.6,Azure Excursion & Ballad in Goblets
+/images/characters/jean.png,Jean,"41,729",6.6,Azure Excursion & Ballad in Goblets
+/images/characters/diluc.png,Diluc,"41,436",6.55,Azure Excursion & Ballad in Goblets
+/images/characters/qiqi.png,Qiqi,"41,254",6.52,Azure Excursion & Ballad in Goblets
+/images/characters/keqing.png,Keqing,"41,123",6.5,Azure Excursion & Ballad in Goblets
+/images/characters/raiden_shogun.png,Raiden Shogun,"251,687",52.14,Reign of Serenity & Drifting Luminescence
+/images/characters/sangonomiya_kokomi.png,Sangonomiya Kokomi,"67,235",13.93,Reign of Serenity & Drifting Luminescence
+/images/characters/keqing.png,Keqing,"32,972",6.83,Reign of Serenity & Drifting Luminescence
+/images/characters/mona.png,Mona,"32,929",6.82,Reign of Serenity & Drifting Luminescence
+/images/characters/jean.png,Jean,"32,863",6.81,Reign of Serenity & Drifting Luminescence
+/images/characters/diluc.png,Diluc,"32,589",6.75,Reign of Serenity & Drifting Luminescence
+/images/characters/qiqi.png,Qiqi,"32,463",6.72,Reign of Serenity & Drifting Luminescence
+/images/characters/yae_miko.png,Yae Miko,"309,776",66.54,Everbloom Violet & yae_miko
+/images/characters/diluc.png,Diluc,"31,253",6.71,Everbloom Violet & yae_miko
+/images/characters/jean.png,Jean,"31,214",6.7,Everbloom Violet & yae_miko
+/images/characters/keqing.png,Keqing,"31,170",6.7,Everbloom Violet & yae_miko
+/images/characters/qiqi.png,Qiqi,"31,112",6.68,Everbloom Violet & yae_miko
+/images/characters/mona.png,Mona,"31,040",6.67,Everbloom Violet & yae_miko
+/images/characters/zhongli.png,Zhongli,"339,362",37.21,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/ganyu.png,Ganyu,"274,075",30.05,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/diluc.png,Diluc,"60,118",6.59,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/jean.png,Jean,"59,805",6.56,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/keqing.png,Keqing,"59,727",6.55,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/mona.png,Mona,"59,639",6.54,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/qiqi.png,Qiqi,"59,397",6.51,Gentry of Hermitage & Adrift in the Harbor
+/images/characters/xiao.png,Xiao,"244,248",40.14,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/shenhe.png,Shenhe,"163,955",26.94,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/jean.png,Jean,"40,367",6.63,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/diluc.png,Diluc,"40,281",6.62,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/keqing.png,Keqing,"40,095",6.59,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/mona.png,Mona,"39,899",6.56,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/qiqi.png,Qiqi,"39,696",6.52,The Transcendent One Returns & Invitation to Mundane Life
+/images/characters/arataki_itto.png,Arataki Itto,"237,979",65.12,Oni's Royale & arataki_itto
+/images/characters/keqing.png,Keqing,"25,634",7.01,Oni's Royale & arataki_itto
+/images/characters/diluc.png,Diluc,"25,610",7.01,Oni's Royale & arataki_itto
+/images/characters/qiqi.png,Qiqi,"25,516",6.98,Oni's Royale & arataki_itto
+/images/characters/mona.png,Mona,"25,397",6.95,Oni's Royale & arataki_itto
+/images/characters/jean.png,Jean,"25,318",6.93,Oni's Royale & arataki_itto
+/images/characters/albedo.png,Albedo,"193,038",34.15,Secretum Secretorum & Born of Ocean Swell
+/images/characters/eula.png,Eula,"178,568",31.59,Secretum Secretorum & Born of Ocean Swell
+/images/characters/keqing.png,Keqing,"39,094",6.92,Secretum Secretorum & Born of Ocean Swell
+/images/characters/diluc.png,Diluc,"38,803",6.86,Secretum Secretorum & Born of Ocean Swell
+/images/characters/jean.png,Jean,"38,658",6.84,Secretum Secretorum & Born of Ocean Swell
+/images/characters/qiqi.png,Qiqi,"38,613",6.83,Secretum Secretorum & Born of Ocean Swell
+/images/characters/mona.png,Mona,"38,546",6.82,Secretum Secretorum & Born of Ocean Swell
+/images/characters/hu_tao.png,Hu Tao,"546,489",67.51,Moment of Bloom & hu_tao
+/images/characters/diluc.png,Diluc,"52,797",6.52,Moment of Bloom & hu_tao
+/images/characters/jean.png,Jean,"52,787",6.52,Moment of Bloom & hu_tao
+/images/characters/keqing.png,Keqing,"52,734",6.51,Moment of Bloom & hu_tao
+/images/characters/mona.png,Mona,"52,596",6.5,Moment of Bloom & hu_tao
+/images/characters/qiqi.png,Qiqi,"52,034",6.43,Moment of Bloom & hu_tao
+/images/characters/tartaglia.png,Tartaglia,"248,321",65.47,Farewell of Snezhnaya & tartaglia
+/images/characters/jean.png,Jean,"26,466",6.98,Farewell of Snezhnaya & tartaglia
+/images/characters/diluc.png,Diluc,"26,276",6.93,Farewell of Snezhnaya & tartaglia
+/images/characters/qiqi.png,Qiqi,"26,175",6.9,Farewell of Snezhnaya & tartaglia
+/images/characters/keqing.png,Keqing,"26,126",6.89,Farewell of Snezhnaya & tartaglia
+/images/characters/mona.png,Mona,"25,902",6.83,Farewell of Snezhnaya & tartaglia
+/images/characters/sangonomiya_kokomi.png,Sangonomiya Kokomi,"211,348",62.48,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/diluc.png,Diluc,"25,743",7.61,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/keqing.png,Keqing,"25,496",7.54,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/mona.png,Mona,"25,466",7.53,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/jean.png,Jean,"25,224",7.46,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/qiqi.png,Qiqi,"24,976",7.38,Drifting Luminescence & sangonomiya_kokomi
+/images/characters/raiden_shogun.png,Raiden Shogun,"547,531",67.69,Reign of Serenity & raiden_shogun
+/images/characters/diluc.png,Diluc,"53,004",6.55,Reign of Serenity & raiden_shogun
+/images/characters/keqing.png,Keqing,"52,424",6.48,Reign of Serenity & raiden_shogun
+/images/characters/jean.png,Jean,"52,052",6.44,Reign of Serenity & raiden_shogun
+/images/characters/qiqi.png,Qiqi,"52,031",6.43,Reign of Serenity & raiden_shogun
+/images/characters/mona.png,Mona,"51,841",6.41,Reign of Serenity & raiden_shogun
+/images/characters/yoimiya.png,Yoimiya,"166,934",64.48,Tapestry of Golden Flames & yoimiya
+/images/characters/keqing.png,Keqing,"18,569",7.17,Tapestry of Golden Flames & yoimiya
+/images/characters/mona.png,Mona,"18,526",7.16,Tapestry of Golden Flames & yoimiya
+/images/characters/diluc.png,Diluc,"18,413",7.11,Tapestry of Golden Flames & yoimiya
+/images/characters/jean.png,Jean,"18,245",7.05,Tapestry of Golden Flames & yoimiya
+/images/characters/qiqi.png,Qiqi,"18,195",7.03,Tapestry of Golden Flames & yoimiya
+/images/characters/kamisato_ayaka.png,Kamisato Ayaka,"281,833",66.78,The Herons Court & kamisato_ayaka
+/images/characters/diluc.png,Diluc,"28,351",6.72,The Herons Court & kamisato_ayaka
+/images/characters/jean.png,Jean,"28,100",6.66,The Herons Court & kamisato_ayaka
+/images/characters/qiqi.png,Qiqi,"28,067",6.65,The Herons Court & kamisato_ayaka
+/images/characters/keqing.png,Keqing,"27,947",6.62,The Herons Court & kamisato_ayaka
+/images/characters/mona.png,Mona,"27,734",6.57,The Herons Court & kamisato_ayaka
+/images/characters/kaedehara_kazuha.png,Kaedehara Kazuha,"229,353",66.31,Leaves in the Wind & kaedehara_kazuha
+/images/characters/mona.png,Mona,"23,572",6.82,Leaves in the Wind & kaedehara_kazuha
+/images/characters/diluc.png,Diluc,"23,434",6.78,Leaves in the Wind & kaedehara_kazuha
+/images/characters/keqing.png,Keqing,"23,381",6.76,Leaves in the Wind & kaedehara_kazuha
+/images/characters/jean.png,Jean,"23,151",6.69,Leaves in the Wind & kaedehara_kazuha
+/images/characters/qiqi.png,Qiqi,"22,991",6.65,Leaves in the Wind & kaedehara_kazuha
+/images/characters/klee.png,Klee,"100,603",63.76,Sparkling Steps & klee
+/images/characters/diluc.png,Diluc,"11,744",7.44,Sparkling Steps & klee
+/images/characters/keqing.png,Keqing,"11,510",7.3,Sparkling Steps & klee
+/images/characters/mona.png,Mona,"11,361",7.2,Sparkling Steps & klee
+/images/characters/jean.png,Jean,"11,341",7.19,Sparkling Steps & klee
+/images/characters/qiqi.png,Qiqi,"11,215",7.11,Sparkling Steps & klee
+/images/characters/eula.png,Eula,"106,000",65.83,Born of Ocean Swell & eula
+/images/characters/mona.png,Mona,"11,135",6.92,Born of Ocean Swell & eula
+/images/characters/qiqi.png,Qiqi,"11,053",6.86,Born of Ocean Swell & eula
+/images/characters/jean.png,Jean,"11,047",6.86,Born of Ocean Swell & eula
+/images/characters/diluc.png,Diluc,"10,960",6.81,Born of Ocean Swell & eula
+/images/characters/keqing.png,Keqing,"10,825",6.72,Born of Ocean Swell & eula
+/images/characters/zhongli.png,Zhongli,"101,479",65.83,Gentry of Hermitage & zhongli
+/images/characters/jean.png,Jean,"10,650",6.91,Gentry of Hermitage & zhongli
+/images/characters/diluc.png,Diluc,"10,591",6.87,Gentry of Hermitage & zhongli
+/images/characters/keqing.png,Keqing,"10,535",6.83,Gentry of Hermitage & zhongli
+/images/characters/mona.png,Mona,"10,518",6.82,Gentry of Hermitage & zhongli
+/images/characters/qiqi.png,Qiqi,"10,376",6.73,Gentry of Hermitage & zhongli
+/images/characters/tartaglia.png,Tartaglia,"47,426",63.58,Farewell of Snezhnaya & tartaglia
+/images/characters/mona.png,Mona,"5,609",7.52,Farewell of Snezhnaya & tartaglia
+/images/characters/diluc.png,Diluc,"5,473",7.34,Farewell of Snezhnaya & tartaglia
+/images/characters/jean.png,Jean,"5,438",7.29,Farewell of Snezhnaya & tartaglia
+/images/characters/keqing.png,Keqing,"5,372",7.2,Farewell of Snezhnaya & tartaglia
+/images/characters/qiqi.png,Qiqi,"5,269",7.06,Farewell of Snezhnaya & tartaglia
+/images/characters/venti.png,Venti,"34,416",66.06,Ballad in Goblets & venti
+/images/characters/diluc.png,Diluc,"3,582",6.87,Ballad in Goblets & venti
+/images/characters/qiqi.png,Qiqi,"3,567",6.85,Ballad in Goblets & venti
+/images/characters/mona.png,Mona,"3,544",6.8,Ballad in Goblets & venti
+/images/characters/keqing.png,Keqing,"3,532",6.78,Ballad in Goblets & venti
+/images/characters/jean.png,Jean,"3,461",6.64,Ballad in Goblets & venti
+/images/characters/hu_tao.png,Hu Tao,"19,125",67.22,Moment of Bloom & hu_tao
+/images/characters/jean.png,Jean,"1,886",6.63,Moment of Bloom & hu_tao
+/images/characters/qiqi.png,Qiqi,"1,876",6.59,Moment of Bloom & hu_tao
+/images/characters/mona.png,Mona,"1,873",6.58,Moment of Bloom & hu_tao
+/images/characters/diluc.png,Diluc,"1,868",6.57,Moment of Bloom & hu_tao
+/images/characters/keqing.png,Keqing,"1,823",6.41,Moment of Bloom & hu_tao

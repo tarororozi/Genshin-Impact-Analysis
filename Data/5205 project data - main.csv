@@ -1,0 +1,752 @@
+character_name,rarity,hair_color,elemental_burst,asc1,asc4,description_normal_atk,max_num_normal_atk,charged_atk,attribute_normal_atk,attribute_elemental_skill,region,vision,arkhe,weapon_type,model,constellation,birthday,special_dish,affiliation,release_date,limited,voice_eng,voice_cn,voice_jp,voice_kr,Ascension Stat,ascension_specialty,ascension_material,ascension_boss,talent_material,talent_book_1-2,talent_book_2-3,talent_book_3-4,talent_book_4-5,talent_book_5-6,talent_book_6-7,talent_book_7-8,talent_book_8-9,talent_book_9-10,talent_weekly,max_ascencion_hp,max_ascencion_atk,max_ascencion_def,max_lv_hp,max_lv_atk,max_lv_def,base_hp,base_atk,base_def,spsecial_0,special_1,special_2,special_3,special_4,special_5,special_6
+Albedo,5,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,"DEF
+ATK",Mondstadt,Geo,N/A,Sword,Medium Male,Princeps Cretaceus,13-Sep,Woodland Dream,Knights of Favonius,12/23/20,TRUE,Khoi Dao,Mace,Kenji Nojima ,Kim Myung-jun ,Geo DMG Bonus,Cecilia,Divining Scroll,Basalt Pillar,Divining Scroll,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Tusk of Monoceros Caeli,4228.035,80.28111,280.098,"13,225",251,876,1029.5856,19.551,68.2062,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Alhaitham,5,,t,f,t,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,"ATK
+Elemental Mastery",Sumeru,Dendro,N/A,Sword,Tall Male,Vultur Volans,11-Feb,Ideal Circumstance,Sumeru Akademiya,1/18/23,TRUE,Nazeeh Tarsha,Yang Chaoran ,Umehara Yuuichirou ,Jun Seung Hwa ,Dendro DMG Bonus,Sand Grease Pupa,Faded Red Satin,Pseudo-Stamens,Faded Red Satin,Teachings of Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Mirror of Mushin,4267.1836,100.16024,249.8769,"13,348",313,781,1039.1188,24.3922,60.84711,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Aloy,5,,t,f,f,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, biting frost will accumulate on the arrowhead. A fully charged frost arrow will deal Cryo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",4,Aimed Shot/Cryo DMG,ATK,ATK,NA,Cryo,N/A,Bow,Medium Female,Nora Fortis,4-Apr,Satiety Gel,Wandering Heroine,9/1/21,N/A,Giselle Fernandez,Mufei ,Ayahi Takagaki ,Jo Hyeon-jeong ,Cryo DMG Bonus,Crystal Marrow,Spectral Husk,Crystalline Bloom,Spectral Husk,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Molten Moment,3484.214,74.77612,216.216,"10,898",233,676,848.4548,18.21036,52.6504,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Amber,4,,t,f,f,"Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, flames will accumulate on the arrowhead. A fully charged flaming arrow will deal Pyro DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",5,Aimed Shot/Pyro DMG,ATK,"Max HP
+ATK",Mondstadt,Pyro,N/A,Bow,Medium Female,Lepus,10-Aug,Outrider's Champion Steak!,Knights of Favonius,9/28/20,FALSE,Kelly Baskin,Shujin Cai ,Manaka Iwami ,Kim Yeon-woo ,ATK,Small Lamp Grass,Firm Arrowhead,Everflame Seed,Firm Arrowhead,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Dvalin's Sigh,2838.2634,66.90411,180.18,"9,461",223,600,793.2582,18.6984,50.358,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Arataki_Itto,5,,t,f,t,"Normal Attack
+Performs up to 4 consecutive strikes.
+When the 2nd and 4th strikes hit opponents, Itto will gain 1 and 2 stacks of Superlative Superstrength, respectively.
+Max 5 stacks. Triggering this effect will refresh the current duration of any existing stacks.
+
+Additionally, Itto's Normal Attack combo does not immediately reset after sprinting or using his Elemental Skill, ""Masatsu Zetsugi: Akaushi Burst!""
+
+Charged Attack
+When holding to perform a Charged Attack, Itto unleashes a series of Arataki Kesagiri slashes without consuming Stamina. Instead, each Arataki Kesagiri slash consumes 1 stack of Superlative Superstrength. When the final stack is consumed, Itto delivers a powerful final slash.
+If no stacks of Superlative Superstrength are available, Itto will perform a single Saichimonji Slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",4,Arataki Kesagiri slash,ATK,ATK,Inazuma,Geo,N/A,Claymore,Tall Male,Taurus Iracundus,1-Jun,Way of the Strong,Arataki Gang,12/14/21,TRUE,Max Mittelman,Zhaokun Liu ,Takanori Nishikawa ,Song Joon-seok ,CRIT Rate,Onikabuto,Slime Condensate,Riftborn Regalia,Slime Condensate,Teachings of Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Ashen Heart,4110.59,72.63529,306.6336,"12,858",227,959,1000.986,17.689,74.66784,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Baizhu,5,,t,f,t,"Normal Attack
+Performs up to 4 attacks that deal Dendro DMG to opponents in front of him.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Dendro DMG to opponents in front of him after a short casting time.
+
+Plunging Attack
+Calling upon the might of Dendro, Baizhu plunges towards the ground from mid-air, damaging all opponents in his path. Deals AoE Dendro DMG upon impact with the ground.",4,AoE Dendro DMG,ATK,"Max HP
+ATK",Liyue,Dendro,N/A,Catalyst,Tall Male,Lagenaria,25-Apr,Heat-Quelling Soup,Bubu Pharmacy,5/2/23,TRUE,"Sean Durrie, Xanthe Huynh","Qin Qiege , Wang Xiaotong ","Yusa Koji , Shoji Yui ","Lee Hosan , Changsheng: Jang Mi ",HP,Violetgrass,Fungal Spores,Evergloom Ring,Fungal Spores,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Worldspan Fern,4267.1836,61.54885,159.705,"13,348",192,499,1039.1188,14.9891,38.8895,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Barbara,4,,t,f,f,"Normal Attack
+Performs up to 4 water splash attacks that deal Hydro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Hydro DMG after a short casting time.
+
+Plunging Attack
+Gathering the might of Hydro, Barbara plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Hydro DMG upon impact with the ground.",4,AoE Hydro DMG,ATK,"Max HP
+ATK",Mondstadt,Hydro,N/A,Catalyst,Medium Female,Crater,5-Jul,Spicy Stew,Church of Favonius,9/28/20,FALSE,Laura Stahl,Yuanyuan Song ,Akari Kit ,Yun Ah-yeong ,HP,Philanemo Mushroom,Divining Scroll,Cleansing Heart,Divining Scroll,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Ring of Boreas,2936.1348,47.78865,200.655,"9,787",159,668,820.6119,13.356,56.0805,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Beidou,4,,t,f,f,"Normal Attack
+Performs up to 5 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous slashes.
+At the end of the sequence, perform a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",5,continuous slashes,ATK,"Max HP
+ATK",Liyue,Electro,N/A,Claymore,Tall Female,Victor Mare,14-Feb,Flash-Fried Filet,The Crux,9/28/20,FALSE,Allegra Clark,Yajing Tang ,Ami Koshimizu ,Jeong Yoo-mi ,Electro DMG Bonus,Noctilucous Jade,Treasure Hoarder Insignia,Lightning Prism,Treasure Hoarder Insignia,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Dvalin's Sigh,3914.8462,67.54129,194.5125,"13,049",225,648,1094.1492,18.87648,54.36375,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Bennett,4,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,ATK,Mondstadt,Pyro,N/A,Sword,Medium Male,Rota Calamitas,1-Feb,Teyvat Charred Egg,Adventurers' Guild,9/28/20,FALSE,Cristina Vee Valenzuela,Xueting Mu ,Ryta saka ,Song Ha-rim ,Energy Recharge,Windwheel Aster,Treasure Hoarder Insignia,Everflame Seed,Treasure Hoarder Insignia,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dvalin's Plume,3719.104,57.34638,231.3675,"12,397",191,771,1039.4418,16.0272,64.66425,0.00%,0.00%,6.70%,13.30%,13.30%,20.00%,26.70%
+Candace,4,,t,f,t,"Normal Attack
+Performs up to 4 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,lunge forward,ATK,Max HP,Sumeru,Hydro,N/A,Polearm,Tall Female,Sagitta Scutum,3-May,Utmost Care,Aaru Village,9/28/22,FALSE,Shara Kirby,Zhang Qi ,Yuzuki Ryoka ,Jeon Yeongsu ,HP,Redcrest,Faded Red Satin,Light Guiding Tetrahedron,Faded Red Satin,Teachings of Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Tears of the Calamitous God,3262.3718,63.7182,204.75,"10,874",212,682,911.791,17.808,57.225,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Charlotte,4,,t,f,f,"Normal Attack
+Taking aim at targets using Monsieur Verite, her custom Kamera, Charlotte performs up to 3 consecutive attacks, dealing Cryo DMG.
+
+Charged Attack
+Consumes a fixed amount of Stamina, and after a moment's preparation, will deploy Monsieur Verite to deal AoE Cryo DMG.
+
+Plunging Attack
+Gathering the power of Cryo, Charlotte plunges toward the ground, dealing DMG to all opponents in her path and dealing AoE Cryo DMG upon landing.
+
+Arkhe: Pneuma
+At certain intervals, upon using a Charged Attack, Charlotte will cause a Spiritbreath Thorn to descend and pierce opponents, dealing Pneuma-aligned AoE Cryo DMG.",3,AoE Cryo DMG,ATK,ATK,Fontaine,Cryo,Pneuma,Catalyst,Medium Female,Hualina Veritas,10-Apr,Exclusive Scoop: Gourmet Column,The Steambird,11/8/23,FALSE,Maya Aoki Tuttle,Ruan Congqing ,Waki Azumi ,Shin On-yu ,ATK,Beryl Conch,Meshing Gear,"""Tourbillon Device""",Meshing Gear,Teachings of Justice,Guide to Justice,Guide to Justice,Guide to Justice,Guide to Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Lightless Silk String,3229.748047,51.93033218,163.8,"10,766",173,546,902.6730957,14.51352024,45.78,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Chevreuse,4,,t,f,t,"Normal Attack
+Performs up to 4 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,lunge forward,ATK,"ATK
+Max HP",Fontaine,Pyro,,Polearm,Medium Female,,,,,1/9/24,,,,,,HP,,,,,,,,,,,,,,,3588.609131,57.98356247,181.408493,"11,962",193,604,1002.970093,16.2052803,50.70135117,,,,,,,
+Chiori,5,,,,,,,,,,,,,,,,,,,3/13/24,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Chongyun,4,,t,f,t,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Liyue,Cryo,N/A,Claymore,Medium Male,Nubis Caesor,7-Sep,Cold Noodles with Mountain Delicacies,Tianheng Thaumaturges,9/28/20,FALSE,Beau Bridgland,kinsen,Soma Saito ,Yang Jeong-hwa ,ATK,Cor Lapis,Damaged Mask,Hoarfrost Core,Damaged Mask,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Dvalin's Sigh,3294.9956,66.90411,194.5125,"10,983",223,648,920.90894,18.6984,54.36375,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Collei,4,,t,t,f,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, Dendro energy will accumulate on the arrowhead. A fully charged arrow will deal Dendro DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",4,Dendro DMG,ATK,ATK,Sumeru,Dendro,N/A,Bow,Medium Female,Leptailurus Cervarius,8-May,Yearning,Gandharva Ville,8/24/22,FALSE,Christina Costello,Qin Wenjing ,Maekawa Ryoko ,Bang Siu ,ATK,Rukkhashava Mushrooms,Firm Arrowhead,Majestic Hooked Beak,Firm Arrowhead,Teachings of Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Tears of the Calamitous God,2936.1348,59.895107,180.18,"9,787",199,600,820.6119,16.73952,50.358,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Cyno,5,,t,t,t,"Normal Attack
+Performs up to 4 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,lunge forward,ATK,ATK,Sumeru,Electro,N/A,Polearm,Medium Male,Lupus Aureus,23-Jun,Duel Soul,Temple of Silence,9/28/22,TRUE,Alejandro Saab,Li Qingyang ,Irino Miyu ,Lee Woo-ri ,CRIT DMG,Scarab,Divining Scroll,Thunderclap Fruitcore,Divining Scroll,Teachings of Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Mudra of the Malefic General,3993.1443,101.68941,274.6926,"12,490",318,859,972.3864,24.7646,66.88994,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Dehya,5,,t,f,f,"Normal Attack
+Performs up to 4 consecutive strikes using her Claymore and her martial arts.
+
+Charged Attack
+Drains Stamina over time to perform continuous slashes.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous slashes,ATK,"ATK
+Max HP",Sumeru,Pyro,N/A,Claymore,Tall Female,Mantichora,7-Apr,Goldflame Tajine,The Eremites,3/1/23,FALSE,Amber May,Chen Yu ,Fukuhara Ayaka ,Kim Hyeon-sim ,HP,Sand Grease Pupa,Faded Red Satin,Light Guiding Tetrahedron,Faded Red Satin,Teachings of Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Puppet Strings,5011.0044,84.8686,200.7369,"15,674",265,627,1220.2496,20.6682,48.88111,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Diluc,5,,t,f,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous slashes.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous slashes,ATK,ATK,Mondstadt,Pyro,N/A,Claymore,Tall Male,Noctua,30-Apr,"""Once Upon a Time in Mondstadt""",Dawn Winery,9/28/20,FALSE,Sean Chiplock,Yang Ma ,Kensho Ono ,Choi Seung-hoon ,CRIT Rate,Small Lamp Grass,Recruit's Insignia,Everflame Seed,Recruit's Insignia,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dvalin's Plume,4149.7383,107.04148,250.614,"12,980",334,783,1010.5192,26.068,61.0266,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Diona,4,,t,f,f,"Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, biting frost will accumulate on the arrowhead. A fully charged frost arrow will deal Cryo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",5,Aimed Shot/Cryo DMG,ATK,"Max HP
+ATK",Mondstadt,Cryo,N/A,Bow,Short Female,Feles,18-Jan,Definitely Not Bar Food!,The Cat's Tail,11/11/20,FALSE,Dina Sherman,Nuoya ,Shiori Izawa ,Woo Jeong-sin ,Cryo DMG Bonus,Calla Lily,Firm Arrowhead,Hoarfrost Core,Firm Arrowhead,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Shard of a Foul Legacy,2870.8872,63.7182,180.18,"9,569",212,600,802.3761,17.808,50.358,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Dori,4,,t,f,t,"Normal Attack
+Performs up to 3 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",3,continuous spinning attacks,ATK,ATK,Sumeru,Electro,N/A,Claymore,Short Female,Magicae Lucerna,21-Dec,Show Me the Mora,The Palace of Alcazarzaray,9/9/22,FALSE,Anjali Kunapaneni,Wang Xiaotong ,Kaneda Tomoko ,Lee Myeong-ho ,HP,Kalpalata Lotus,Faded Red Satin,Thunderclap Fruitcore,Faded Red Satin,Teachings of Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Bloodjade Branch,3719.104,66.90411,217.035,"12,397",223,723,1039.4418,18.6984,60.6585,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Eula,5,,t,t,f,"Normal Attack
+Performs up to 5 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous slashes.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",5,continuous slashes,ATK,ATK,Mondstadt,Cryo,N/A,Claymore,Tall Female,Aphros Delos,25-Oct,Stormcrest Pie,Knights of Favonius,5/18/21,TRUE,Suzie Yeung,Ziyin ,Rina Sato ,Kim Hyeon-ji ,CRIT DMG,Dandelion Seed,Damaged Mask,Crystalline Bloom,Damaged Mask,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dragon Lord's Crown,4228.035,109.33523,240.0489,"13,225",342,750,1029.5856,26.6266,58.45391,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Faruzan,4,,t,t,t,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, mighty winds will accumulate on the arrowhead. A fully charged wind arrow will deal Anemo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, hitting opponents along the path and dealing AoE DMG upon impact.",4,Aimed Shot/Anemo DMG,ATK,ATK,Sumeru,Anemo,N/A,Bow,Medium Female,Flosculi Implexi,20-Aug,Traditionally-Made Charcoal-Baked Ajilenakh Cake,Haravatat,12/7/23,FALSE,Chandni Parekh,Yan Mengmeng ,Horie Yui ,Kim You-rim ,ATK,Henna Berry,Faded Red Satin,Light Guiding Tetrahedron,Faded Red Satin,Teachings of Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Puppet Strings,2870.8872,58.939335,188.37,"9,569",196,627,802.3761,16.4724,52.647,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Fischl,4,,t,t,t,"Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, the dark lightning spirits of Immernachtreich shall heed the call of their Prinzessin and indwell the enchanted arrowhead. When fully indwelt, the Rachsüchtig Blitz shall deal immense Electro DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",5,Aimed Shot/Electro DMG,ATK,ATK,Mondstadt,Electro,N/A,Bow,Medium Female,Corvus,27-May,Die Heilige Sinfonie,Adventurers' Guild,9/28/20,FALSE,"Brittany Cox, Ben Pronsky","Mace, Yuantao Li , Zhao Yuecheng ","Maaya Uchida , Yasunori Masutani ","Park Go-woon , Lee Hyun ",ATK,Small Lamp Grass,Firm Arrowhead,Lightning Prism,Firm Arrowhead,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Spirit Locket of Boreas,2756.704,73.27593,178.1325,"9,189",244,593,770.4634,20.4792,49.78575,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Freminet,4,,t,f,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Fontaine,Cryo,Pneuma,Claymore,Medium Male,Automaton,24-Sep,"""Seabird's Sojourn""",Hotel Bouffes d'ete,9/5/23,FALSE,Paul Castro Jr.,Jinli ,Toki Shunichi ,Lee Joo-Seung ,ATK,Romaritime Flower,Transoceanic Pearl,Artificed Spare Clockwork Component - Coppelius,Transoceanic Pearl,Teachings of Justice,Guide to Justice,Guide to Justice,Guide to Justice,Guide to Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Worldspan Fern,3621.232666,76.46183777,212.5305023,"12,071",254,708,1012.088013,21.3696003,59.39955139,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Furina,5,,t,f,t,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash a solo dance, dealing Physical DMG to nearby opponents and changing her Arkhe alignment. If Salon Members or Singer of Many Waters summoned by her Elemental Skill ""Salon Solitaire"" are present, their lineup will switch in response.
+
+Arkhe: Seats Sacred and Secular
+At intervals, when Furina's Normal Attacks hit, a Spiritbreath Thorn or a Surging Blade will descend based on her current alignment, dealing Hydro DMG based on her current alignment.
+When Furina takes the field, her starting Arkhe will be Ousia.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,Physical DMG,ATK,Max HP,Fontaine,Hydro,Both,Sword,Medium Female,Animula Choragi,13-Oct,"""Pour la Justice""",Court of Fontaine,11/8/23,TRUE,Amber Lee Connors,Qian Chen ,Minase Inori ,Kim Ha-yeong ,CRIT Rate,Lakelight Lily,Whopperflower Nectar,Water That Failed To Transcend,Whopperflower Nectar,Teachings of Justice,Guide to Justice,Guide to Justice,Guide to Justice,Guide to Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Philosophies of Justice,Lightless Mass,4893.559082,77.98736572,222.3585052,"15,307",243,695,1191.65,18.9924,54.14614868,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Gaming,4,,t,t,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Liyue,Pyro,,Claymore,Medium Male,,,,,1/31/24,,,,,,ATK,,,,,,,,,,,,,,,3425.490479,90.47984314,210.8925018,"11,418",301,702,957.3805542,25.28735924,58.94174957,,,,,,,
+Ganyu,5,,t,f,f,"Normal Attack
+Performs up to 6 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, an icy aura will accumulate on the arrowhead before the arrow is fired. Has different effects based on how long the energy has been charged:Charge Level 1: Fires off an icy arrow that deals Cryo DMG.
+Charge Level 2: Fires off a Frostflake Arrow that deals Cryo DMG. The Frostflake Arrow blooms after hitting its target, dealing AoE Cryo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",6,Aimed Shot/Cryo DMG,ATK,"Max HP
+ATK",Liyue,Cryo,N/A,Bow,Medium Female,Sinae Unicornis,2-Dec,Prosperous Peace,Yuehai Pavilion,1/12/21,TRUE,Jennifer Losi,Su Lin ,Reina Ueda ,Kim Sun-hye ,CRIT DMG,Qingxin,Whopperflower Nectar,Hoarfrost Core,Whopperflower Nectar,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Shadow of the Warrior,3131.878,107.04148,201.474,"9,796",334,630,762.656,26.068,49.0606,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Gorou,4,,t,f,t,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, stone crystals will accumulate on the arrowhead. A fully charged crystalline arrow will deal Geo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",4,Aimed Shot,ATK,ATK,Inazuma,Geo,N/A,Bow,Medium Male,Canis Bellatoris,18-May,Victorious Legend,Watatsumi Island,12/14/21,FALSE,Cory Yee,Yang Xinran ,Tasuku Hatanaka ,Lee Sae-byeok ,Geo DMG Bonus,Sango Pearl,Spectral Husk,Perpetual Heart,Spectral Husk,Teachings of Light,Guide to Light,Guide to Light,Guide to Light,Guide to Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Molten Moment,2870.8872,54.797653,194.5125,"9,569",182,648,802.3761,15.31488,54.36375,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Hu_Tao,5,,t,f,f,"Normal Attack
+Performs up to 6 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",6,lunge forward,ATK,"Max HP
+ATK",Liyue,Pyro,N/A,Polearm,Medium Female,Papilio Charontis,15-Jul,Ghostly March,Wangsheng Funeral Parlor,3/2/21,TRUE,Brianna Knickerbocker,Dian Tao ,Rie Takahashi ,Kim Ha-ru ,CRIT DMG,Silk Flower,Whopperflower Nectar,Juvenile Jade,Whopperflower Nectar,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Shard of a Foul Legacy,4971.856,34.0239,280.098,"15,552",106,876,1210.7164,8.2859,68.2062,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Jean,5,,t,t,f,"Normal Attack
+Performs up to 5 consecutive strikes.
+
+Charged Attack
+Consumes a certain amount of stamina to launch an opponent using the power of wind.
+Launched opponents will slowly fall to the ground.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,launch an opponent,ATK,ATK,Mondstadt,Anemo,N/A,Sword,Tall Female,Leo Minor,14-Mar,Invigorating Pizza,Knights of Favonius,9/28/20,FALSE,Stephanie Southerland,Su Lin ,Chiwa Sait ,Ahn Young-mi ,Healing Bonus,Dandelion Seed,Damaged Mask,Hurricane Seed,Damaged Mask,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dvalin's Plume,4697.817,76.4582,245.7,"14,695",239,768,1143.984,18.62,59.83,0.00%,0.00%,5.50%,11.10%,11.10%,16.60%,22.20%
+Kaedehara_Kazuha,5,,t,t,t,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact. If this Plunging Attack is triggered by Chihayaburu, it will be converted to Plunging Attack: Midare Ranzan.
+
+Plunging Attack: Midare Ranzan
+When a Plunging Attack is performed using the effects of the Elemental Skill Chihayaburu, Plunging Attack DMG is converted to Anemo DMG and will create a small wind tunnel via a secret blade technique that pulls in nearby objects and opponents.",5,2 rapid sword strikes,ATK,ATK,Inazuma,Anemo,N/A,Sword,Medium Male,Acer Palmatum,29-Oct,All-Weather Beauty,The Crux,6/29/21,TRUE,Mark Whitten,Banma ,Nobunaga Shimazaki ,Kim Shin-woo ,Elemental Mastery,Sea Ganoderma,Treasure Hoarder Insignia,Marionette Core,Treasure Hoarder Insignia,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Gilded Scale,4267.1836,94.80817,257.985,"13,348",296,806,1039.1188,23.0888,62.8215,0,0,28.8,57.6,57.6,86.4,115.2
+Kaeya,4,,t,t,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,ATK,Mondstadt,Cryo,N/A,Sword,Tall Male,Pavo Ocellus,30-Nov,Fruity Skewers,Knights of Favonius,9/28/20,FALSE,Josey Montana McCoy,Ye Sun ,Kohsuke Toriumi ,Jeong Joo-won ,Energy Recharge,Calla Lily,Treasure Hoarder Insignia,Hoarfrost Core,Treasure Hoarder Insignia,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Spirit Locket of Boreas,3490.7378,66.90411,237.51,"11,636",223,791,975.6164,18.6984,66.381,0.00%,0.00%,6.70%,13.30%,13.30%,20.00%,26.70%
+Kamisato_Ayaka,5,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash a flurry of sword ki.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging enemies along the path and dealing AoE DMG upon impact.",5,a flurry of sword ki,ATK,ATK,Inazuma,Cryo,N/A,Sword,Medium Female,Grus Nivis,28-Sep,"""Snow on the Hearth""",Yashiro Commission,7/21/21,TRUE,Erica Mendez,Xiao N ,Saori Hayami ,Lee Yu-ri ,CRIT DMG,Sakura Bloom,Old Handguard,Perpetual Heart,Old Handguard,Teachings of Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Bloodjade Branch,4110.59,109.33523,250.614,"12,858",342,783,1000.986,26.6266,61.0266,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Kamisato_Ayato,5,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to dash forward and perform an iai.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,dash forward and perform an iai,ATK,"Max HP
+ATK",Inazuma,Hydro,N/A,Sword,Tall Male,Cypressus Custos,26-Mar,Quiet Elegance,Yashiro Commission,4/30/22,TRUE,Chris Hackney,Zhaolu ,Akira Ishida ,Jang Min-hyeok ,CRIT DMG,Sakura Bloom,Old Handguard,Dew of Repudation,Old Handguard,Teachings of Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Mudra of the Malefic General,4384.629,95.57275,245.7,"13,715",298,768,1067.7184,23.275,59.83,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Kaveh,4,,t,t,f,"Normal Attack
+Uses Mehrak to perform up to 4 consecutive attacks.
+
+Charged Attack
+Drains Stamina over time to perform continuous slashes.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous slashes,ATK,ATK,Sumeru,Dendro,N/A,Claymore,Tall Male,Paradisaea,9-Jul,The Endeavor,Independent Design Studio,5/2/23,FALSE,Ben Balmaceda,Liu Sanmu ,Uchida Yuma ,Lee Jung-min ,Elemental Mastery,Mourning Flower,Fungal Spores,Quelled Creeper,Fungal Spores,Teachings of Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Primordial Greenbloom,3588.6091,70.09002,225.225,"11,962",233,750,1002.9701,19.5888,62.9475,0,0,24,48,48,72,96
+Keqing,5,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,ATK,Liyue,Electro,N/A,Sword,Medium Female,Trulla Cementarii,20-Nov,Survival Grilled Fish,Liyue Qixing,9/28/20,FALSE,Kayli Mills,Ying Xie ,Eri Kitamura ,Lee Bo-hee ,CRIT DMG,Cor Lapis,Whopperflower Nectar,Lightning Prism,Whopperflower Nectar,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Ring of Boreas,4188.8867,103.21857,255.528,"13,103",322,799,1020.0524,25.137,62.2232,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Kirara,4,,t,f,t,"Normal Attack
+Performs up to 4 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 3 rapid claw strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,3 rapid claw strikes,ATK,"Max HP
+ATK",Inazuma,Dendro,N/A,Sword,Medium Female,Arcella,22-Jan,Energizing Bento,Komaniya Express,5/24/23,FALSE,Julia Gu,Sun Yanqi ,Suzushiro Sayumi ,Kang Eun-ae ,HP,Amakumo Fruit,Spectral Husk,Evergloom Ring,Spectral Husk,Teachings of Transience,Guide to Transience,Guide to Transience,Guide to Transience,Guide to Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Everamber,3653.856445,66.90411377,163.8,"12,179",223,546,1021.2059,18.6984,45.78,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Klee,5,,t,f,f,"Normal Attack
+Throws things that go boom when they hit things! Performs up to 3 explosive attacks, dealing AoE Pyro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina and deals AoE Pyro DMG to opponents after a short casting time.
+
+Plunging Attack
+Gathering the power of Pyro, Klee plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Pyro DMG upon impact with the ground.",3,AoE Pyro DMG,ATK,ATK,Mondstadt,Pyro,N/A,Catalyst,Short Female,Trifolium,27-Jul,Fish-Flavored Toast,Knights of Favonius,10/20/20,TRUE,Poonam Basu,Hualing ,Misaki Kuno ,Bang Yeon-ji ,Pyro DMG Bonus,Philanemo Mushroom,Divining Scroll,Everflame Seed,Divining Scroll,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Ring of Boreas,3288.4717,99.39566,196.56,"10,286",310,614,800.7888,24.206,47.864,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Kujou_Sara,4,,t,f,t,"Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, crackling lightning will accumulate on the arrowhead. An arrow fully charged with the storm's might will deal Electro DMG.
+When in the Crowfeather Cover state, a fully-charged arrow will leave a Crowfeather behind after it hits.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",5,Aimed Shot/Electro DMG,ATK,"Base ATK
+ATK",Inazuma,Electro,N/A,Bow,Tall Female,Flabellum,14-Jul,Faith Eternal,Tenryou Commission,9/1/21,FALSE,Jeannie Tirado,Yang Menglu ,Asami Seto ,Mun Ji-yeong ,ATK,Dendrobium,Damaged Mask,Storm Beads,Damaged Mask,Teachings of Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Ashen Heart,2870.8872,58.620743,188.37,"9,569",195,627,802.3761,16.38336,52.647,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Kuki_Shinobu,4,,t,f,t,"Normal Attack
+Performs up to 4 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,2 rapid sword strikes,ATK,"Max HP
+ATK",Inazuma,Electro,N/A,Sword,Medium Female,Tribulatio Demptio,27-Jul,Omurice Waltz,Arataki Gang,6/21/22,FALSE,Kira Buckland,Yang Ning ,Kaori Mizuhashi ,Kim Yool ,HP,Naku Weed,Spectral Husk,Runic Fang,Spectral Husk,Teachings of Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Guide to Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Philosophies of Elegance,Tears of the Calamitous God,3686.4802,63.7182,225.225,"12,288",212,750,1030.3239,17.808,62.9475,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Layla,4,,t,f,t,"Normal Attack
+Performs up to 3 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",3,2 rapid sword strikes,ATK,"Max HP
+ATK",Sumeru,Cryo,N/A,Sword,Medium Female,Luscinia,19-Dec,Extravagant Slumber,Rtawahist,11/18/22,FALSE,Ashely Biski,Hou Xiaofei ,Tomita Miyu ,Kang Sae-Bom ,HP,Nilotpala Lotus,Divining Scroll,Perpetual Caliber,Divining Scroll,Teachings of Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Mirror of Mushin,3327.6194,64.99256,196.56,"11,092",216,655,930.0268,18.16416,54.936,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Lisa,4,,t,f,f,"Normal Attack
+Performs up to 4 lightning attacks that deal Electro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Electro DMG after a short casting time.
+
+Plunging Attack
+Gathering the might of Electro, Lisa plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Electro DMG upon impact with the ground.",4,AoE Electro DMG,ATK,ATK,Mondstadt,Electro,N/A,Catalyst,Tall Female,Tempus Fugit,9-Jun,Mysterious Bolognese,Knights of Favonius,9/28/20,FALSE,Mara Junot,Ke Zhong ,Rie Tanaka ,Park Go-woon ,Elemental Mastery,Valberry,Slime Condensate,Lightning Prism,Slime Condensate,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Dvalin's Claw,2870.8872,69.452835,171.99,"9,569",231,573,802.3761,19.41072,48.069,0,0,24,48,48,72,96
+Lynette,4,,t,f,f,"Normal Attack
+Performs up to 4 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,2 rapid sword strikes,ATK,"ATK
+Max HP",Fontaine,Anemo,Ousia,Sword,Medium Female,Felis Alba,2-Feb,A Leisurely Sip,Hotel Bouffes d'ete,8/16/23,FALSE,Anairis QuiÒones,Kekewei ,Sasahara Yu ,Lee Myung-hwa ,Anemo DMG Bonus,Lumidouce Bell,Meshing Gear,Artificed Spare Clockwork Component - Coppelia,Meshing Gear,Teachings of Order,Guide to Order,Guide to Order,Guide to Order,Guide to Order,Philosophies of Order,Philosophies of Order,Philosophies of Order,Philosophies of Order,Everamber,3719.104,69.45283508,213.554245,"12,397",231,711,1039.441772,19.41072,59.68567657,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Lyney,5,,t,t,f,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, flames will run across the arrowhead before being fired. Different effects will occur based on the time spent charging.
+Charge Level 1: Fires off a Pyro-infused arrow, dealing Pyro DMG.
+Charge Level 2: Fires off a Prop Arrow that deals Pyro DMG, and upon hit, it will summon a Grin-Malkin Hat.
+When firing the Prop Arrow, and when Lyney has more than 60% HP, he will consume a portion of his HP to obtain 1 Prop Surplus stack. Max 5 stacks. The effect will be removed after the character spends 30s out of combat.
+The lowest Lyney can drop to through this method is 60% of his Max HP.
+
+Grin-Malkin Hat
+Can taunt nearby opponents and attract their attacks. Each opponent can only be taunted by the Hat once every 5s.
+The Hat will inherit a percentage of Lyney's Max HP.
+If destroyed, or if its duration expires, it will fire off a Pyrotechnic Strike at 1 nearby opponent, dealing Pyro DMG.
+Only 1 Hat can exist at any given time.
+
+Arkhe: Pneuma
+At certain intervals, the Prop Arrow will cause a Spiritbreath Thorn to descend upon its hit location, dealing Pneuma-aligned Pyro DMG.",4,Aimed Shot/Pyro DMG,"ATK
+Max HP","ATK
+Max HP",Fontaine,Pyro,Pneuma,Bow,Medium Male,Felis Fuscus,2-Feb,Cubic Tricks,Hotel Bouffes d'ete,8/16/23,TRUE,Daman Mills,Jinli ,Shimono Hiro ,Park Song-young ,CRIT Rate,Rainbow Rose,Recruit's Insignia,Emperor's Resolution,Recruit's Insignia,Teachings of Equity,Guide to Equity,Guide to Equity,Guide to Equity,Guide to Equity,Philosophies of Equity,Philosophies of Equity,Philosophies of Equity,Philosophies of Equity,Primordial Greenbloom,3523.362549,101.6894,171.99,"11,021",318,537,857.987976,24.7646,41.881,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Mika,4,,t,f,f,"Normal Attack
+Performs up to 5 consecutive strikes using his crossbow and spear.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,lunge forward,ATK,ATK,Mondstadt,Cryo,N/A,Polearm,Medium Male,Palumbus,11-Aug,Surveyor's Breakfast Sandwich,Knights of Favonius,3/21/23,FALSE,Robb Moreira,Deng Youxi ,Sanpei Yko ,Yoon Eun-seo ,HP,Wolfhook,Recruit's Insignia,Pseudo-Stamens,Recruit's Insignia,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Mirror of Mushin,3751.7275,66.90411,213.96375,"12,506",223,713,1048.5597,18.6984,59.800125,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Mona,5,,t,t,t,"Normal Attack
+Performs up to 4 water splash attacks that deal Hydro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Hydro DMG after a short casting time.
+
+Plunging Attack
+Gathering the might of Hydro, Mona plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Hydro DMG upon impact with the ground.",4,AoE Hydro DMG,ATK,ATK,Mondstadt,Hydro,N/A,Catalyst,Medium Female,Astrolabos,31-Aug,Der Weisheit Letzter Schluss (Life),Mondstadt,9/28/20,FALSE,Felecia Angelle,Tingting Chen ,Konomi Kohara ,Woo Jeong-sin ,Energy Recharge,Philanemo Mushroom,Whopperflower Nectar,Cleansing Heart,Whopperflower Nectar,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Ring of Boreas,3327.62,91.74984,208.845,"10,409",287,653,810.322,22.344,50.8555,0.00%,0.00%,8.00%,16.00%,16.00%,24.00%,32.00%
+Nahida,5,,f,t,t,"Normal Attack
+Performs up to 4 attacks that deal Dendro DMG to opponents in front of her.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Dendro DMG to opponents in front of her after a short casting time.
+
+Plunging Attack
+Calling upon the might of Dendro, Nahida plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Dendro DMG upon impact with the ground.",4,AoE Dendro DMG,ATK,"ATK
+Elemental Mastery",Sumeru,Dendro,N/A,Catalyst,Short Female,Sapientia Oromasdis,27-Oct,Halvamazd,Sumeru City,11/2/22,TRUE,Kimberley Anne Campbell,Hualing ,Tamura Yukari ,Park Shi-Yoon ,Elemental Mastery,Kalpalata Lotus,Fungal Spores,Quelled Creeper,Fungal Spores,Teachings of Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Guide to Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Philosophies of Ingenuity,Puppet Strings,3311.961,95.57275,201.474,"10,360",298,630,806.5087,23.275,49.0606,0,0,28.8,57.6,57.6,86.4,115.2
+Navia,5,,t,f,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Fontaine,Geo,,Claymore,Tall Female,,,,,12/20/23,,,,,,CRIT DMG,,,,,,,,,,,,,,,4044.037354,112.3935547,253.5623932,"12,650",351,793,984.78,27.3714,61.74456,,,,,,,
+Neuvillette,5,,t,f,f,"Normal Attack
+With light flourishes, Neuvillette commands the tides to unleash a maximum of 3 attacks, dealing Hydro DMG.
+
+Charged Attack Empowerment: Legal Evaluation
+While charging up, Neuvillette will gather the power of water, forming it into a Seal of Arbitration. In this state, Neuvillette can move and change facing, and also absorb any Sourcewater Droplets in a certain AoE.
+Every Droplet he absorbs will increase the formation speed of the Seal, and will heal Neuvillette.
+When the charging is stopped, if the Symbol has yet to be formed, then a Charged Attack will be unleashed. If it has been formed, then a Charged Attack: Equitable Judgment will be unleashed.
+
+Charged Attack
+Consumes a fixed amount of Stamina to attack opponents with a rupturing blast of water, dealing AoE Hydro DMG.
+
+Charged Attack: Equitable Judgment
+Unleashes surging torrents, dealing continuous AoE Hydro DMG to all opponents in a straight-line area in front of him.
+Equitable Judgment will not consume any Stamina and lasts 3s.
+If Neuvillette's HP is above 50%, he will continuously lose HP while using this attack.
+
+Plunging Attack
+Gathering the might of Hydro, Neuvillette plunges towards the ground from mid-air, damaging all opponents in his path. Deals AoE Hydro DMG upon impact with the ground.",3,AoE Hydro DMG,"ATK
+Max HP",Max HP,Fontaine,Hydro,Pneuma,Catalyst,Tall Male,Leviathan Judicator,18-Dec,"""Consomme Purete""",Court of Fontaine,9/27/23,TRUE,Ray Chase,Sang Yuze ,Kamiya Hiroshi ,Kwak Yoon-sang ,CRIT DMG,Lumitoile,Transoceanic Pearl,Fontemer Unihorn,Transoceanic Pearl,Teachings of Equity,Guide to Equity,Guide to Equity,Guide to Equity,Guide to Equity,Philosophies of Equity,Philosophies of Equity,Philosophies of Equity,Philosophies of Equity,Everamber,4697.8169,66.595,184.275,"14,695",208,576,1143.984,16.218,44.8725,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Nilou,5,,t,f,t,"Normal Attack
+Performs up to 3 consecutive sword strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to perform a twirling slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",3,twirling slash,ATK,Max HP,Sumeru,Hydro,N/A,Sword,Medium Female,Lotos Somno,3-Dec,Swirling Steps,Zubayr Theater,10/14/22,TRUE,Dani Chambers,Zisu Jiuyue ,Kanemoto Hisako ,Chae Rim ,HP,Padisarah,Fungal Spores,Perpetual Caliber,Fungal Spores,Teachings of Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Tears of the Calamitous God,4854.4106,73.39987,232.9236,"15,184",229,728,1182.1168,17.8752,56.71884,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Ningguang,4,,t,f,f,"Normal Attack
+Shoots gems that deal Geo DMG.
+Upon hit, this grants Ningguang 1 Star Jade.
+
+Charged Attack
+Consumes a certain amount of stamina to fire off a giant gem that deals Geo DMG.
+If Ningguang has any Star Jades, unleashing a Charged Attack will cause the Star Jades to be fired at the enemy as well, dealing additional DMG.
+
+Plunging Attack
+Gathering the might of Geo, Ningguang plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Geo DMG upon impact with the ground.",,Geo DMG,ATK,"Max HP
+ATK",Liyue,Geo,N/A,Catalyst,Tall Female,Opus Aequilibrium,26-Aug,Qiankun Mora Meat,Liyue Qixing,9/28/20,FALSE,Erin Ebers,Mingya Du ,Sayaka Ohara ,Gwak Gyu-mi ,Geo DMG Bonus,Glaze Lily,Recruit's Insignia,Basalt Pillar,Recruit's Insignia,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Spirit Locket of Boreas,2936.1348,63.7182,171.99,"9,787",212,573,820.6119,17.808,48.069,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Noelle,4,,t,t,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,"DEF
+ATK",Mondstadt,Geo,N/A,Claymore,Medium Female,Parma Cordis,21-Mar,Lighter-Than-Air Pancake,Knights of Favonius,9/28/20,FALSE,Laura Faye Smith,Yanning ,Kanon Takao ,Lee Bo-hee ,DEF,Valberry,Damaged Mask,Basalt Pillar,Damaged Mask,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dvalin's Claw,3621.2327,57.34638,239.5575,"12,071",191,798,1012.088,16.0272,66.95325,0.00%,0.00%,7.50%,15.00%,15.00%,22.50%,30.00%
+Qiqi,5,,t,f,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,ATK,Liyue,Cryo,N/A,Sword,Short Female,Pristina Nova,3-Mar,No Tomorrow,Bubu Pharmacy,9/28/20,FALSE,Christie Cate,Yanning ,Yukari Tamura ,Lee Seul ,Healing Bonus,Violetgrass,Divining Scroll,Hoarfrost Core,Divining Scroll,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Tail of Boreas,3953.9958,91.74984,294.84,"12,368",287,922,962.8532,22.344,71.796,0.00%,0.00%,5.50%,11.10%,11.10%,16.60%,22.20%
+Raiden_Shogun,5,,t,f,t,"Normal Attack
+Performs up to 5 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to perform an upward slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,an upward slash,ATK,ATK,Inazuma,Electro,N/A,Polearm,Tall Female,Imperatrix Umbrosa,26-Jun,None,Inazuma City,9/1/21,TRUE,Anne Yatco,Juhuahua ,Miyuki Sawashiro ,Park Ji-yoon ,Energy Recharge,Amakumo Fruit,Old Handguard,Storm Beads,Old Handguard,Teachings of Light,Guide to Light,Guide to Light,Guide to Light,Guide to Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Molten Moment,4126.249,107.80606,252.3339,"12,907",337,789,1004.79926,26.2542,61.44541,0.00%,0.00%,8.00%,16.00%,16.00%,24.00%,32.00%
+Razor,4,,t,f,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Mondstadt,Electro,N/A,Claymore,Medium Male,Lupus Minor,9-Sep,Puppy-Paw Hash Brown,Wolvendom,9/28/20,FALSE,Todd Haberkorn,Shuai Zhou ,Kki Uchiyama ,Kim Seo-yeong ,Physical DMG Bonus,Wolfhook,Damaged Mask,Lightning Prism,Damaged Mask,Teachings of Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Guide to Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Philosophies of Resistance,Dvalin's Claw,3588.6091,70.09002,225.225,"11,962",233,750,1002.9701,19.5888,62.9475,0.00%,0.00%,7.50%,15.00%,15.00%,22.50%,30.00%
+Rosaria,4,,t,f,t,"Normal Attack
+Performs up to 5 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,lunge forward,ATK,ATK,Mondstadt,Cryo,N/A,Polearm,Tall Female,Spinea Corona,24-Jan,Dinner of Judgement,Church of Favonius,4/6/21,FALSE,Elizabeth Maxwell,Anqi Zhang ,Ai Kakuma ,Kim Bo-na ,ATK,Valberry,Recruit's Insignia,Hoarfrost Core,Recruit's Insignia,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Shadow of the Warrior,3686.4802,72.001564,212.94,"12,288",240,709,1030.3239,20.12304,59.514,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Sangonomiya_Kokomi,5,,t,f,t,"Normal Attack
+Performs up to 3 consecutive attacks that take the form of swimming fish, dealing Hydro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Hydro DMG after a short casting time.
+
+Plunging Attack
+Gathering the might of Hydro, Kokomi plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Hydro DMG upon impact with the ground.",3,AoE Hydro DMG,ATK,"Max HP
+ATK",Inazuma,Hydro,N/A,Catalyst,Medium Female,Dracanea Somnolenta,22-Feb,A Stunning Stratagem,Watatsumi Island,9/21/21,TRUE,Risa Mei,Guiniang ,Suzuko Mimori ,Yeo Yun-mi ,Hydro DMG Bonus,Sango Pearl,Spectral Husk,Dew of Repudation,Spectral Husk,Teachings of Transience,Guide to Transience,Guide to Transience,Guide to Transience,Guide to Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Hellfire Butterfly,4306.332,74.92904,210.0735,"13,470",234,657,1048.652,18.2476,51.15465,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Sayu,4,,t,t,t,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,ATK,Inazuma,Anemo,N/A,Claymore,Short Female,Nyctereutes Minor,19-Oct,Dizziness-Be-Gone no Justu Version 2.0,Shuumatsuban,8/10/21,FALSE,Lilypichu (Lily Ki),Sakula,Aya Suzaki ,Lee Ji-hyeon ,Elemental Mastery,Crystal Marrow,Whopperflower Nectar,Marionette Core,Whopperflower Nectar,Teachings of Light,Guide to Light,Guide to Light,Guide to Light,Guide to Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Gilded Scale,3555.9854,73.27593,223.38225,"11,853",244,744,993.8522,20.4792,62.432476,0,0,24,48,48,72,96
+Shenhe,5,,t,f,f,"Normal Attack
+Performs up to 5 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,lunge forward,ATK,ATK,Liyue,Cryo,N/A,Polearm,Tall Female,Crista Doloris,10-Mar,Heartstring Noodles,Cloud Retainer's Abode,1/5/22,TRUE,Chelsea Kwoka,Ziyi Qin,Ayako Kawasumi ,Lee Hyun-jin ,ATK,Qingxin,Whopperflower Nectar,Dragonheir's False Fin,Whopperflower Nectar,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Hellfire Butterfly,4153.653,97.10191,265.356,"12,992",303,830,1011.47253,23.6474,64.6164,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Shikanoin_Heizou,4,,t,f,f,"Normal Attack
+Performs up to 5 fisticuffs empowered by a mighty wind, dealing Anemo DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina and performs a sweeping kick that deals Anemo DMG.
+
+Plunging Attack
+Calling upon the surging wind, Heizou plunges towards the ground from mid-air, damaging all opponents in his path. Deals AoE Anemo DMG upon impact with the ground.",5,Anemo DMG,ATK,ATK,Inazuma,Anemo,N/A,Catalyst,Medium Male,Cervus Minor,24-Jul,The Only Truth,Tenryou Commission,7/13/22,FALSE,Kieran Regan,Lin Jing ,Iguchi Yuuichi ,Jeong-Ui-jin ,Anemo DMG Bonus,Onikabuto,Treasure Hoarder Insignia,Runic Fang,Treasure Hoarder Insignia,Teachings of Transience,Guide to Transience,Guide to Transience,Guide to Transience,Guide to Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,The Meaning of Aeons,3197.1245,67.54129,205.1595,"10,657",225,683,893.5552,18.87648,57.33945,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Sucrose,4,,t,f,t,"Normal Attack
+Performs up to 4 attacks using Wind Spirits, dealing Anemo DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina and deals AoE Anemo DMG after a short casting time.
+
+Plunging Attack
+Calling upon the power of her Wind Spirits, Sucrose plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Anemo DMG upon impact with the ground.",4,AoE Anemo DMG,ATK,ATK,Mondstadt,Anemo,N/A,Catalyst,Medium Female,Ampulla,26-Sep,Nutritious Meal (V.593),Knights of Favonius,9/28/20,FALSE,Valeria Rodriguez,Xiaogan ,Akane Fujita ,Kim Ha-yeong ,Anemo DMG Bonus,Windwheel Aster,Whopperflower Nectar,Hurricane Seed,Whopperflower Nectar,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Spirit Locket of Boreas,2773.016,50.97456,210.8925,"9,243",169,702,775.02234,14.2464,58.94175,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Tartaglia,5,,t,f,f,"Normal Attack
+Performs up to 6 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, the power of Hydro will accumulate on the arrowhead. An arrow fully charged with the torrent will deal Hydro DMG and apply the Riptide status.
+
+Riptide
+Opponents affected by Riptide will suffer from AoE Hydro DMG effects when attacked by Tartaglia in various ways. DMG dealt in this way is considered Normal Attack DMG.Riptide Flash: A fully-charged Aimed Shot that hits an opponent affected by Riptide deals consecutive bouts of AoE DMG. Can occur once every 0.7s.
+Riptide Burst: Defeating an opponent affected by Riptide creates a Hydro burst that inflicts the Riptide status on nearby opponents hit.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
+When Tartaglia is in Foul Legacy: Raging Tide's Melee Stance, he cannot perform a plunging attack.",6,Aimed Shot/Hydro DMG,ATK,ATK,Snezhnaya,Hydro,N/A,Bow,Tall Male,Monoceros Caeli,20-Jul,A Prize Catch,Fatui,11/11/20,TRUE,Griffin Burns,Yudong ,Ryohei Kimura ,Nam Doh-hyeong ,Hydro DMG Bonus,Starconch,Recruit's Insignia,Cleansing Heart,Recruit's Insignia,Teachings of Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Guide to Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Philosophies of Freedom,Shard of a Foul Legacy,4188.8867,96.33733,260.442,"13,103",301,814,1020.0524,23.4612,63.4198,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Thoma,4,,t,f,t,"Normal Attack
+Performs up to 4 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,lunge forward,ATK,ATK,Inazuma,Pyro,N/A,Polearm,Tall Male,Rubeum Scutum,9-Jan,"""Warmth""",Yashiro Commission,10/2/21,FALSE,Christian Banas,Pei Zhang ,Masakazu Morita ,Ryu Seung-gon ,ATK,Fluorescent Fungus,Treasure Hoarder Insignia,Smoldering Pearl,Treasure Hoarder Insignia,Teachings of Transience,Guide to Transience,Guide to Transience,Guide to Transience,Guide to Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Hellfire Butterfly,3099.2532,60.53229,225.225,"10,331",201,750,866.2015,16.9176,62.9475,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Tighnari,5,,t,f,t,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Performs a more precise Aimed Shot with increased DMG.
+While aiming, the power of Dendro will accumulate on the arrowhead before the arrow is fired. Has different effects based on how long the energy has been charged:Charge Level 1: Fires off an arrow carrying the power of flora that deals Dendro DMG.
+Charge Level 2: Fires off a Wreath Arrow that deals Dendro DMG. Upon hit, the Wreath Arrow will create 4 Clusterbloom Arrows that will track nearby opponents automatically and deal Dendro DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",4,Aimed Shot/Dendro DMG,ATK,ATK,Sumeru,Dendro,N/A,Bow,Medium Male,Vulpes Zerda,29-Dec,Forest Watcher's Choice,Gandharva Ville,8/24/22,FALSE,Zachary Gordon,Moran ,Kobayashi Sanae ,Jung Ui-taek ,Dendro DMG Bonus,Nilotpala Lotus,Fungal Spores,Majestic Hooked Beak,Fungal Spores,Teachings of Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Guide to Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,Philosophies of Admonition,The Meaning of Aeons,3468.5547,85.63319,201.474,"10,849",267,630,844.64154,20.8544,49.0606,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%
+Traveler,5,,t,t,t,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,ATK,None,N/A,,Sword,"Aether: Medium Male
+Lumine: Medium Female",,,,,9/28/20,,,,,,ATK,,,,,,,,,,,,,,,3262.3718,63.7182,204.75,"10,874",212,682,911.791,17.808,57.225,,,,,,,
+Venti,5,,t,f,f,"Normal Attack
+Performs up to 6 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, favorable winds will accumulate on the arrowhead. A fully charged wind arrow will deal Anemo DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",6,Aimed Shot/Anemo DMG,ATK,ATK,Mondstadt,Anemo,N/A,Bow,Medium Male,Carmen Dei,16-Jun,A Buoyant Breeze,Mondstadt,9/28/20,TRUE,Erika Harlacher,Miaojiang ,Ayumu Murase ,Jung Yoo-jung ,Energy Recharge,Cecilia,Slime Condensate,Hurricane Seed,Slime Condensate,Teachings of Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Guide to Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Philosophies of Ballad,Tail of Boreas,3366.7688,84.10402,213.759,"10,531",263,668,819.8552,20.482,52.0521,0.00%,0.00%,8.00%,16.00%,16.00%,24.00%,32.00%
+Wanderer,5,,t,f,t,"Normal Attack
+Performs up to 3 attacks using wind blades, dealing Anemo DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina, gathers a build up of high wind pressure, and deals AoE Anemo DMG after a short casting time.
+
+Plunging Attack
+Calling upon the power of Anemo, the Wanderer plunges towards the ground from mid-air, damaging all opponents in his path. Deals AoE Anemo DMG upon impact with the ground.",3,AoE Anemo DMG,ATK,ATK,Sumeru,Anemo,N/A,Catalyst,Medium Male,Peregrinus,3-Jan,Shimi Chazuke,None,12/7/22,TRUE,Patrick Pedraza,Luyin ,Kakihara Tetsuya ,Min Seung-woo ,CRIT Rate,Rukkhashava Mushrooms,Old Handguard,Perpetual Caliber,Old Handguard,Teachings of Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Guide to Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Philosophies of Praxis,Daka's Bell,3249.3232,104.747734,194.103,"10,164",327,607,791.2556,25.5094,47.2657,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Wriothesley,5,,t,f,f,"Normal Attack
+Coalescing frost about his fist, Wriothesley will unleash powerful Repelling Fists, performing up to 5 rapid attacks that deal Cryo DMG.
+Apart from this, Normal Attack combo count will not reset for a short time after using Icefang Rush or sprinting.
+
+Charged Attack
+Consumes a fixed amount of Stamina to leap and unleash a Vaulting Fist, dealing AoE Cryo DMG.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE Cryo DMG upon impact.",5,AoE Cryo DMG,ATK,ATK,Fontaine,Cryo,Ousia,Catalyst,Tall Male,Cerberus,23-Nov,Special Sauce BBQ Ribs,Fortress of Meropide,10/17/23,TRUE,Joe Zieja,Liu Beichen ,Ono Daisuke ,Kwon Chang-wook ,CRIT DMG,Subdetection Unit,Meshing Gear,"""Tourbillon Device""",Meshing Gear,Teachings of Order,Guide to Order,Guide to Order,Guide to Order,Guide to Order,Philosophies of Order,Philosophies of Order,Philosophies of Order,Philosophies of Order,Primordial Greenbloom,4345.48,99.39566,243.9801,"13,592",310,763,1058.18518,24.206,59.41119,0.00%,0.00%,9.60%,19.20%,19.20%,28.80%,38.40%
+Xiangling,4,,t,f,f,"Normal Attack
+Performs up to five consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,lunge forward,ATK,ATK,Liyue,Pyro,N/A,Polearm,Medium Female,Trulla,2-Nov,Wanmin Restaurant's Boiled Fish,Wanmin Restaurant,9/28/20,FALSE,Jackie Lastra,Xiao N ,Ari Ozawa ,Yun A-yeong ,Elemental Mastery,Jueyun Chili,Slime Condensate,Everflame Seed,Slime Condensate,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Dvalin's Claw,3262.3718,67.54129,200.655,"10,874",225,668,911.791,18.87648,56.0805,0,0,24,48,48,72,96
+Xianyun,5,,t,f,t,"Normal Attack
+Summons swirling winds to perform up to 4 attacks, dealing Anemo DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina and launches a Breeze Bolt in a straight line that deals Anemo DMG to opponents along its path.
+
+Plunging Attack
+Gathers the power of Anemo and plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Anemo DMG upon impact with the ground.",4,Anemo DMG,ATK,ATK,Liyue,Anemo,,Catalyst,Tall Female,,,,,1/31/24,,,,,,ATK,,,,,,,,,,,,,,,3327.620117,107.041481,183.0464935,"10,409",334,572,810.3220215,26.06800079,44.573349,,,,,,,
+Xiao,5,,f,f,f,"Normal Attack
+Performs up to 6 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to perform an upward thrust.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+Xiao does not take DMG from performing Plunging Attacks.",6,upward thrust,ATK,ATK,Liyue,Anemo,N/A,Polearm,Medium Male,Alatus Nemeseos,17-Apr,"""Sweet Dream""",Liyue Adeptus,2/3/21,TRUE,Laila Berzins,kinsen,Yoshitsugu Matsuoka ,Sim Kyu-hyuk ,CRIT Rate,Qingxin,Slime Condensate,Juvenile Jade,Slime Condensate,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Shadow of the Warrior,4071.4412,111.628975,255.528,"12,735",349,799,991.4528,27.1852,62.2232,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Xingqiu,4,,t,t,f,"Normal Attack
+Performs up to 5 rapid strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,2 rapid sword strikes,ATK,"Hydro DMG Bonus
+ATK",Liyue,Hydro,N/A,Sword,Medium Male,Fabulae Textile,9-Oct,All-Delicacy Parcels,Feiyun Commerce Guild,9/28/20,FALSE,Cristina Vee Valenzuela,Yajing Tang ,Junko Minagawa ,Gwak Gyu-mi ,ATK,Silk Flower,Damaged Mask,Cleansing Heart,Damaged Mask,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Tail of Boreas,3066.6296,60.53229,227.2725,"10,222",201,757,857.08356,16.9176,63.51975,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Xinyan,4,,t,,f,"Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,continuous spinning attacks,ATK,"DEF
+ATK",Liyue,Pyro,N/A,Claymore,Medium Female,Fila Ignium,16-Oct,Rockin' Riffin' Chicken!,"""The Red Strings""",12/1/20,FALSE,Laura Stahl,Yaxin Wang ,Chiaki Takahashi ,Kim Chae-ha ,ATK,Violetgrass,Treasure Hoarder Insignia,Everflame Seed,Treasure Hoarder Insignia,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Tusk of Monoceros Caeli,3360.243,74.55029,239.5575,"11,201",248,798,939.1447,20.83536,66.95325,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Yae_Miko,5,,t,,tt,"Normal Attack
+Summons forth kitsune spirits, initiating a maximum of 3 attacks that deal Electro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal Electro DMG after a short casting time.
+
+Plunging Attack
+Plunges towards the ground from mid-air, damaging all opponents in her path with thunderous might. Deals AoE Electro DMG upon impact with the ground.",3,Electro DMG,ATK,ATK,Inazuma,Electro,N/A,Catalyst,Tall Female,Divina Vulpes,27-Jun,Fukuuchi Udon,Grand Narukami Shrine,2/16/22,TRUE,Ratana,Mingya Du ,Ayane Sakura ,Moon Yoo-jeong ,CRIT Rate,Sea Ganoderma,Old Handguard,Dragonheir's False Fin,Old Handguard,Teachings of Light,Guide to Light,Guide to Light,Guide to Light,Guide to Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,Philosophies of Light,The Meaning of Aeons,3315.8757,108.57064,181.818,"10,372",339,568,807.46204,26.4404,44.2742,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Yanfei,4,,t,,t,"Normal Attack
+Shoots fireballs that deal up to three counts of Pyro DMG.
+When Yanfei's Normal Attacks hit enemies, they will grant her a single Scarlet Seal. Yanfei may possess a maximum of 3 Scarlet Seals, and each time this effect is triggered, the duration of currently possessed Scarlet Seals will refresh.
+Each Scarlet Seal will decrease Yanfei's Stamina consumption and will disappear when she leaves the field.
+
+Charged Attack
+Consumes Stamina and all Scarlet Seals before dealing AoE Pyro DMG to the opponents after a short casting time.
+This Charged Attack's AoE and DMG will increase according to the amount of Scarlet Seals consumed.
+
+Plunging Attack
+Gathering the power of Pyro, Yanfei plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Pyro DMG upon impact with the ground.",3,AoE Pyro DMG,ATK,ATK,Liyue,Pyro,N/A,Catalyst,Medium Female,Bestia Iustitia,28-Jul,"""My Way""",Yanfei Legal Consultancy,4/28/21,FALSE,Lizzie Freeman,Ziwu Su ,Yumiri Hanamori ,Cho Kyung-yi ,Pyro DMG Bonus,Noctilucous Jade,Treasure Hoarder Insignia,Juvenile Jade,Treasure Hoarder Insignia,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Bloodjade Branch,2805.64,72.001564,176.085,"9,352",240,586,784.14026,20.12304,49.2135,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Yaoyao,4,,t,,t,"Normal Attack
+Performs up to 4 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",4,lunge forward,ATK,"ATK
+Max HP",Liyue,Dendro,N/A,Polearm,Short Female,Osmanthus,6-Mar,Qingce Household Dish,Streetward Rambler's Abode,1/18/23,FALSE,Kelsey Jaffer,Liu Yinuo ,Kadowaki Mai ,Yu Hye-ji ,HP,Jueyun Chili,Slime Condensate,Quelled Creeper,Slime Condensate,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Daka's Bell,3686.4802,63.7182,225.225,"12,288",212,750,1030.3239,17.808,62.9475,0.00%,0.00%,6.00%,12.00%,12.00%,18.00%,24.00%
+Yelan,5,,t,,f,"Normal Attack
+Performs up to 4 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, flowing water will accumulate on the arrowhead. A fully charged torrential arrow will deal Hydro DMG.
+
+Breakthrough
+Yelan will enter a ""Breakthrough"" state after spending 5s out of combat, which will cause her next Charged Aimed Shot to have 80% decreased charge time, and once charged, she can fire a ""Breakthrough Barb"" that will deal AoE Hydro DMG based on Yelan's Max HP.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",4,Aimed Shot/Hydro DMG,"Max HP
+ATK",Max HP,Liyue,Hydro,N/A,Bow,Tall Female,Umbrabilis Orchis,20-Apr,Dew-Dipped Shrimp,Yanshang Teahouse,5/31/22,TRUE,Laura Post,Xu Hui ,Endou Aya ,Min-a ,CRIT Rate,Starconch,Recruit's Insignia,Runic Fang,Recruit's Insignia,Teachings of Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Guide to Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Philosophies of Prosperity,Gilded Scale,4619.52,77.987366,175.1841,"14,450",243,547,1124.9176,18.9924,42.65879,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Yoimiya,5,,t,,f,"Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, flames will accumulate on the arrowhead before being fired off as an attack. Has different effects based on how long the energy has been charged:Charge Level 1: Fires off a flaming arrow that deals Pyro DMG.
+Charge Level 2: Generates a maximum of 3 Kindling Arrows based on time spent charging, releasing them as part of this Aimed Shot. Kindling Arrows will home in on nearby opponents, dealing Pyro DMG on hit.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.",5,Aimed Shot/Pyro DMG,ATK,,Inazuma,Pyro,N/A,Bow,Medium Female,Carassius Auratus,21-Jun,Summer Festival Fish,Naganohara Fireworks,8/10/21,TRUE,Jenny Yokobori,Na Jin ,Kana Ueda ,Bak Sin-hee ,CRIT Rate,Naku Weed,Divining Scroll,Smoldering Pearl,Divining Scroll,Teachings of Transience,Guide to Transience,Guide to Transience,Guide to Transience,Guide to Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Philosophies of Transience,Dragon Lord's Crown,3249.3232,103.21857,196.56,"10,164",322,614,791.2556,25.137,47.864,0.00%,0.00%,4.80%,9.60%,9.60%,14.40%,19.20%
+Yun_Jin,4,,t,,t,"Normal Attack
+Performs up to 5 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, dealing damage to opponents along the way.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",5,lunge forward,ATK,"DEF
+Max HP",Liyue,Geo,N/A,Polearm,Medium Female,Opera Grandis,21-May,Cloud-Shrouded Jade,Yun-Han Opera House,1/5/22,FALSE,"Judy Alice Lee, Yang Yang ","Wenxiao He , Yang Yang ","Koiwai Kotori , Yang Yang ","Sa Mun-yeong , Yang Yang ",Energy Recharge,Glaze Lily,Damaged Mask,Riftborn Regalia,Damaged Mask,Teachings of Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Guide to Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Philosophies of Diligence,Ashen Heart,3197.1245,57.34638,220.311,"10,657",191,734,893.5552,16.0272,61.5741,0.00%,0.00%,6.70%,13.30%,13.30%,20.00%,26.70%
+Zhongli,5,,t,,f,"Normal Attack
+Performs up to 6 consecutive spear strikes.
+
+Charged Attack
+Consumes a certain amount of Stamina to lunge forward, causing stone spears to fall along his path.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",6,lunge forward,ATK,"Max HP
+ATK",Liyue,Geo,N/A,Polearm,Tall Male,Lapis Dei,31-Dec,Slow-Cooked Bamboo Shoot Soup,Liyue Harbor,12/1/20,TRUE,Keith Silverstein,Bo Peng ,Tomoaki Maeno ,Pyo Yeong-jae ,Geo DMG Bonus,Cor Lapis,Slime Condensate,Basalt Pillar,Slime Condensate,Teachings of Gold,Guide to Gold,Guide to Gold,Guide to Gold,Guide to Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Philosophies of Gold,Tusk of Monoceros Caeli,4697.817,80.2811,235.872,"14,695",251,737,1143.984,19.551,57.4368,0.00%,0.00%,7.20%,14.40%,14.40%,21.60%,28.80%

@@ -1,0 +1,552 @@
+---
+title: "Comment data Exploration Using Time-series Analysis"
+output: html_document
+date: "2024-04-03"
+---
+
+### Raw Data Combination
+
+After scraping all the raw data for each character's comment reviews on Genshin Impact's Fandom Wiki page, a combined comment data csv file is generated for the use of comment sentiment analysis 
+
+```{r}
+# file paths for all character comment data and combined into one file
+
+#file_paths <- paste0("/Users/talia/Desktop/infos/columbia/5205r-ml/comments_data_", 0:79, ".csv")
+#list_of_dataframes <- lapply(file_paths, read.csv, stringsAsFactors = FALSE)
+#combined_dataframe <- do.call(rbind, list_of_dataframes)
+#write.csv(combined_dataframe, "/Users/talia/Desktop/infos/columbia/5205r-ml/combined_comments_data.csv", row.names = FALSE)
+```
+
+## Comment data Exploration Using Time-series Analysis
+
+### Data Preperation
+
+Though all comment data is now in one combiend csv file, the timestamp used in the scraped data set is not in uniform date format. The time format here is set for retrieval time and would be used later for all timestamps. In comment data, comment times within a week are all listed using units "d" for days, "m" for minutes, or "h" for hours, and thus have to be converted into the timestamp format used above. 
+
+```{r}
+#file paths to read
+wiki_comments = read.csv("/Users/talia/Desktop/infos/columbia/5205r-ml/comments_data.csv")
+char_data = read.csv("/Users/talia/Desktop/infos/columbia/5205r-ml/5205 project data - main.csv")
+banner_char = read.csv("/Users/talia/Desktop/infos/columbia/5205r-ml/df_characters.csv")
+
+#used packages for data cleaning and preparation
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(ggplot2)
+
+#timestamp format to be used 
+time_retrieved <- as.Date("2024-04-07")
+
+#function to detect and treat informal time formatting
+convert_time_to_date <- function(time_string, retrieval_date) {
+  parsed_date <- mdy(time_string)
+  if (!is.na(parsed_date)) {
+    return(parsed_date)
+  }
+  if (str_detect(time_string, "d$")) {
+    days <- as.numeric(str_extract(time_string, "\\d+"))
+    return(retrieval_date - days)
+  } else if (str_detect(time_string, "[hm]$")) {
+    return(retrieval_date)
+  } else {
+    return(NA)
+  }
+}
+
+#made into uniform time format
+wiki_comments <- wiki_comments %>%
+  rowwise() %>%
+  mutate(time = convert_time_to_date(time, time_retrieved)) %>%
+  ungroup()
+```
+
+
+### Basic Plots
+
+Basic Plots could be used to provide a general idea of trends in how comment data change with time for each of the characters. The general trend is notable. For most of the characters, especially those of 5 stars, comment amount spikes (by peak_dates_all) around the days of their first release time, and then gradually converges to around 0. However, further analysis on the trends and seasonality, models could not be done without time series analysis.
+
+```{r}
+#line chart, bar chart, and trendline for all characters stored as list
+character_plots <- list()
+
+for(character_name in char_data$character) {
+  character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n())
+
+  character_plots[[character_name]] <- ggplot(character_data, aes(x = time, y = Count)) +
+    geom_line() +
+    labs(title = paste("Daily Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+  
+  character_plots[[paste(character_name, "bar", sep = "_")]] <- ggplot(character_data, aes(x = time, y = Count)) +
+    geom_bar(stat = "identity") +
+    labs(title = paste("Daily Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+  ggplot(character_data, aes(x = time, y = Count)) +
+  geom_line() +
+  geom_smooth(se = FALSE, span = 0.03) + 
+  labs(title = paste("Daily Comments for", character_name),
+       x = "Date",
+       y = "Number of Comments") +
+  theme_minimal()
+}
+
+#the local maxima and global top review amount days
+peak_dates_all <- data.frame(character = character(), peak_date = character())
+
+for(character_name in char_data$character) {
+  character_month <- character_data %>%
+    mutate(YearMonth = floor_date(time, unit = "quarter")) %>%
+    group_by(YearMonth) %>%
+    filter(Count == max(Count)) %>%
+    ungroup()
+  peak_dates <- character_month$time
+
+    peak_dates_all <- rbind(peak_dates_all, data.frame(character = character_name, peak_date = peak_dates))
+
+  character_plots[[character_name]] <- ggplot(character_month, aes(x = time, y = Count)) +
+    geom_line() +
+    geom_point(data = data.frame(time = peak_dates, Count = character_month$Count), 
+               aes(x = time, y = Count), color = "red", size = 3) +
+    labs(title = paste("Quarterly Peak Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+}
+```
+
+
+### Time Series Analysis
+
+The characteristics of the datasets makes it in dataframae format. To begin with time series analysis, the datasets are all converted into ts format and plots for each are drawn in ts_plots list to be analyzed together. 
+Individual analysis for each character is then performed afterwards for each of their best models and analyze for whether there are seasonality among most of the characters. The seasonal analysis could not be performed on the raw ts data since it is irregular, so an time series analysis using ttr and irts is performed first. 
+Then the ts is converted into regular ts objects by filling up the missing date values and then a ts analysis for regular time series objects are done later. 
+Since for some of the characters, they are released for less than 2 times of the frequency (365), seasonal naive model could not be done.Since the frequency of 365 of the current regular ts is too large for Holt's winter analysis and ETS analysis, a bi-weekly ts is also generated, but unfortunately could only be done for part of the characters because of data point limitations (<9 bi-weeks). All models are applied to character if possible. 
+```{r}
+#packages used in time series analysis
+library(ggthemes);library(gridExtra)  
+library(quantmod);library(xts);library(zoo) 
+library(forecast) 
+library(fpp); library(fpp2) 
+library(tseries) 
+library("TTR")
+```
+
+```{r}
+#time series plots after converted into time series format
+ts_plots <- list()
+
+for(character_name in char_data$character) {
+  character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n(), .groups = 'drop')  
+    ts_character <- ts(character_data$Count)
+  
+  ts_plots[[character_name]] <- list(
+    ts_object = ts_character,
+    class = class(ts_character)
+  )
+  
+  ts_plots[[character_name]]$plot <- ggplot2::qplot(seq_along(ts_character), ts_character, geom = "line") +
+    labs(title = paste("Time Series for", character_name),
+         x = "Time",
+         y = "Count") +
+    theme_minimal()
+  
+  plot_filename <- paste0("ts_plot_", character_name, ".png")
+  ggsave(plot_filename, plot = ts_plots[[character_name]]$plot, width = 10, height = 6, dpi = 300)
+  
+  print(ts_plots[[character_name]]$class)
+}
+
+```
+
+```{r}
+character_name =char_data$character[1]
+character_name
+character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n(), .groups = 'drop')
+count_ts <- ts(character_data$Count)
+```
+
+####Irregular TS Analysis
+```{r}
+#files for all results, accuracy, and plots are stored locally using this sample code snippet (similar codes are not kept here)
+
+#make_filename <- function(base_name) {
+#  paste0(character_name, "_", base_name, ".png")
+#}
+#png(make_filename("basic_ts_plot"))
+#plot.ts(count_ts)
+#dev.off()
+#for results in console:
+#file_name <- paste0(character_name, "_simple_forecasting.txt")
+#sink(file_name)
+#sink()
+#for ggplots:
+#plot_file_name <- make_filename(paste0(character_name, "_forecast_comparison_plot.png"))
+#ggsave(plot_file_name, ts_plot, width = 8, height = 4, dpi = 300)
+
+
+#plots are messy, thus use ttr to make it more smooth
+SMA3 <- SMA(count_ts,n=3)
+SMA50 <- SMA(count_ts,n=50)
+SMA100 <- SMA(count_ts,n=100)# not available for some characters released recently
+plot.ts(SMA3)
+plot.ts(SMA50)
+plot.ts(SMA100)
+
+#acf
+acf(x = count_ts,lag.max = 1,plot=F)
+acf(x = count_ts,plot=F)
+acf(x = count_ts)
+ggAcf(x = count_ts)
+
+#the ts at first is not seasonal since no data points at all dates
+numeric_times <- as.numeric(as.POSIXct(character_data$time))
+my_irts <- irts(numeric_times, character_data$Count)
+print(my_irts)
+class(my_irts)
+```
+
+####Regular TS
+```{r}
+#converting to regular ts from irregular ts
+character_data$time <- as.Date(character_data$time)
+valid_times <- character_data$time[!is.na(character_data$time)]
+all_dates <- seq(min(valid_times), max(valid_times), by = "day")
+all_dates_df <- data.frame(time = all_dates)
+
+regular_character_data <- all_dates_df %>%
+  left_join(character_data, by = "time")
+regular_character_data <- regular_character_data %>%
+  mutate(Count = ifelse(is.na(Count), 0, Count))
+
+regular_ts <- ts(regular_character_data$Count, start = c(year(min(all_dates)), yday(min(all_dates))), frequency = 365)
+```
+
+
+```{r}
+ggseasonplot(regular_ts)
+ggseasonplot(regular_ts, polar = TRUE)
+stl_plot <- regular_ts %>%
+  stl(s.window = 'periodic') %>%
+  autoplot()
+```
+
+#### Regular TS-simple forcasting model
+
+```{r}
+train_end_index <- round(length(regular_ts) * 0.7)
+ts_start <- start(regular_ts)
+ts_frequency <- frequency(regular_ts)
+
+train <- window(regular_ts, end = ts_start + (train_end_index - 1)/ts_frequency)
+test <- window(regular_ts, start = ts_start + train_end_index/ts_frequency)
+
+print(length(train)) 
+print(length(test)) 
+print(start(train))
+print(end(train))
+print(start(test))
+print(end(test))
+```
+
+#### Regular TS-average method
+
+```{r}
+average_model <- meanf(train, h = length(test))
+train_acc_ave <- accuracy(average_model) # Train accuracy
+test_acc_ave <- accuracy(average_model, x = regular_ts) # Test accuracy
+
+print(average_model)
+print(average_model$mean)
+print(train_acc_ave)
+print(test_acc_ave)
+```
+
+#### Regular TS-naive method
+
+```{r}
+naive_model <- naive(train, h = length(test))
+print(naive_model$mean)
+train_acc_nai <- last(train)
+test_acc_nai <- accuracy(naive_model, x = regular_ts)
+
+ts_plot <- autoplot(train) +
+  autolayer(average_model, PI = F, size = 1.1, series = 'Average Model') +
+  autolayer(naive_model, PI = F, size = 1.1, series = 'Naive Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-seasonal naive method
+
+```{r}
+seasonal_naive_model <- snaive(train, h = length(test))
+print(seasonal_naive_model)
+print(seasonal_naive_model$mean)
+
+test_acc_snai <- accuracy(seasonal_naive_model, x = regular_ts)
+print(test_acc_snai)
+
+seasonal_ts_plot <- autoplot(train) +
+  autolayer(seasonal_naive_model, PI = F, size = 1.1, series = 'Seasonal Naive Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-drift method
+
+```{r}
+drift_model <- rwf(train, h = length(test), drift = TRUE)
+text_file_name <- paste0(character_name, "_drift_model_output.txt")
+
+print(drift_model)
+print(drift_model$mean)
+test_acc_drift <- accuracy(drift_model, x = regular_ts)
+print(test_acc_drift)
+
+drift_ts_plot <- autoplot(train) +
+  autolayer(drift_model, PI = FALSE, size = 1.1, series = 'Drift Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-exponential smoothing models-simple exponential smoothing
+
+```{r}
+ses_model <- ses(train, h = length(test))
+ses_text_file_name <- paste0(character_name, "_ses_model_output.txt")
+
+print(ses_model)
+print(ses_model$mean)
+test_acc_ses <- accuracy(ses_model, x = regular_ts)
+print(test_acc_ses)
+
+ses_ts_plot <- autoplot(train) +
+  autolayer(ses_model, PI = FALSE, size = 1.1, series = 'SES Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-holt's
+
+```{r}
+holt_model <- holt(train, h = length(test))
+holt_text_file_name <- paste0(character_name, "_holt_model_output.txt")
+
+print(holt_model)
+print(holt_model$mean)
+test_acc_holt <- accuracy(holt_model, x = regular_ts)
+print(test_acc_holt)
+
+holt_ts_plot <- autoplot(train) +
+  autolayer(holt_model, PI = FALSE, size = 1.1, series = 'Holt Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-holt's damp
+
+```{r}
+holt_damped_model <- holt(train, h = length(test), damped = TRUE)
+print(holt_damped_model)
+print(holt_damped_model$mean)
+
+test_acc_holtd <- accuracy(holt_damped_model, x = regular_ts)
+
+holt_damped_ts_plot <- autoplot(train) +
+  autolayer(holt_damped_model, PI = FALSE, size = 1.1, series = "Holt's Damped Model") +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-arima (model could not be performed because of data constraints)
+
+```{r}
+lambda <- BoxCox.lambda(train)
+ts_const_var <- BoxCox(train, lambda = lambda)
+
+autoplot(ts_const_var)
+
+ts_const_var_no_seasonality <- diff(x = ts_const_var, lag = 12)
+autoplot(ts_const_var_no_seasonality)
+
+dat <- cbind(original = train,
+             const_var = ts_const_var,
+             no_seasonality = ts_const_var_no_seasonality)
+
+autoplot(dat, facets = TRUE, colour = TRUE) + 
+    ylab('') + 
+    xlab('Year') + 
+    theme_bw()
+ggAcf(train)
+ggAcf(ts_const_var_no_seasonality)
+kpss_result <- kpss.test(ts_const_var_no_seasonality)
+print(kpss_result)
+```
+
+#### Regular TS- lags
+
+```{r}
+ts_const_var_no_seasonality_no_trend <- diff(ts_const_var_no_seasonality, 1)
+autoplot(ts_const_var_no_seasonality_no_trend)
+
+dat <- cbind(orig = train,
+             const_var = ts_const_var,
+             no_season = ts_const_var_no_seasonality,
+             no_trend = ts_const_var_no_seasonality_no_trend)
+
+autoplot(dat, colour = TRUE, facets = TRUE) + 
+    xlab('Year') + 
+    ylab('') + 
+    theme_bw()
+
+kpss_result_no_trend <- kpss.test(ts_const_var_no_seasonality_no_trend)
+print(kpss_result_no_trend)
+```
+
+####Bi-Weekly
+
+```{r}
+library(zoo)
+library(lubridate)
+
+start_time <- start(regular_ts)
+frequency <- frequency(regular_ts)
+
+start_date <- if (frequency == 365) {
+  as.Date(paste(start_time[1], "1", "1", sep = "-")) + (start_time[2] - 1)
+} else {
+  stop("The time series does not have a daily frequency.")
+}
+
+dates <- seq(from = start_date, by = "day", length.out = length(regular_ts))
+
+zoo_obj <- zoo(regular_ts, order.by = dates)
+
+bi_monthly_data <- aggregate(zoo_obj, by = function(time) {
+  year <- format(time, "%Y")
+  two_month_period <- ceiling(as.numeric(format(time, "%m")) / 2)
+  paste(year, two_month_period, sep = "-")
+}, FUN = sum)
+
+regular_ts_bi_monthly <- ts(coredata(bi_monthly_data), start = c(start_time[1], ceiling(as.numeric(format(start_date, "%m")) / 2)), frequency = 6)
+```
+
+```{r}
+train_end_index_week <- round(length(regular_ts_bi_monthly) * 0.7)
+
+ts_start_week <- start(regular_ts_bi_monthly)
+ts_frequency_week <- frequency(regular_ts_bi_monthly)
+
+train_week <- window(regular_ts_bi_monthly, end = ts_start_week + (train_end_index_week - 1)/ts_frequency_week)
+test_week <- window(regular_ts_bi_monthly, start = ts_start_week + train_end_index_week/ts_frequency_week)
+
+length(train_week)
+start(train_week)
+end(train_week)
+
+length(test_week)
+start(test_week)
+end(test_week)
+```
+
+####Bi-Weekly-holt's winter additive
+
+```{r}
+hw_additive <- hw(train_week, h = length(test_week), seasonal = 'additive', damped = TRUE)
+
+print(hw_additive$mean)
+test_acc_holta <- accuracy(hw_additive, x = regular_ts_bi_monthly)
+print(test_acc_holta)
+```
+
+####Bi-Weekly-holt's winter multi
+
+```{r}
+hw_multiplicative <- hw(train_week, h = length(test_week), seasonal = 'multiplicative', damped = TRUE)
+
+print(hw_multiplicative$mean)
+test_acc_holtm <- accuracy(hw_multiplicative, x = regular_ts_bi_monthly)
+print(test_acc_holtm)
+```
+
+####Bi-Weekly-ets-aaa
+
+```{r}
+ets_aaa <- ets(train_week, model = 'AAA')
+
+print(coef(ets_aaa))
+print(summary(ets_aaa))
+checkresiduals(ets_aaa)
+
+ets_aaa_forecast <- forecast(ets_aaa, h = length(test_week))
+print(ets_aaa_forecast)
+test_acc_aaa <- accuracy(ets_aaa_forecast, x = regular_ts_bi_monthly)
+print(test_acc_aaa)
+checkresiduals(ets_aaa)
+```
+
+####Bi-Weekly-ets:auto
+
+```{r}
+ets_auto <- ets(train_week)
+
+summary(ets_auto)
+ets_auto_forecast <- forecast(ets_auto, h = length(test_week))
+print(ets_auto_forecast)
+
+test_acc_auto <- accuracy(ets_auto_forecast, x = regular_ts_bi_monthly)
+print(test_acc_auto)
+
+ets_forecast_plot <- autoplot(ets_auto_forecast) +
+  autolayer(train_week, series = 'Training Data') +
+  autolayer(test_week, series = 'Test Data') +
+  ggtitle('ETS Model Forecast vs Actuals') +
+  xlab('Time') + ylab('Values') +
+  labs(colour = 'Series') +
+  theme_minimal()
+```
+
+### Key Findings and Model Selection
+
+Based on the test results above and on the autoplots shown below, the top 2 models with the lowest RMSE are the Naive Model and Holt's Model for frequency of 365, and ETS-auto for bi-weekly ts model. Though model selectionf rom ARIMA could not be done because of constraint, we could notice form the kpss and graphs that there is indeed seasonality in the dataset. Because of the limitation of some of the character's data points(release time constraint), this result is just for reference only. 
+
+#### Result: daily
+
+```{r}
+combined_forecast_plot <- autoplot(train, color='sienna') +
+  autolayer(test, size=1.05, color='seagreen2') +
+  autolayer(average_model, series = 'Average Model', PI=F) +
+  autolayer(naive_model, series = 'Naive Model', PI=F) +
+  autolayer(seasonal_naive_model, series = 'Seasonal Naive Model', PI=F) +
+  autolayer(drift_model, series = 'Drift Model', PI=F) +
+  autolayer(ses_model, series = 'SES Model', PI=F) +
+  autolayer(holt_model, series = 'Holt Model', PI=F) +
+  labs(color="Series") +
+  theme_minimal()
+combined_forecast_plot
+```
+
+#### Result: bi-weekly
+
+```{r}
+biweek_forecast_plot<-autoplot(train_week, color='sienna')+
+  autolayer(test_week,size=1.05,color='seagreen2')+
+  autolayer(hw_additive,series = 'Holt Winter Additive',PI=F)+
+  autolayer(hw_multiplicative,series = 'Holt Winter Multiplicative',PI=F)+
+  autolayer(ets_auto_forecast,series="ETS - MAM (auto)",PI=F)+
+  autolayer(ets_aaa_forecast,series = 'ETS AAA',PI=F)
+biweek_forecast_plot
+```
+
+## Conclusion
+
+Based on the findings above, it is noticable that there's more impulse for players to be more interested in new characters. Their interest tend to attenuate with time, but for those character that reached comment level of 40 or more, there is a higher chance of player interest and revenue generated in rerun. 
+

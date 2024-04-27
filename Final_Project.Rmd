@@ -1,0 +1,1559 @@
+---
+title: "Genshin Impact: Aligning Player and Business Needs Through Data Driven Recommendations"
+author: "David Nakashima, Kun Shang, Chengmin Xu, Jingwen Yi, Talia Zhuang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Statement of the Research Problem
+Genshin Impact has become one of the fastest growing mobile games since it came out in 2020. The popular gacha game posed the question; what drives Genshin Impact's popularity and profitability as a leader in the gaming industry. Despite the commercial success, the continued popularity of Genshin Impact relies on keeping player satisfaction high and understanding what the player wants to better enhance the game. 
+
+The first research problem focuses on understanding the user perceptions and sentiment towards the popular video game Genshin Impact. The study aims to analyze a large dataset of tweets and specific character comments related to the game using various sentiment analysis techniques, including binary, NRC emotion, AFINN, and Jockers lexicons. By examining the sentiment expressed in these tweets, the research seeks to answer questions such as: What is the overall sentiment towards Genshin Impact among Twitter users? Are certain characters more popular? The findings of this study will provide valuable insights into user perceptions of Genshin Impact and help inform game development and community management strategies.
+
+The second research problem focuses on exploring the top revenue-generated features of Genshin Impact characters. Part of our analysis aims to discover the crucial characteristics that contribute to the profitability of 5-star characters in "Genshin Impact" when assessing their income creation. Among the several characters available, Zhongli, Xiao, and Ganyu have proven to be the most profitable, indicating that they possess distinct qualities that strongly appeal to the player community.<sup>1</sup> In order to discern the distinguishing features of these characters, our research will examine their visual appeal, distinctive capabilities, and mechanics of gameplay, cross-referencing the revenue data. The purpose of this analysis is to offer developers specific information to inform future character design and game improvements.
+
+The third research question the team answered was how to forecast revenues from banner events in Genshin Impact. The focus in this analysis was on weapons events because the events were approximately three weeks in legnth and had the structure most suited for Time Series analysis. The derived insights found that around New Years/Chinese New Year there is an uptick in revenue and pulls based on the gacha game mechanic. 
+
+
+
+```{r}
+#Set up the environment
+library(tidyverse) 
+library(skimr)
+library(stringr)
+library(tidytext)
+library(magrittr)
+library(ggthemes)
+library(wordcloud)
+library(textdata)
+library(lexicon)
+library(dplyr)
+library(lubridate)
+library(psych)
+library(rpart)
+library(rpart.plot)
+library(mgcv)
+
+```
+
+```{r}
+## Setup Environment
+library(ggplot2);library(ggthemes);library(gridExtra)  # For plots 
+library(quantmod);library(xts);library(zoo) # For using xts class objects
+library(forecast) # Set of forecasting functions
+library(fpp); library(fpp2) # Datasets from Forecasting text by Rob Hyndman
+library(tseries) # for a statistical test
+library(dplyr) # Data wrangling
+library(xts) # Creating TS Object
+library(readr)
+```
+
+
+## Data & Sutability
+
+### A. Text Mining - Sentiment Analysis
+
+To understand the public reviews related to Genshin Impact, the #boycottgenshin dataset was constructed using Python by web scrapping on X (formally known as Twitter). The program is built to search Twitter for tweets containing specific hashtags on #boycottgenshin. Then, the algorithm collects various pieces of information from the tweets, including the account name of the tweet's author, the tweet's text, link, and different engagement metrics such as retweet count, favorite count, reply count, and quote count. The final structured dataset contains 9,883 rows with 9 columns. There are 4 character-type columns, 4 numeric-type columns, and 2 logical-type columns.
+
+Although Genshin Impact is a relatively new game, it has a large community and a strong social media presence. The #boycottgenshin is one of the largest communities on the X platform. Therefore, the reviews from this community should reflect players' perceptions of the game and be suitable for the analysis.
+
+```{r}
+
+# Data Source: 
+# The data comes from two sources. The first one is manually imputed 
+# from paimon.moe, an in-game assistant tool. 
+# The second one is from Twitter using web_scraping technique in Python. We have 
+# collected all the Twitter comments using the hash tag of #boycottgenshin. 
+
+#1: paimon.moe
+#2: #boycottgenshin from Twitter, see attached python file
+# Import the dataset 
+genshin_reviews <- read.csv("Final_Game_Sentiment_Analysis_Data.csv")
+
+head(genshin_reviews)
+```
+
+
+```{r}
+# number of rows and columns 
+print(list(row = nrow(genshin_reviews), column = ncol(genshin_reviews)))
+
+# check the data 
+skim(genshin_reviews)
+
+# Summary of the data
+summary(genshin_reviews)
+
+# Check distribution of numeric predictors 
+genshin_reviews %>% 
+  select_if(is.numeric)%>%
+  pivot_longer(cols = 1:4,names_to = 'numeric_predictor', values_to = 'values')%>%
+  ggplot(aes(x = values))+
+  geom_histogram(binwidth = 30)+
+  facet_wrap(numeric_predictor~., scales = 'free')+
+  xlim(c(0, 500)) +
+  ylim(c(0, 500)) +
+  theme_bw()
+
+# Check for missing values
+# Show all missing data in columns
+missing_data_summary <- data.frame(
+  NumMissing = sapply(genshin_reviews, function(x) sum(is.na(x)))
+)
+print(missing_data_summary)
+
+# Analysis on the reviews
+## Sample Review, review 3000
+genshin_reviews$TWEET[3000]
+
+## characters 
+summary(nchar(genshin_reviews$TWEET))
+
+## words 
+summary(str_count(string = genshin_reviews$TWEET,pattern = '\\S+'))
+
+## sentences
+summary(str_count(string = genshin_reviews$TWEET,
+                  pattern = "[A-Za-z,;'\"\\s]+[^.!?]*[.?!]"))
+
+## shortest reviews 
+genshin_reviews$TWEET[which.min(str_count(string = genshin_reviews$TWEET,
+                                          pattern = '\\S+'))]
+
+## longest reviews 
+genshin_reviews$TWEET[which.max(str_count(string = genshin_reviews$TWEET,
+                                          pattern = '\\S+'))]
+
+## common words, excluding stop words
+genshin_reviews%>%
+  unnest_tokens(input = TWEET, output = word)%>%
+  select(word)%>%
+  filter(!str_detect(word, "^http|^https|t\\.co")) %>%
+  anti_join(stop_words)%>%
+  group_by(word)%>%
+  summarize(count = n())%>%
+  ungroup()%>%
+  arrange(desc(count))%>%
+  top_n(10)
+
+```
+
+After scraping all the raw data for each character's comment reviews on Genshin Impact's Fandom Wiki page in python, a combined comment data csv file is generated for the use of comment sentiment analysis 
+
+```{r}
+# file paths for all character comment data and combined into one file
+
+#file_paths <- paste0("/Users/talia/Desktop/infos/columbia/5205r-ml/comments_data_", 0:79, ".csv")
+#list_of_dataframes <- lapply(file_paths, read.csv, stringsAsFactors = FALSE)
+#combined_dataframe <- do.call(rbind, list_of_dataframes)
+#write.csv(combined_dataframe, "/Users/talia/Desktop/infos/columbia/5205r-ml/combined_comments_data.csv", row.names = FALSE)
+```
+
+```{r}
+#file paths to read
+wiki_comments = read.csv("comments_data.csv")
+char_data = read.csv("5205 project data - main.csv")
+banner_char = read.csv("df_characters.csv")
+```
+
+In terms of the analysis over the player reviews on characters, the two datasets - rev_by_charac and review_combine, which are scraped from paimon.moe and used both individually and interactively, were implemented. The final review_combine dataset contains 4 columns such as user,time, text, character, along with 57362 observations. This corresponds to 80 game characters. The final rev_by_charac dataset includes 3 columns (five_star_characters,revenue, banner_days)  and 50 rows.  To understand more about the relationship between the users’  reviews and the total revenues of each character, these two datasets are combined by filtering the characters in review_combine  dataset with the ones also appearing in rev_by_charac dataset. So the new dataset only contains the information of 16 five-star characters.
+
+The source of character-focus datasets is paimon.moe which is one of the most famous  user-favored platform providing comprehensive statistics, such as ‘items’, ‘achievements’, ‘furnishing’, ‘weapons’, ‘reviews’,etc., and  tailored service for players including ‘wish counter’, ‘calculator’, and ‘todo list’. As a popular third party user-based platform, it aligns with reality, accuracy and real time, which provides us with reliable project datasets support.  
+
+```{r, include=TRUE}
+library(readr)
+data<- read_csv("Review_Combined.csv")
+revenue_data_fivestar <- read_csv("modified_Genshin_charac_rev_by_charac.csv")
+all_fivestardata <- read_csv("Genshin_Impact_5_Star_Characters.csv")
+
+summary(data)
+summary(revenue_data_fivestar)
+summary(all_fivestardata)
+
+```
+
+### B. Character Revenue Analysis
+
+The dataset is formatted using web scraped open data on characters’ features from Genshin fandom wiki page and revenue details from Genshinlab. Upon a cursory analysis of the data, we discovered that the "rev" data frame contains an abundance of intricate information regarding 5-star characters in "Genshin Impact," which is crucial for comprehending the factors that contribute to their revenue generating. The final structured dataset contains 50 rows with 36 columns, including: 
+
+-  **Revenue figure**: 
+The "revenue" column displays the aggregate income made by each character during specific time periods that align with their availability in the game's "banner" events (shown by the rerun time in the dataset).
+
+-  **Feature description**:
+The features of each character include their demographic background (such as region, vision, constellation, and birthday), aesthetic features (such as hair color, eye color, and model), skill information (including weapon type, ascension, and statistics for attack, defense, and HP level), and even voice actor
+
+Overall, this rev data frame provides a robust framework for analysis, aligning well with the problem statement's aim to uncover insights into character revenue generation and character features. It captures not just the financial aspect but also the multifaceted elements that contribute to a character's popularity, including gameplay mechanics, aesthetics, and scarcity. This level of detail is suitable for statistical modeling and can help developers understand the complex relationship between character features and player spending, guiding targeted enhancements to both character design and game content for increased player satisfaction and revenue generation.
+
+```{r}
+##Import 5-star characters' revenue and features data
+rev = read.csv("sort by rev.csv", stringsAsFactors = F)
+sum(is.na(rev))
+head(rev)
+
+```
+
+```{r}
+##Structure of variables
+str(rev)
+```
+
+After examining the structure of the rev data frame, it is evident that there are many character variables present in our dataset. The next step is to convert them into appropriate data type. Initially, we convert the variables revenue, max_lv_hp, special_0 to special_6 into a numeric data type. Next, we assign new labels to the rerun variable, replacing the numbers 0 to 3 with the letters a to d. This allows us to assess the impact of character's each rerun time on revenue. Following that, we partition the initial birthday data into the birth month and birth day. Additionally, we extract the release year of each character to be utilized in subsequent regression analysis. At last, the model column encompasses the height and gender of both characters. Therefore, it is necessary to separate them into two distinct columns: size and gender.
+
+```{r}
+#Convert revenue into numeric
+rev$revenue <- gsub(",", "", rev$revenue)
+rev$revenue <- as.numeric(rev$revenue)
+
+#Convert max_lv_hp into numeric
+rev$max_lv_hp <- gsub(",", "", rev$max_lv_hp)
+rev$max_lv_hp <- as.numeric(rev$max_lv_hp)
+
+#Convert speical stat into numeric
+special_cols <- grep("special_", names(rev), value = TRUE)
+special_cols <- special_cols[!grepl("special_dish", special_cols)]
+rev[special_cols] <- sapply(rev[special_cols], function(x) as.numeric(gsub("%", "", x)) / 100)
+
+#Relabel rerun variable
+rev <- rev %>%
+  mutate(rerun = case_when(
+    rerun == 0 ~ "a",
+    rerun == 1 ~ "b",
+    rerun == 2 ~ "c",
+    rerun == 3 ~ "d",
+    TRUE ~ as.character(rerun)))
+
+#Convert date of birth into birth month and birth day columns
+rev <- rev %>% 
+  mutate(rev, 
+         birthmonth = sub("\\d+-", "", birthday),
+         birthday = paste0(gsub("\\D", "", birthday)))
+
+#Convert release date into release year and release month columns
+rev$release_date = as.Date(rev$release_date, format = "%Y/%m/%d")
+rev <- rev %>% 
+  mutate(release_year = year(release_date)) %>% 
+  select(-release_date)
+
+#Separate model type
+rev <- rev %>%
+  separate(model, into = c("size", "gender"), sep = " ")
+
+#Recheck data type
+str(rev)
+
+#Standardize numeric explanatory variable and check missing value
+head(rev)
+rev[, 35:50] <- scale(rev[, 35:50])
+rev <- rev %>% select(-special_0, -special_1)
+sum(is.na(rev))
+
+```
+
+
+### C. Time Series - Weapons Event Revenue Analysis
+
+To construct a dataset to conduct the time series analysis was a two step procurement process. The first step was web scraping Paimon.moe, a Genshin Impact database, using Python. The data collected was the name of each five star weapon, the total number of people who pulled that weapon, and the event name. Since the team did not have access to the actual revenue amount an estimate can be deducted from the amount of pulls from each event. This is because the more people who are rolling for new weapons means that Genshin Impact will see an increase in revenue as a result. The next step was finding the dates for each event and appending that to match the event in the data collected in part one.After finding a historical weapons event calendar on the Genshin Impact Wiki and web scraping the data it was appended to the original dataset.
+
+The data was then aggregated by event and summed to get the number of pulls for each event. The time of each event was approximately three weeks or 17 events a year. This dataset had the best characteristics to conduct time series analysis with events that were evenly spaced out throughout the year and totals to forecast the revenue for future events.
+
+
+```{r}
+##Import TS Weapons Data and create TS object
+
+ts_weapons <- read_csv("ts_weapons.csv")
+
+ts_weapons$Start <- as.Date(ts_weapons$Start)
+ts_weapons$End <- as.Date(ts_weapons$End)
+
+xts_data <- xts(ts_weapons$Total, order.by = ts_weapons$Start)
+
+ts_data <- ts(xts_data, start = 2021, frequency = 17)  # By Amount of Events a Year
+plot(ts_data)
+```
+
+
+
+
+## Analysis Methods
+
+### A. Text Mining - Sentiment Analysis
+
+The choice of sentiment analysis as the analytical technique is not only well-suited for the research question, but also highly relevant in the context of the gaming industry. Sentiment analysis allows for systematically examining opinions, attitudes, and emotions expressed in text data, making it an appropriate method for exploring customer sentiments in our dataset.
+
+Multiple lexicons are employed for the analysis: Binary Sentiment, NRC Emotion, AFINN, and Jockers. Each lexicon offers unique advantages and provides a different perspective on the data. The binary lexicon serves as a starting point, broadly classifying sentiments into positive and negative categories. This high-level overview helps gauge the overall sentiment landscape and provides a foundation for further analysis. For instance, the NRC emotion lexicon is utilized to develop deeper insights into players' emotions. This lexicon identifies and quantifies specific emotions such as joy, anger, sadness, and fear. By analyzing the frequency and spread of these emotions, one can better understand the complex and diverse user sentiments regarding Genshin Impact.
+
+Moreover, the AFINN lexicon assesses sentiment polarity, providing a numerical score for each tweet. This quantitative measure allows for identifying strongly positive or negative sentiments and facilitates the comparison of sentiment intensity across different tweets. By leveraging the AFINN lexicon, trends and patterns in sentiment polarity can be uncovered. Finally, the Jockers lexicon is incorporated to account for the sentiment analysis's context and parts of speech (POS). This lexicon considers the surrounding words and their grammatical roles, enabling a more comprehensive interpretation of sentiments.
+
+```{r}
+#Tokenize words
+# One word 
+# Create an id column 
+genshin_reviews <- genshin_reviews %>% 
+  mutate(id = row_number()) %>% 
+  select(id, everything())
+
+#tokenize based on word
+genshin_reviews %>%
+  select(id,TWEET)%>%
+  group_by(id)%>%
+  unnest_tokens(input = TWEET, output = word)%>%
+  ungroup()%>%
+  group_by(id)%>%
+  summarize(count = n())
+
+#Exclude dirty words
+#profanity_alvarez
+#profanity_arr_bad
+#profanity_banned
+#profanity_racist
+#profanity_zac_anger
+
+genshin_reviews <-genshin_reviews %>%
+  group_by(id)%>%
+  unnest_tokens(output = word, input = TWEET)%>%
+  ungroup()%>%
+  select(id, word)%>%
+  anti_join(data.frame(word = c(profanity_banned, profanity_racist, profanity_alvarez,
+                                profanity_arr_bad, profanity_zac_anger)), 
+            by = c('word'='word'))
+
+#Change the column name to TWEET
+colnames(genshin_reviews)[2] = "TWEET"
+```
+
+#### Binary Sentiment Model
+
+Model for review over the whole game
+```{r}
+# Binary Token
+genshin_reviews_bin <- genshin_reviews %>% 
+  select(id,TWEET) %>% 
+  group_by(id)%>%
+  unnest_tokens(input = TWEET, output = word)%>%
+  inner_join(get_sentiments('bing'))%>%
+  group_by(sentiment)
+```
+
+
+Model for review over the characters
+```{r, include=TRUE}
+
+
+library('tidytext');
+library(tidyr); library(dplyr); library(ggplot2); library(ggthemes)
+sentiment_fullcharacter<-data %>%
+  unnest_tokens(word, text) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(character, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(total = positive + negative,
+         prop_positive = positive / total,
+         prop_negative = negative / total) %>%
+  arrange(desc(prop_positive)) 
+```
+
+
+#### NRC Emotion Sentiment Model
+
+```{r}
+## install and explore the nrc package 
+nrc = get_sentiments('nrc')
+
+nrc %>% 
+  group_by(sentiment) %>% 
+  count()
+
+##Perform sentiment analysis 
+genshin_reviews_nrc_emotion <- genshin_reviews %>% 
+  select(id,TWEET) %>% 
+  group_by(id)%>%
+  unnest_tokens(output = word, input = TWEET)%>%
+  inner_join(nrc, relationship = "many-to-many")%>%
+  group_by(sentiment)%>%
+  count() %>% 
+  ungroup()
+```
+
+#### AFINN Sentiment Model
+
+```{r}
+afinn = get_sentiments('afinn')
+
+genshin_reviews_afinn <- genshin_reviews %>% 
+  select(id,TWEET)%>%
+  group_by(id)%>%
+  unnest_tokens(output=word,input=TWEET)%>%
+  inner_join(afinn)%>%
+  summarize(reviewSentiment = mean(value))%>%
+  ungroup()
+```
+
+#### Jockers Sentiment Model
+
+```{r}
+genshin_reviews_Jockers <- genshin_reviews%>%
+  select(id,TWEET) %>% 
+  group_by(id)%>%
+  unnest_tokens(output=word,input=TWEET)%>%
+  inner_join(key_sentiment_jockers)%>%
+  summarize(reviewSentiment = mean(value))%>%
+  ungroup()
+```
+
+### B. Comment data Exploration Using Time-series Analysis
+
+### Data Preperation
+
+Though all comment data is now in one combiend csv file, the timestamp used in the scraped data set is not in uniform date format. The time format here is set for retrieval time and would be used later for all timestamps. In comment data, comment times within a week are all listed using units "d" for days, "m" for minutes, or "h" for hours, and thus have to be converted into the timestamp format used above. 
+
+```{r}
+#file paths to read
+wiki_comments = read.csv("comments_data.csv")
+char_data = read.csv("5205 project data - main.csv")
+banner_char = read.csv("df_characters.csv")
+
+#used packages for data cleaning and preparation
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(ggplot2)
+
+#timestamp format to be used 
+time_retrieved <- as.Date("2024-04-07")
+
+#function to detect and treat informal time formatting
+convert_time_to_date <- function(time_string, retrieval_date) {
+  parsed_date <- mdy(time_string)
+  if (!is.na(parsed_date)) {
+    return(parsed_date)
+  }
+  if (str_detect(time_string, "d$")) {
+    days <- as.numeric(str_extract(time_string, "\\d+"))
+    return(retrieval_date - days)
+  } else if (str_detect(time_string, "[hm]$")) {
+    return(retrieval_date)
+  } else {
+    return(NA)
+  }
+}
+
+#made into uniform time format
+wiki_comments <- wiki_comments %>%
+  rowwise() %>%
+  mutate(time = convert_time_to_date(time, time_retrieved)) %>%
+  ungroup()
+```
+
+
+### Basic Plots
+
+Basic Plots could be used to provide a general idea of trends in how comment data change with time for each of the characters. The general trend is notable. For most of the characters, especially those of 5 stars, comment amount spikes (by peak_dates_all) around the days of their first release time, and then gradually converges to around 0. However, further analysis on the trends and seasonality, models could not be done without time series analysis.
+
+```{r}
+#line chart, bar chart, and trendline for all characters stored as list
+character_plots <- list()
+
+for(character_name in char_data$character) {
+  character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n())
+
+  character_plots[[character_name]] <- ggplot(character_data, aes(x = time, y = Count)) +
+    geom_line() +
+    labs(title = paste("Daily Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+  
+  character_plots[[paste(character_name, "bar", sep = "_")]] <- ggplot(character_data, aes(x = time, y = Count)) +
+    geom_bar(stat = "identity") +
+    labs(title = paste("Daily Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+  ggplot(character_data, aes(x = time, y = Count)) +
+  geom_line() +
+  geom_smooth(se = FALSE, span = 0.03) + 
+  labs(title = paste("Daily Comments for", character_name),
+       x = "Date",
+       y = "Number of Comments") +
+  theme_minimal()
+}
+
+#the local maxima and global top review amount days
+peak_dates_all <- data.frame(character = character(), peak_date = character())
+
+for(character_name in char_data$character) {
+  character_month <- character_data %>%
+    mutate(YearMonth = floor_date(time, unit = "quarter")) %>%
+    group_by(YearMonth) %>%
+    filter(Count == max(Count)) %>%
+    ungroup()
+  peak_dates <- character_month$time
+
+    peak_dates_all <- rbind(peak_dates_all, data.frame(character = character_name, peak_date = peak_dates))
+
+  character_plots[[character_name]] <- ggplot(character_month, aes(x = time, y = Count)) +
+    geom_line() +
+    geom_point(data = data.frame(time = peak_dates, Count = character_month$Count), 
+               aes(x = time, y = Count), color = "red", size = 3) +
+    labs(title = paste("Quarterly Peak Comments for", character_name),
+         x = "Date",
+         y = "Number of Comments") +
+    theme_minimal()
+}
+```
+
+
+### Time Series Analysis
+
+The characteristics of the datasets makes it in dataframae format. To begin with time series analysis, the datasets are all converted into ts format and plots for each are drawn in ts_plots list to be analyzed together. 
+Individual analysis for each character is then performed afterwards for each of their best models and analyze for whether there are seasonality among most of the characters. The seasonal analysis could not be performed on the raw ts data since it is irregular, so an time series analysis using ttr and irts is performed first. 
+Then the ts is converted into regular ts objects by filling up the missing date values and then a ts analysis for regular time series objects are done later. 
+Since for some of the characters, they are released for less than 2 times of the frequency (365), seasonal naive model could not be done.Since the frequency of 365 of the current regular ts is too large for Holt's winter analysis and ETS analysis, a bi-weekly ts is also generated, but unfortunately could only be done for part of the characters because of data point limitations (<9 bi-weeks). All models are applied to character if possible. 
+```{r}
+#packages used in time series analysis
+library(ggthemes);library(gridExtra)  
+library(quantmod);library(xts);library(zoo) 
+library(forecast) 
+library(fpp); library(fpp2) 
+library(tseries) 
+library("TTR")
+```
+
+```{r}
+#time series plots after converted into time series format
+ts_plots <- list()
+
+for(character_name in char_data$character) {
+  character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n(), .groups = 'drop')  
+    ts_character <- ts(character_data$Count)
+  
+  ts_plots[[character_name]] <- list(
+    ts_object = ts_character,
+    class = class(ts_character)
+  )
+  
+  ts_plots[[character_name]]$plot <- ggplot2::qplot(seq_along(ts_character), ts_character, geom = "line") +
+    labs(title = paste("Time Series for", character_name),
+         x = "Time",
+         y = "Count") +
+    theme_minimal()
+  
+  plot_filename <- paste0("ts_plot_", character_name, ".png")
+  ggsave(plot_filename, plot = ts_plots[[character_name]]$plot, width = 10, height = 6, dpi = 300)
+  
+  #print(ts_plots[[character_name]]$class)
+}
+
+```
+
+```{r}
+character_name =char_data$character[1]
+character_name
+character_data <- wiki_comments %>%
+    filter(character == character_name) %>%
+    group_by(time) %>%
+    summarise(Count = n(), .groups = 'drop')
+count_ts <- ts(character_data$Count)
+```
+
+####Irregular TS Analysis
+```{r}
+#files for all results, accuracy, and plots are stored locally using this sample code snippet (similar codes are not kept here)
+
+#make_filename <- function(base_name) {
+#  paste0(character_name, "_", base_name, ".png")
+#}
+#png(make_filename("basic_ts_plot"))
+#plot.ts(count_ts)
+#dev.off()
+#for results in console:
+#file_name <- paste0(character_name, "_simple_forecasting.txt")
+#sink(file_name)
+#sink()
+#for ggplots:
+#plot_file_name <- make_filename(paste0(character_name, "_forecast_comparison_plot.png"))
+#ggsave(plot_file_name, ts_plot, width = 8, height = 4, dpi = 300)
+
+
+#plots are messy, thus use ttr to make it more smooth
+SMA3 <- SMA(count_ts,n=3)
+SMA50 <- SMA(count_ts,n=50)
+SMA100 <- SMA(count_ts,n=100)# not available for some characters released recently
+plot.ts(SMA3)
+plot.ts(SMA50)
+plot.ts(SMA100)
+
+#acf
+acf(x = count_ts,lag.max = 1,plot=F)
+acf(x = count_ts,plot=F)
+acf(x = count_ts)
+ggAcf(x = count_ts)
+
+#the ts at first is not seasonal since no data points at all dates
+numeric_times <- as.numeric(as.POSIXct(character_data$time))
+my_irts <- irts(numeric_times, character_data$Count)
+print(my_irts)
+class(my_irts)
+```
+
+####Regular TS
+```{r}
+#converting to regular ts from irregular ts
+character_data$time <- as.Date(character_data$time)
+valid_times <- character_data$time[!is.na(character_data$time)]
+all_dates <- seq(min(valid_times), max(valid_times), by = "day")
+all_dates_df <- data.frame(time = all_dates)
+
+regular_character_data <- all_dates_df %>%
+  left_join(character_data, by = "time")
+regular_character_data <- regular_character_data %>%
+  mutate(Count = ifelse(is.na(Count), 0, Count))
+
+regular_ts <- ts(regular_character_data$Count, start = c(year(min(all_dates)), yday(min(all_dates))), frequency = 365)
+```
+
+
+```{r}
+ggseasonplot(regular_ts)
+ggseasonplot(regular_ts, polar = TRUE)
+stl_plot <- regular_ts %>%
+  stl(s.window = 'periodic') %>%
+  autoplot()
+```
+
+#### Regular TS-simple forcasting model
+
+```{r}
+train_end_index <- round(length(regular_ts) * 0.7)
+ts_start <- start(regular_ts)
+ts_frequency <- frequency(regular_ts)
+
+train <- window(regular_ts, end = ts_start + (train_end_index - 1)/ts_frequency)
+test <- window(regular_ts, start = ts_start + train_end_index/ts_frequency)
+
+print(length(train)) 
+print(length(test)) 
+print(start(train))
+print(end(train))
+print(start(test))
+print(end(test))
+```
+
+#### Regular TS-average method
+
+```{r}
+average_model <- meanf(train, h = length(test))
+train_acc_ave <- accuracy(average_model) # Train accuracy
+test_acc_ave <- accuracy(average_model, x = regular_ts) # Test accuracy
+
+print(average_model)
+print(average_model$mean)
+print(train_acc_ave)
+print(test_acc_ave)
+```
+
+#### Regular TS-naive method
+
+```{r}
+naive_model <- naive(train, h = length(test))
+print(naive_model$mean)
+train_acc_nai <- last(train)
+test_acc_nai <- accuracy(naive_model, x = regular_ts)
+
+ts_plot <- autoplot(train) +
+  autolayer(average_model, PI = F, size = 1.1, series = 'Average Model') +
+  autolayer(naive_model, PI = F, size = 1.1, series = 'Naive Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-seasonal naive method
+
+```{r}
+seasonal_naive_model <- snaive(train, h = length(test))
+print(seasonal_naive_model)
+print(seasonal_naive_model$mean)
+
+test_acc_snai <- accuracy(seasonal_naive_model, x = regular_ts)
+print(test_acc_snai)
+
+seasonal_ts_plot <- autoplot(train) +
+  autolayer(seasonal_naive_model, PI = F, size = 1.1, series = 'Seasonal Naive Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-drift method
+
+```{r}
+drift_model <- rwf(train, h = length(test), drift = TRUE)
+text_file_name <- paste0(character_name, "_drift_model_output.txt")
+
+print(drift_model)
+print(drift_model$mean)
+test_acc_drift <- accuracy(drift_model, x = regular_ts)
+print(test_acc_drift)
+
+drift_ts_plot <- autoplot(train) +
+  autolayer(drift_model, PI = FALSE, size = 1.1, series = 'Drift Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-exponential smoothing models-simple exponential smoothing
+
+```{r}
+ses_model <- ses(train, h = length(test))
+ses_text_file_name <- paste0(character_name, "_ses_model_output.txt")
+
+print(ses_model)
+print(ses_model$mean)
+test_acc_ses <- accuracy(ses_model, x = regular_ts)
+print(test_acc_ses)
+
+ses_ts_plot <- autoplot(train) +
+  autolayer(ses_model, PI = FALSE, size = 1.1, series = 'SES Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-holt's
+
+```{r}
+holt_model <- holt(train, h = length(test))
+holt_text_file_name <- paste0(character_name, "_holt_model_output.txt")
+
+print(holt_model)
+print(holt_model$mean)
+test_acc_holt <- accuracy(holt_model, x = regular_ts)
+print(test_acc_holt)
+
+holt_ts_plot <- autoplot(train) +
+  autolayer(holt_model, PI = FALSE, size = 1.1, series = 'Holt Model') +
+  autolayer(test, series = 'Test Data')
+```
+
+#### Regular TS-holt's damp
+
+```{r}
+holt_damped_model <- holt(train, h = length(test), damped = TRUE)
+print(holt_damped_model)
+print(holt_damped_model$mean)
+
+test_acc_holtd <- accuracy(holt_damped_model, x = regular_ts)
+
+holt_damped_ts_plot <- autoplot(train) +
+  autolayer(holt_damped_model, PI = FALSE, size = 1.1, series = "Holt's Damped Model") +
+  autolayer(test, series = 'Test Data')
+
+```
+
+#### Regular TS-arima (model could not be performed because of data constraints)
+
+```{r}
+lambda <- BoxCox.lambda(train)
+ts_const_var <- BoxCox(train, lambda = lambda)
+
+autoplot(ts_const_var)
+
+ts_const_var_no_seasonality <- diff(x = ts_const_var, lag = 12)
+autoplot(ts_const_var_no_seasonality)
+
+dat <- cbind(original = train,
+             const_var = ts_const_var,
+             no_seasonality = ts_const_var_no_seasonality)
+
+autoplot(dat, facets = TRUE, colour = TRUE) + 
+    ylab('') + 
+    xlab('Year') + 
+    theme_bw()
+ggAcf(train)
+ggAcf(ts_const_var_no_seasonality)
+kpss_result <- kpss.test(ts_const_var_no_seasonality)
+print(kpss_result)
+```
+
+#### Regular TS- lags
+
+```{r}
+ts_const_var_no_seasonality_no_trend <- diff(ts_const_var_no_seasonality, 1)
+autoplot(ts_const_var_no_seasonality_no_trend)
+
+dat <- cbind(orig = train,
+             const_var = ts_const_var,
+             no_season = ts_const_var_no_seasonality,
+             no_trend = ts_const_var_no_seasonality_no_trend)
+
+autoplot(dat, colour = TRUE, facets = TRUE) + 
+    xlab('Year') + 
+    ylab('') + 
+    theme_bw()
+
+kpss_result_no_trend <- kpss.test(ts_const_var_no_seasonality_no_trend)
+print(kpss_result_no_trend)
+```
+
+####Bi-Weekly
+
+```{r}
+library(zoo)
+library(lubridate)
+
+start_time <- start(regular_ts)
+frequency <- frequency(regular_ts)
+
+start_date <- if (frequency == 365) {
+  as.Date(paste(start_time[1], "1", "1", sep = "-")) + (start_time[2] - 1)
+} else {
+  stop("The time series does not have a daily frequency.")
+}
+
+dates <- seq(from = start_date, by = "day", length.out = length(regular_ts))
+
+zoo_obj <- zoo(regular_ts, order.by = dates)
+
+bi_monthly_data <- aggregate(zoo_obj, by = function(time) {
+  year <- format(time, "%Y")
+  two_month_period <- ceiling(as.numeric(format(time, "%m")) / 2)
+  paste(year, two_month_period, sep = "-")
+}, FUN = sum)
+
+regular_ts_bi_monthly <- ts(coredata(bi_monthly_data), start = c(start_time[1], ceiling(as.numeric(format(start_date, "%m")) / 2)), frequency = 6)
+```
+
+```{r}
+train_end_index_week <- round(length(regular_ts_bi_monthly) * 0.7)
+
+ts_start_week <- start(regular_ts_bi_monthly)
+ts_frequency_week <- frequency(regular_ts_bi_monthly)
+
+train_week <- window(regular_ts_bi_monthly, end = ts_start_week + (train_end_index_week - 1)/ts_frequency_week)
+test_week <- window(regular_ts_bi_monthly, start = ts_start_week + train_end_index_week/ts_frequency_week)
+
+length(train_week)
+start(train_week)
+end(train_week)
+
+length(test_week)
+start(test_week)
+end(test_week)
+```
+
+####Bi-Weekly-holt's winter additive
+
+```{r}
+hw_additive <- hw(train_week, h = length(test_week), seasonal = 'additive', damped = TRUE)
+
+print(hw_additive$mean)
+test_acc_holta <- accuracy(hw_additive, x = regular_ts_bi_monthly)
+print(test_acc_holta)
+```
+
+####Bi-Weekly-holt's winter multi
+
+```{r}
+hw_multiplicative <- hw(train_week, h = length(test_week), seasonal = 'multiplicative', damped = TRUE)
+
+print(hw_multiplicative$mean)
+test_acc_holtm <- accuracy(hw_multiplicative, x = regular_ts_bi_monthly)
+print(test_acc_holtm)
+```
+
+####Bi-Weekly-ets-aaa
+
+```{r}
+ets_aaa <- ets(train_week, model = 'AAA')
+
+print(coef(ets_aaa))
+print(summary(ets_aaa))
+checkresiduals(ets_aaa)
+
+ets_aaa_forecast <- forecast(ets_aaa, h = length(test_week))
+print(ets_aaa_forecast)
+test_acc_aaa <- accuracy(ets_aaa_forecast, x = regular_ts_bi_monthly)
+print(test_acc_aaa)
+checkresiduals(ets_aaa)
+```
+
+####Bi-Weekly-ets:auto
+
+```{r}
+ets_auto <- ets(train_week)
+
+summary(ets_auto)
+ets_auto_forecast <- forecast(ets_auto, h = length(test_week))
+print(ets_auto_forecast)
+
+test_acc_auto <- accuracy(ets_auto_forecast, x = regular_ts_bi_monthly)
+print(test_acc_auto)
+
+ets_forecast_plot <- autoplot(ets_auto_forecast) +
+  autolayer(train_week, series = 'Training Data') +
+  autolayer(test_week, series = 'Test Data') +
+  ggtitle('ETS Model Forecast vs Actuals') +
+  xlab('Time') + ylab('Values') +
+  labs(colour = 'Series') +
+  theme_minimal()
+```
+
+
+
+
+
+### C. Character Revenue Analysis
+
+Prior to commencing regression analysis, it is important to address a prevailing issue. The rev data set contains a significant amount of character variables, each of which has multiple unique classifications. When conducting regression analysis on all variables, MLR will automatically apply one-hot encoding to all categorical variables. This will greatly augment the complexity of the data and give rise to the "curse of dimensionality," which refers to the scenario when there are more explanatory factors than observations, leading to issues with multicollinearity and model overfitting. Hence, it is imperative to perform feature selection before conducting regression analysis. Utilizing our extensive knowledge in the field and employing a systematic approach, we have identified seven explanatory factors for regression analysis: base_atk, rerun, special_2, talent_weekly, special_6, release_year, and size.
+
+```{r}
+##Feature selection##
+
+#Exclude variables based on domain knowledge
+rev1 <- rev %>% 
+  select(-id, -character_name, -rarity, -voice_eng, -voice_cn, -voice_jp, -voice_kr, 
+         -special_dish, -talent_material, -talent_book_1.2,	-talent_book_2.3,
+         -talent_book_3.4, -talent_book_4.5, -talent_book_5.6, -talent_book_6.7,
+         -talent_book_7.8,-talent_book_8.9)
+
+start_mod = lm(revenue~1, data = rev1)
+empty_mod = lm(revenue~1, data = rev1)
+full_mod = lm(revenue~., data = rev1)
+hybridStepwise = step(start_mod, scope = list(upper = full_mod, lower = empty_mod), direction = "both");
+summary(hybridStepwise)
+
+```
+
+To understand what character features correlate with revenue generation, we plan to use the following three models and compare the performance of different models through metrics such as R-squared, RMSE (Root Mean Squared Error) to determine which model best captures the patterns in our data set.
+
+#### Multiple Linear Regression (MLR)
+
+Multiple linear regression assumes a linear relationship between the independent variables (character features) and the dependent variable (revenue). This approach is particularly effective as an initial strategy to investigate how different character features in our data may influence revenue. MLR is versatile, accommodating both continuous and categorical data, which enables a comprehensive evaluation of how diverse factors jointly affect revenue. Additionally, MLR can control for various confounding variables, allowing us to isolate the effect of individual character features on revenue.
+
+```{r}
+#Method 1: linear regression: combining stepwise selection
+lm_model = lm(revenue~base_atk + rerun + special_2 + talent_weekly + special_6 + 
+                release_year + size, data = rev1)
+
+```
+
+#### Generalized Additive Model (GAM)
+
+GAMs are an extension of linear models that allow for more flexible, non-linear relationships between the features and revenue without having to specify the form of the relationship a priori. If there’s reason to believe the relationship between character features and revenue isn’t strictly linear, GAMs can model these curves without needing to transform the variables explicitly.
+
+```{r}
+#Method 2: nonlinear regression-gam
+gam_model <- gam(revenue~s(base_atk) + rerun + s(special_2, k = 8) + talent_weekly + 
+                   s(special_6, k = 8) + release_year+ size, method = 'REML', data = rev1)
+```
+
+#### Decision Tree Model
+
+Decision trees do not assume any specific distribution for the variables, making them suitable for complex datasets with non-linear relationships that aren’t easily captured by traditional regression models. They can naturally model interactions between different character features without explicitly defining them in the model. The tree structure of the model is relatively easy to interpret and can be visualized, which is helpful for communicating results to stakeholders who may not have a technical background.
+
+```{r}
+#Method 3: regression tree
+rev2 <- rev %>% 
+  select(-id, -character_name)
+tree1 = rpart(revenue~.,data = rev2, method = 'anova')
+
+```
+
+
+### D. Time Series - Weapons Event Revenue Analysis
+
+The analytical techniques used ranged from a simple average model to ARIMA models to forecast upcoming events in 2024. Below is an analysis of each model used and a graph comparing to the test results. 
+
+The team plans to using a combination of the best 4 models to come up with a range of revenue results that can be expected. Below is the analysis of each model used and the conclusions found at the bottom of this section. 
+```{r}
+### SPLIT DATA
+train = window(ts_data,end=c(2023,08))
+test = window(ts_data, start=c(2023,09))
+length(test)
+```
+
+#### Average Model
+
+```{r}
+average_model = meanf(train,h = 12)
+average_model
+accuracy(average_model,x = test)
+
+autoplot(train)+
+  autolayer(average_model,PI = F,size=1.1,series = 'Average Model')+
+  autolayer(test, color ='gray')
+```
+
+#### Naive Models
+
+```{r}
+naive_model = naive(train,h=12)
+naive_model
+accuracy(naive_model,x = test)
+
+### SEASONAL NAIVE MODEL
+seasonal_naive_model = snaive(train,h=12)
+seasonal_naive_model
+accuracy(seasonal_naive_model,x = test)
+
+autoplot(train)+
+  autolayer(average_model,PI = F,size=1.1,series = 'Average Model')+
+  autolayer(naive_model,PI=F,size=1.1, series='Naive Model')+
+  autolayer(seasonal_naive_model,PI=F,size=1.1,series='Seasonal Naive Model')+
+  autolayer(test, color ='gray')
+
+```
+
+#### Drift Model
+
+```{r}
+drift_model = rwf(train,h=12,drift = T)
+accuracy(drift_model,x = test)
+
+autoplot(train)+
+  autolayer(seasonal_naive_model,PI=F,size=1.1,series='Seasonal Naive Model')+
+  autolayer(drift_model,PI=F,size=1.1,series='Drift Model')+
+  autolayer(test, color = 'gray')
+```
+
+#### Simple Exponential Smoothing
+
+```{r}
+ses_model = ses(train,h = 12)
+accuracy(ses_model,x = test)
+
+autoplot(train)+
+  autolayer(ses_model,series = "Simple Exponential Smoothing",PI = F, size=1.1)+
+  autolayer(test, color = 'gray')
+```
+
+#### Holt Models
+
+```{r}
+holt_model = holt(train,h=12)
+accuracy(holt_model,x = test)
+
+### HOLT DAMPENED MODEL
+holt_damped_model = holt(train,h=12,damped = T)
+accuracy(holt_damped_model,x=test)
+
+holt_damped_final_model = holt(ts_data,h=17,damped = T)
+
+### HOLTS WINTER ADDITIVE
+hw_additive = hw(train,h=12,seasonal = 'additive', damped=T)
+accuracy(hw_additive,x = test)
+
+### HOLTS WINTER MULTIPLICATIVE
+hw_multiplicative = hw(train,h=12,seasonal = 'multiplicative', damped=T)
+accuracy(hw_multiplicative,x = test)
+
+autoplot(train)+
+  autolayer(holt_model,series="Holt's Method",PI=F,size=1.1)+
+  autolayer(holt_damped_model,series="Holt's Method with Damping",PI=F,size=1.1)+
+  autolayer(hw_additive,series="Holt Winter's Method - Additive",PI=F)+
+  autolayer(hw_additive,series="Holt Winter's Method - Multiplicative",PI=F)+
+  autolayer(test, color = 'gray')
+```
+
+#### ETS Models
+
+```{r}
+ets_aaa = ets(train,model = 'AAA')
+checkresiduals(ets_aaa)
+
+ets_aaa_forecast = forecast(ets_aaa,h=12)
+ets_aaa_forecast
+
+accuracy(ets_aaa_forecast,x = test)
+
+### ETS AUTO MODEL
+ets_auto = ets(train)
+summary(ets_auto)
+
+ets_auto_forecast = forecast(ets_auto, h=12)
+accuracy(ets_auto_forecast,x = test)
+
+autoplot(train)+
+  autolayer(ets_auto_forecast,series="ETS - MAM (auto)",PI=F)+
+  autolayer(ets_aaa_forecast,series="ETS - AAA",PI=F)+
+  autolayer(test, color = 'gray')
+```
+
+#### ARIMA Model
+
+```{r}
+kpss.test(ts_data)
+
+model_auto = auto.arima(y = train,d = 1,D = 1,stepwise = F,approximation = F)
+model_auto
+
+arima_forecast = forecast(model_auto, h = 12)
+autoplot(train)+
+  autolayer(ets_auto_forecast,series="ETS - MAM (auto)",PI=F)+
+  autolayer(arima_forecast,series="ARIMA (auto)",PI=F)+
+  autolayer(test, color = 'grey')
+```
+
+
+
+
+## Key Findings and Discussion
+
+### A. Text Mining - Sentiment Analysis
+
+#### Game Reviews 
+
+```{r}
+#Binary Sentiment Model Visualization 
+total_sentiments <- 7005 + 4792
+
+genshin_reviews_bin %>%
+  count() %>%
+  mutate(percentage = n / total_sentiments * 100) %>%
+  ggplot(aes(x = percentage, y = sentiment, fill = sentiment)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")), hjust = -0.5) +
+  theme_wsj() +
+  guides(fill = FALSE) +
+  labs(x = "Percentage", 
+       y = "Sentiment",
+       title = "Binary Sentiment Results") +
+  scale_x_continuous(limits = c(0, 100))
+```
+
+The sentiment analysis uses different lexicons to provide valuable insights into user perceptions of the game. The binary analysis reveals a higher proportion of negative reviews compared to positive ones, with 59.4% (7005) negative reviews and 40.6% (4792) positive reviews. This result suggests that there is a predominance of negative sentiment among the users who posted tweets with the #boycottgenshin hashtag.
+
+```{r}
+#NRC Emotion Sentiment Model Visualization
+total_nrc <- genshin_reviews_nrc_emotion %>%
+  summarise(total = sum(n))
+
+genshin_reviews_nrc_emotion %>%
+  mutate(percentage = n / total_nrc$total * 100) %>%
+  ggplot(aes(x = reorder(sentiment, percentage), y = percentage, fill = sentiment)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")), vjust = -0.2) +
+  guides(fill = FALSE) +
+  coord_flip() +
+  theme_wsj() +
+  labs(x = "Sentiment", 
+       y = "Percentage of Total NRC",
+       title = "NRC Emotion Sentiment Results") +
+  scale_y_continuous(limits = c(0, 30))
+```
+
+However, the NRC emotion analysis paints a more nuanced picture. It shows that while "negative" (17.6%) is one of the top emotions expressed, "positive" (19%) is actually the most prevalent emotion. Other notable emotions include "trust" (11.1%), "anticipation" (9.8%), and "sadness" (8.5%). This mixed bag of emotions suggests that users have varied feelings towards Genshin Impact, with a slight inclination towards positivity.
+
+```{r}
+#Show the AFINN summarized results 
+genshin_reviews_afinn %>% 
+  summarize(min=min(reviewSentiment),
+            max=max(reviewSentiment),
+            median=median(reviewSentiment),
+            mean=mean(reviewSentiment))
+
+#AFINN Sentiment Model Visualization
+genshin_reviews_afinn %>% 
+  ggplot(aes(x=reviewSentiment,fill=reviewSentiment>0))+
+  geom_histogram(binwidth = 0.1)+
+  scale_x_continuous(breaks=seq(-5,5,1))+
+  scale_fill_manual(values=c('tomato','seagreen'))+
+  guides(fill=F)+
+  labs(title = "AFINN Sentiment Results") +
+  theme_wsj()
+```
+
+The AFINN analysis further supports the presence of both negative and positive sentiments. The result indicates a wide range of scores from -3 to 4, with a median of 0 and a mean of 0.00279. The graph below shows the existence of a significant amount of neutral comments, defined as ranging from -1 to 1. In addition, the notable peaks in the negative range (-2) and the positive range (2) highlight the existence of strong opinions on both ends of the spectrum and demonstrate that the reviews are significantly polarized.
+
+```{r}
+#show the summarized results 
+genshin_reviews_Jockers %>% 
+  summarize(min=min(reviewSentiment),
+            max=max(reviewSentiment),
+            median=median(reviewSentiment),
+            mean=mean(reviewSentiment))
+
+#Jockers Sentiment Model Visualization
+genshin_reviews_Jockers %>% 
+  ggplot(aes(x=reviewSentiment,fill=reviewSentiment>0))+
+  geom_histogram(binwidth = 0.02)+
+  scale_x_continuous(breaks=seq(-1,1,0.2))+
+  scale_fill_manual(values=c('tomato','seagreen'))+
+  guides(fill=F)+
+  labs(title = "Jockers Sentiment Results") +
+  theme_wsj()
+```
+
+Lastly, the Jockers analysis, which considers the context and parts of speech, reveals a slightly more positive overall sentiment. The score distribution, ranging from -1 to 1 with a median of 0.0333 and a mean of 0.0301, appears skewed towards the positive side. This suggests that when considering the nuances of language, the sentiment surrounding Genshin Impact leans toward positive.
+
+
+#### Character Reviews 
+
+```{r}
+# binary sentiment analysis for all characters
+
+library('tidytext');
+library(tidyr); library(dplyr); library(ggplot2); library(ggthemes)
+sentiment_fullcharacter<-data %>%
+  unnest_tokens(word, text) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(character, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(total = positive + negative,
+         prop_positive = positive / total,
+         prop_negative = negative / total) %>%
+  arrange(desc(prop_positive)) 
+
+topfull<-sentiment_fullcharacter%>%slice(1:5)
+
+
+library('tidytext')
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+
+
+# Define custom colors for each character accorrding to the representative colors for each character
+custom_colors <- c('mediumpurple','red4','turquoise', "khaki", "olivedrab3")
+
+# Create ggplot 
+ggplot(topfull, aes(x = reorder(character, prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion - All") +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors)  
+
+```
+
+
+
+
+```{r, include=TRUE}
+# binary sentiment analysis for all characters
+
+library('tidytext')
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+
+all_fivestardata1 <-# Filter 'data' to only include rows where the character name is in 'all_fivestardata'
+sentiment_fullcharacter[sentiment_fullcharacter$character%in% all_fivestardata$`5-Star Characters`, ]
+
+
+topfullfive<-all_fivestardata1%>%slice(1:5)
+
+
+custom_colors <- setNames(c('orangered3','seagreen','royalblue','slateblue','limegreen'),
+                          c('Nilou', 'Nahida', 'Albedo', 'Lisa', 'Tighnari'))
+
+ggplot(topfullfive, aes(x = reorder(character, prop_positive), y = prop_positive, fill = character)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = scales::percent(prop_positive, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5), 
+            color = "white", 
+            size = 4) +
+  labs(x = "Character", y = "Proportion of Positive Sentiment",
+       title = "Top 5 Characters by Positive Sentiment Proportion - 5 Star") +
+  theme_minimal() +
+  scale_fill_manual(values = custom_colors) 
+
+```
+The analysis over the review of the characters mainly utilized the method of binary sentiment. In the whole list of the characters, the top 5 popular characters are Yaoyao, Navia, Chiori, Kaveh, Chevreuse. The corresponding range of the proportion of positive words in players’ reviews is 70.3% - 74.9%. In contrast, the top 5 popular characters are Nilou, Nahida, Albedo, Lisa, Tighnari in the 5-star character list with surprisingly lower figure range of 61.3% - 67.3%. 
+
+
+```{r, include=TRUE}
+selected_fivestardata <- select(revenue_data_fivestar, five_star_characters, revenue, banner_days)
+
+aggregated_data_fivestar <- selected_fivestardata %>%
+  group_by(five_star_characters) %>%
+  summarise(
+    total_revenue = sum(revenue, na.rm = TRUE),
+    total_banner_days = sum(banner_days, na.rm = TRUE)
+  )
+
+five_star_combine <- aggregated_data_fivestar %>%
+  rename(character = five_star_characters) %>%
+  inner_join(sentiment_fullcharacter, by = "character")
+
+five_star_combine %>%
+arrange(desc(prop_positive))
+
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+ggplot(five_star_combine, aes(x = total_revenue / total_banner_days, y = prop_positive, label = character)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "loess", color = "blue", se = TRUE) +
+    geom_smooth(method = "lm", color = "purple", se = TRUE) + 
+  # Changed from lm to loess
+  geom_label(aes(label = character), hjust = 1.2, vjust = 1.2, check_overlap = TRUE, color = "red", size = 3) +  
+  labs(
+    title = "Average Revenue v.s. Positive Word Proportion",
+    x = "Average Revenue",
+    y = "Positive Word Proportion"
+  ) +
+  theme_minimal()
+
+
+```
+
+The ggplot graph displays the relationship between the average revenue and positive word proportion for each 5- star character (16 in total) where average revenue is calculated by total revenue divided by total number of banner days. We find that most plots are centered in the area of 55% - 65% of positive words and 550,000 - 1,000,000. The blue curve indicates that the trend of these 16 characters fluctuates near the average revenue of 1,000,000. However, considering of the limited sample size we can access to, we can infer that there is a positive relationship between average revenue and positive word proportion in general which is shown by the purple line.
+
+
+### B. Comment data Exploration Using Time-series Analysis
+
+Based on the test results above and on the autoplots shown below, the top 2 models with the lowest RMSE are the Naive Model and Holt's Model for frequency of 365, and ETS-auto for bi-weekly ts model. Though model selectionf rom ARIMA could not be done because of constraint, we could notice form the kpss and graphs that there is indeed seasonality in the dataset. Because of the limitation of some of the character's data points(release time constraint), this result is just for reference only. 
+
+#### Result: daily
+
+```{r}
+combined_forecast_plot <- autoplot(train, color='sienna') +
+  autolayer(test, size=1.05, color='seagreen2') +
+  autolayer(average_model, series = 'Average Model', PI=F) +
+  autolayer(naive_model, series = 'Naive Model', PI=F) +
+  autolayer(seasonal_naive_model, series = 'Seasonal Naive Model', PI=F) +
+  autolayer(drift_model, series = 'Drift Model', PI=F) +
+  autolayer(ses_model, series = 'SES Model', PI=F) +
+  autolayer(holt_model, series = 'Holt Model', PI=F) +
+  labs(color="Series") +
+  theme_minimal()
+combined_forecast_plot
+```
+
+#### Result: bi-weekly
+
+```{r}
+biweek_forecast_plot<-autoplot(train_week, color='sienna')+
+  autolayer(test_week,size=1.05,color='seagreen2')+
+  autolayer(hw_additive,series = 'Holt Winter Additive',PI=F)+
+  autolayer(hw_multiplicative,series = 'Holt Winter Multiplicative',PI=F)+
+  autolayer(ets_auto_forecast,series="ETS - MAM (auto)",PI=F)+
+  autolayer(ets_aaa_forecast,series = 'ETS AAA',PI=F)
+biweek_forecast_plot
+```
+
+
+### C. Character Revenue Analysis
+
+#### Multiple linear regression model
+
+When applying the multiple linear regression model, we make the assumption that there is a linear relationship between the attributes of a character and their revenue. 
+
+```{r}
+#Method 1: linear regression: combining stepwise selection
+summary(lm_model)
+pred_lm = predict(lm_model)
+rmse_lm = sqrt(mean((pred_lm-rev1$revenue)^2)); rmse_lm
+
+```
+
+Based on the regression analysis, we discovered that the character's basic attack value, rerun time, special skill statistics at 2✦ and 6✦, and the required talent leveling materials obtained from weekly bosses all have a statistically significant impact on the characters' revenue generation. 
+
+In order to provide a more concise perspective, we generated graphs illustrating the partial effect of each relevant explanatory variable. 
+
+```{r}
+#Plot the partial effect graph
+library(effects)
+plot(allEffects(lm_model)$base_atk)
+plot(allEffects(lm_model)$special_2)
+plot(allEffects(lm_model)$special_6)
+
+rerun_df <- as.data.frame(allEffects(lm_model)$rerun)
+rerun <- ggplot(rerun_df, aes(x = factor(rerun), y = fit)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(vjust = 1, hjust = 1)) +
+  labs(x = "rerun", y = "revenue")
+rerun
+
+effect_df <- as.data.frame(allEffects(lm_model)$talent_weekly)
+talent_weekly <- ggplot(effect_df, aes(x = factor(talent_weekly), y = fit)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  labs(x = "talent weekly", y = "revenue")
+talent_weekly
+
+```
+
+The negative impact of the basic attack value on revenue is readily apparent. The idea we have is that game designers typically provide characters with low base attack values greater potential for improvement, hence increasing players' motivation to upgrade these characters. 
+
+Character upgrades in Genshin Impact can be attained through many means, including completing missions, battling monsters for materials, acquiring more powerful weapons from the card pool, and frequently obtaining the character to boost their star rating. This is also the main way of revenue generation in the game. Furthermore, our findings indicate that a character's revenue is positively influenced by a greater special skill value upon reaching 2✦, but negatively impacted when the value reaches 6✦. TTis is also in line with player expenditure, as achieving a 6✦ character necessitates drawing the character from the character card pool on seven occasions (with the initial draw being 0 stars), which typically entails significant spending and a lengthy gameplay duration. Attaining a 2✦ is far less challenging compared to obtaining a 6✦. Therefore, assigning a higher value to a character's special ability at 2✦ will serve as a strong incentive for players to invest more.
+
+Furthermore, we learned that certain talent leveling materials, such as Bloodjade Branch and Molten Moment, which are obtained by defeating bosses, have a notable impact on revenue through a positive feedback mechanism. Therefore, we can enhance the likelihood of obtaining these materials to facilitate character upgrades.
+
+Due to the ongoing updates in Genshin Impact, there is a potential for reruns of all characters save for the restricted ones. From the regression results, we find that the first time a character reruns (labeled b) has a positive effect on revenue at the 10% level of significance, while the second time a character reruns (labeled c) has a positive effect on generating revenue at the 1% level of significance. As a result, game designers can appropriately think about giving characters a one- or two-time of rerun to boost in-game revenue.
+
+```{r}
+#Anova analysis
+anova(lm_model)
+
+```
+
+We also performed an ANOVA analysis of the MLR model, and based on the results above, we find that various talent leveling materials dropped from weekly bosses, different levels of the basic attack statistic, and special skill statistics at 2✦ and 6✦ have significant effects on revenue at the 5%, 0.1%, and 1% significance levels, respectively. This indicates that these character features do have a significant impact on the character's ability to generate revenue.
+
+#### Generalized Additive Model
+
+```{r}
+#Method 2: nonlinear regression-gam
+summary(gam_model)
+pred_gam = predict(gam_model)
+rmse_gam = sqrt(mean((pred_gam-rev1$revenue)^2)); rmse_gam
+
+```
+
+Since GAM can better capture non-linear relationships between the features and revenue, we consider using this model as an extended comparison of MLR. Its regression findings are nearly identical to MLR's, supporting the validity of the MLR conclusion mentioned above once more.
+
+#### Decision tree model
+
+```{r}
+#Method 3: regression tree
+tree1$variable.importance
+rpart.plot(tree1)
+pred_tree = predict(tree1)
+rmse_tree = sqrt(mean((pred_tree-rev2$revenue)^2)); rmse_tree
+
+```
+
+Decision tree is a more advanced model. It is especially helpful when there is a complex relationship - for instance, one that is non-linear or involves some interaction - between character characteristics and revenue that a linear model is unable to adequately describe. The outcome is seen below. We put all the characteristics into the decision tree model and let it to choose the decision node on its own.
+
+```{r}
+#Compare rmse of each model
+model <- c("Multiple linear regression", "Generalized Additive Model", 
+           "Decision Tree Model")
+rmse <- c(rmse_lm, rmse_gam, rmse_tree)
+
+rmse_df <- data.frame("model" = model, "rmse" = rmse)
+rmse_df
+```
+
+Examining the RMSE findings of these three models, we can see that the decision tree model has a high RMSE while the results of MLR and GAM differ relatively little. This is due to the fact that dealing with big, complicated datasets where interactions and non-linear correlations are predicted benefits machine learning techniques like decision trees. Using a decision tree could not give enough information to develop the structure for the current data set of 5-star characters published by Genshin Impact, depending on the quantity of data available; on the other hand, because linear regression is simpler, it might be easier to derive appropriate conclusions from less data.
+
+
+### D. Time Series - Weapons Event Revenue Analysis
+
+Based on the test results from each model, the top 3 models that have the lowest RMSE are the Simple Exponential Smoothing Model, Holt's Dampened Model, and the Average Model. However, these models do not capture trend or shifts from seasonality so the Arima model will also be used in the final forecast to capture these trends. 
+
+```{r}
+rbind(average_model = accuracy(object = average_model,x = test)[2,],
+      naive_model = accuracy(object = naive_model,x = test)[2,],
+      seasonal_naive_model = accuracy(object = seasonal_naive_model,x = test)[2,],
+      drift_model = accuracy(object = drift_model,x = test)[2,],
+      ses_model = accuracy(object = ses_model,x = test)[2,],
+      holt_model = accuracy(object = holt_model,x = test)[2,],
+      holt_damped_model = accuracy(object = holt_damped_model,x = test)[2,],
+      hw_additive_model = accuracy(object = hw_additive,x = test)[2,],
+      hw_multiplicative = accuracy(object = hw_multiplicative,x = test)[2,],
+      ets_aaa = accuracy(ets_aaa_forecast,x = test)[2,],
+      ets_auto = accuracy(ets_auto_forecast,x = test)[2,],
+      arima = accuracy(arima_forecast,x= test)[2,]
+)
+```
+```{r}
+rbind(average_model = accuracy(object = average_model,x = test)[2,],
+      ses_model = accuracy(object = ses_model,x = test)[2,],
+      holt_damped_model = accuracy(object = holt_damped_model,x = test)[2,],
+      arima = accuracy(arima_forecast,x= test)[2,]
+      )
+```
+
+#### Final Forecast for 2024
+
+```{r}
+average_model_final = meanf(ts_data,h = 17)
+ses_model_final = ses(ts_data, h = 17)
+holt_damped_model_final = holt(ts_data,h=17,damped = T)
+arima_final = auto.arima(y = ts_data,d = 1,D = 1,stepwise = T,approximation = F)
+
+arima_final_forecast = forecast(arima_final,h=17)
+
+autoplot(ts_data, color = 'black') +
+  autolayer(average_model_final,PI = F, series = 'Average Model', color = 'red')+
+  autolayer(arima_final_forecast, series = 'ARIMA', PI = FALSE, color = 'blue') +
+  autolayer(ses_model_final, series = 'Simple Exponential Smoothing', PI = FALSE, color = 'green') +
+  autolayer(holt_damped_model_final, series = 'Holt', PI = FALSE, color = 'orange')
+
+
+```
+
+
+## Future Application 
+
+```{r}
+library(readr)
+comments_data_new_1 <- read_csv("comments_data_new.csv")
+new<- comments_data_new_1
+
+library('tidytext');
+library(tidyr); library(dplyr); library(ggplot2); library(ggthemes)
+new%>%
+  unnest_tokens(word, text) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(character, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(total = positive + negative,
+         prop_positive = positive / total,
+         prop_negative = negative / total) %>%
+  arrange(desc(prop_positive)) 
+
+
+```
+
+A new character, Arlecchino, was published on 24th, April, 2024. We applied sentiment analysis on the reviews of this character, and the positive word proportion is 52.8%. According to the graph of positive word proportion v.s. average revenue we generated above, we can predict the average revenue would be 500,000 which is lower than the existed characters. 
+
+
+```{r}
+df <- data.frame("base_atk" = 1.71054410, "rerun" = "a", "special_2" = 0.67404647, 
+                 "talent_weekly" = "Ashen Heart", 
+                 "special_6" = 0.67392712, "release_year" = 2024,
+                 "size" = "Tall")
+predict_new = predict(lm_model, newdata = df)
+
+```
+
+We also use the MLR model to predict the total revenue of Arlecchino after her first release. But due to the data limitation, the talent leveling material for Arlecchino is not included in our original data set. We just use one of the existing material as a reference in the prediction. Thus, we can predict that the total revenue of Arlecchino after this banner event would be 20,834,310.
+
+## Conclusion
+
+The analysis reveals that Genshin Impact has captured significant player interest and engagement, as evidenced by the extensive volume of tweets and the broad spectrum of emotions expressed, from excitement to frustration. Despite the game's popularity, the prevalence of negative reviews and emotions such as sadness and anger suggest that there are aspects of the game that could be improved to enhance player satisfaction. To address these issues, the company should delve deeper into the specific elements of the game causing dissatisfaction and make necessary updates. Additionally, improving communication with players and employing media advertising strategies could help increase player retention.
+
+In terms of character-specific analysis, it appears that non 5-star characters often exceed player expectations more so than 5-star characters, both in terms of positive sentiment and revenue generation. This discrepancy likely stems from the higher expectations players place on 5-star characters, leading to greater disappointment if those expectations are not met. To balance player expectations and experiences, the game's developers should consider adjusting the ratio of 5-star to non-5-star characters. Furthermore, enhancing the skills and abilities of 5-star characters could provide a more distinguished and satisfying experience. Offering players a trial of 5-star characters before their official release could also gather valuable feedback for further refinement.
+
+Based on the character revenue analysis, it is recommended that the designers of Genshin Impact conduct a detailed evaluation of the basic attack values and special skill statistics at 6 ✦  to identify the underlying reasons for the negative revenue impacts and to enhance the character's special skills at 2 ✦  accordingly. The importance of the rerun variable indicates that reintroducing characters can be an effective way to boost revenue, although this strategy needs to be fine-tuned to prevent decreasing returns with successive reruns. Additionally, the release of new characters should be leveraged as strategic opportunities to boost income by tapping into the excitement for new content among the player base. To foster player satisfaction and increase revenue growth, the process of character development should be continuously refined, guided by regular analysis of revenue trends and player feedback.
+
+Lastly, revenue from weapon pulls is projected to decline in 2024, as many players already possess the necessary weapons. To reinvigorate interest in this area, the introduction of new weapons and the organization of special events, particularly around the New Year, could help maintain and potentially increase revenue. Regular updates and enhancements based on player feedback and revenue trends are essential for sustaining interest and satisfaction among the game's community.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
